@@ -132,7 +132,13 @@
                         <div class="form-group">
                             <h5 class="text-danger"><?php echo $msg; ?></h5>
                         </div>
-                            <button type="submit" name="submit" value="submit" id="Regsubmitbtn" class="btn btn-primary">Register</button>
+                        <div class="form-group text-center">
+                            <button type="submit" name="submit" value="submit" id="Regsubmitbtn" class="btn bg-dark text-white">Register</button>
+                            <input type="reset" class="btn bg-dark text-white">
+                        </div>
+                        <div class="form-group text-center">
+                            <p>Already have a account?<a href="login.php"> LOG IN</a></p>
+                        </div>
                         </form>
                 </div>
             </div>

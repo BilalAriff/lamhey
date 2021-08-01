@@ -6,6 +6,10 @@
     padding: 5em 0em;
 }
 
+.bg-light-blue {
+    background-color:  #C1F0EA;
+}
+
 
 /* ==========  HOME BANNER =========== */
 
@@ -191,8 +195,10 @@
     border-radius: 12px;
 }
 
-.login-btn {
-    padding: 0.5em 5em;
+.dark-btn {
+    padding: 0.5em 5em !important;
+    color: #fff !important;
+    background-color: #000 !important;
 }
 
 /* ==========  Login Form Ends======== */

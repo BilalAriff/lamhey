@@ -1,1 +1,5 @@
-<h1>Consultant Dashaboard</h1>
+<?php
+ session_start();
+ var_dump($_SESSION);
+ $_SESSION["username"];
+?>

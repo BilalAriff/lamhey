@@ -20,7 +20,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link text-white">Login</a>
+                        <?php echo ( isset($_SESSION['logged']) !== false ) ? "<a href='logout.php' class='nav-link text-white'>Log Out</a>" : "<a href='login.php' class='nav-link text-white'>Log in</a>"; ?>
                     </li>
                 </ul>
             </div>

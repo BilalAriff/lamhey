@@ -10,12 +10,12 @@
 
     <!-- Header -->
     
-    <div class="jumbotron bg-light-blue mt-3">
+    <div class="jumbotron bg-dark mt-3">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3>User Dashboard</h3>
-                    <h1>Welcome, <span style="font-weight: bold;"><?php echo $_SESSION['username']?></span></h1>
+                    <h3 class="text-white">Admin Dashboard</h3>
+                    <h1 class="text-white">Welcome, <span style="font-weight: bold;"><?php echo $_SESSION['username']?></span></h1>
                 </div>
             </div>
         </div>
@@ -26,7 +26,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center my-5">
-                <h3>Your Bookings</h3>
+                <h3>Monthly Reports</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h3>User Profiles</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h3>Consultant Profile</h3>
             </div>
         </div>
     </div>

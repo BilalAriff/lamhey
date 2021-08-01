@@ -34,6 +34,22 @@ class User {
         
     }
     
+    public function isValidLogin($pPassword){
+        $sql = "SELECT password FROM users WHERE username = :username";
+        
+        $values = array(
+            array(':username', $this->username)
+        );
+
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+        
+        if (isset($result['password']) && password_verify($pPassword, $result['password']))
+            return true;
+        else
+            return false;
+
+    }
+
     public function createUserProfile($pUsername, $pEmail, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pZip, $pState){
             
         $sql = "INSERT INTO users (username, email, firstname, 

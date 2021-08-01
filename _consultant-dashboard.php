@@ -14,11 +14,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3>User Dashboard</h3>
+                    <h3>Consultant Dashboard</h3>
                     <h1>Welcome, <span style="font-weight: bold;"><?php echo $_SESSION['username']?></span></h1>
                 </div>
             </div>
         </div>
+    
     </div>
 
     <!-- User Bookings -->
@@ -26,7 +27,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center my-5">
-                <h3>Your Bookings</h3>
+                <h3>Your Events</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h3>Your Booking Requests</h3>
             </div>
         </div>
     </div>
