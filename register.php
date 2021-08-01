@@ -59,47 +59,50 @@
                     <div class="form-group text-center">
 
                         <h2>Welcome</h2>
-                        <h4><?php echo $Msg ?></h4>
+                        <h4 class="text-success"><?php echo $Msg ?></h4>
                     </div>
                     <form action="" method="post">
                         <div class="form-group">
                             <label for="uername">Username</label>
-                            <input name="username" id="reg_username" type="text" class="form-control" placeholder="Username123">
+                            <input name="username" id="reg_username" type="text" class="form-control" placeholder="Username123" required>
+                            <h5 class="text-danger" id="usercheck"></h5>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input name="email" id="reg_email" type="email" class="form-control" placeholder="jhondoe@gmail.com">
+                            <input name="email" id="reg_email" type="email" class="form-control" placeholder="jhondoe@gmail.com" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="firstname">First Name</label>
-                                <input class="form-control" name="firstname" id="reg_firstname" placeholder="Jhon" type="text">
-                            </div>
+                                <input class="form-control" name="firstname" id="reg_firstname" placeholder="Jhon" type="text" required>
+                                <h5 id="passcheck" class="text-danger"></h5>
+                             </div>
                             <div class="form-group col-md-6">
                                 <label for="lastname">Last Name</label>
-                                <input name ="lastname" id="reg_firstname" type="text" class="form-control" placeholder="Doe">
+                                <input name ="lastname" id="reg_firstname" type="text" class="form-control" placeholder="Doe" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input name ="password" id="reg_Password" type="password" class="form-control" placeholder="***********">
+                            <input name ="password" id="reg_Password" type="password" class="form-control" placeholder="***********" required>
                         </div>
                         <div class="form-group">
                             <label for="confirm-password">Confrim Password</label>
-                            <input name ="confirm_password" id="reg_confirm_Password" type="password" class="form-control" placeholder="***********">
+                            <input name ="confirm_password" id="reg_confirm_Password" type="password" class="form-control" placeholder="***********" required>
+                            <h5 id="conpasscheck" class="text-danger"></h5>
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input name="address" id="reg_address" type="text" class="form-control" placeholder="Apartment, studio, or floor">
+                            <input name="address" id="reg_address" type="text" class="form-control" placeholder="Apartment, studio, or floor" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="city">City</label>
-                                <input name="city" id="reg_city" type="text" class="form-control" id="inputCity">
+                                <input name="city" id="reg_city" type="text" class="form-control" id="inputCity" required>
                             </div>
                             <div class="form-group col-md-4">
                             <label for="inputState">State</label>
-                            <select name="state" id="inputState" class="form-control">
+                            <select name="state" id="inputState" class="form-control" required>
                                 <option selected>Sindh</option>
                                 <option>Balochistan</option>
                                 <option>Punjab</option>
@@ -109,12 +112,12 @@
                             </div>
                             <div class="form-group col-md-4">
                             <label for="inputZip">Zip</label>
-                            <input name="zip" type="text" class="form-control" id="inputZip">
+                            <input name="zip" type="text" class="form-control" id="inputZip" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input" value="consultant" type="radio" name="role" id="flexRadioDefault1">
+                                <input class="form-check-input" value="consultant" type="radio" name="role" id="flexRadioDefault1" required>
                                 <label class="form-check-label" for="">
                                     Consultant Profile
                                 </label>
@@ -126,7 +129,10 @@
                                 </label>
                             </div>
                         </div>
-                            <button type="submit" name="submit" value="submit" class="btn btn-primary">Register</button>
+                        <div class="form-group">
+                            <h5 class="text-danger"><?php echo $msg; ?></h5>
+                        </div>
+                            <button type="submit" name="submit" value="submit" id="Regsubmitbtn" class="btn btn-primary">Register</button>
                         </form>
                 </div>
             </div>

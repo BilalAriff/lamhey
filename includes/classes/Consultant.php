@@ -1,11 +1,11 @@
 <?php
 
-    class Consultant extends User{
+    class Consultant extends User {
         
         private $username;
         
         public function __construct($pUsername){
-            parent::__construct();
+            parent::__construct($pUsername);
             $this->username = $pUsername;
             $this->role = User::CONSULTANT;
         }

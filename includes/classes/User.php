@@ -4,16 +4,35 @@ class User {
 
     const USER = 1;
     const CONSULTANT = 2;
+
+    private $username;
     
     protected $db;
     protected $role;
 
-    public function __construct(){
+    public function __construct($pUsername){
         
         $this->db = new Database();
+        $this->username = $pUsername;
         $this->role = User::USER;
     }    
 
+    public function isDuplicateID(){
+            
+        $sql = "SELECT count(username) AS num FROM users WHERE username = :username";
+        
+        $values = array(
+            array(':username', $this->username)
+        );
+    
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+
+        if ($result['num'] == 0)
+            return false;
+        else
+            return true;                
+        
+    }
     
     public function createUserProfile($pUsername, $pEmail, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pZip, $pState){
             
@@ -40,4 +59,6 @@ class User {
         $this->db->queryDB($sql, Database::EXECUTE, $values);
 
     }
+
+
 }
