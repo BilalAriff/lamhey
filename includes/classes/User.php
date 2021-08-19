@@ -75,6 +75,4 @@ class User {
         $this->db->queryDB($sql, Database::EXECUTE, $values);
 
     }
-
-
 }

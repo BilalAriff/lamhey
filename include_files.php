@@ -1,6 +1,6 @@
 <?php
 
-    define("INC_DIR", $_SERVER["DOCUMENT_ROOT"]. "/lamhey/");
+    define("INC_DIR", $_SERVER["DOCUMENT_ROOT"]. "/lamhey-complete/");
 
     // Auto Load Classes
        
