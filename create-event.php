@@ -22,37 +22,30 @@
     <div class="container">
         <div class="row">
             <div class="offset-sm-3 offset-md-3 col-sm-12 col-md-6">
-                <div class="event-creation-form">
-
-                    <!-- <form action="" method="post">
-                        <div class="form-group" enctype="multipart/form-data">
-                            <label for="">Event Image</label>
-                            <input type="file" name="eventImage">
-                        </div>
-                    </form> -->
+                <div class="event-creation-form login-form">
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group" >
-                            <label for="">Event Image</label>
-                            <input type="file" name="eventImage">
+                            <label for="">Image</label>
+                            <input class="form-control-file"  type="file" name="eventImage">
                         </div>
                         <div class="form-group">
-                            <label for="">Event Name</label>
-                            <input type="text" required name="eventName" value="eventName">
+                            <label for="">Name</label>
+                            <input class="form-control" type="text" required name="eventName" value="eventName">
                         </div>
                         <div class="form-group">
-                            <label for="">Event Description</label>
-                            <input type="text" required name="eventDescription"   value="eventDescription">
+                            <label for="">Description</label>
+                            <input class="form-control" type="text" required name="eventDescription"   value="eventDescription">
                         </div>
                         <div class="form-group">
-                            <label for="">Event Host</label>
-                            <input value="eventHost" type="text" required name="eventHost">
+                            <label for="">Host</label>
+                            <input class="form-control" value="eventHost" type="text" required name="eventHost">
                         </div>
                         <div class="form-group">
-                            <label for="">Event Category</label>
-                            <input value="eventCategory" type="text" required name="eventCategory">
+                            <label for="">Category</label>
+                            <input class="form-control" value="eventCategory" type="text" required name="eventCategory">
                         </div>
                         <div class="form-group">
-                            <button name="submit" value="submit"  type="submit">Create Event</button>
+                            <button class="btn btn-dark" name="submit" value="submit"  type="submit">Create Event</button>
                         </div>
                     </form>
                 </div>

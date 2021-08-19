@@ -23,10 +23,9 @@ if (isset($_POST['submit'])) {
 
         $myEvent->createEvent(
             $_POST['eventName'],
-            $_POST['eventHost'],
+            $_SESSION['userID'],
             $_POST['eventCategory'],
             $_POST['eventDescription'],
             $file_location);
-    
     }
-?>  
+?>      

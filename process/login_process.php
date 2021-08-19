@@ -26,7 +26,7 @@
                 {
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = "user";
-                    $_SESSION['logged'] = true;    
+                    $_SESSION['logged'] = true;   
                     $msg = "User Login Succesfull";
                     header("Location: user-dashboard.php");            
                 }
@@ -46,6 +46,7 @@
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = "consultant";
                     $_SESSION['logged'] = true;
+                    $_SESSION['userID'] = $consultant->getUserID(); 
                     $msg = "Consultant Login Succesfull";
                     header("Location: consultant-dashboard.php");                
                 }

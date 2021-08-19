@@ -10,6 +10,19 @@
             $this->role = User::CONSULTANT;
         }
         
+        public function getUserID(){
+
+            $sql = "SELECT id FROM consultants WHERE username = :username";
+    
+            $values = array(
+                array(':username', $this->username)
+            );
+        
+            $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+            
+            return $result['id'];
+        }
+        
         public function isDuplicateID(){
             
             $sql = "SELECT count(username) AS num FROM consultants WHERE username = :username";

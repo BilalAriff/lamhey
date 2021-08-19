@@ -14,25 +14,6 @@ class Event {
         $this->eventName = $_eventName;
     }    
 
-    // ================================================
-
-
-    // public function createEvent($_eventName, $_eventDescription, $_eventHost, $_eventCategory){
-            
-    //     $sql = "INSERT INTO event ( eventName, eventDescription, eventHost, eventCategory ) VALUES (:eventName, :eventDescription, :eventHost, :eventCategry)";
-        
-    //     $values = array(
-    //         array(':eventName', $_eventName),
-    //         array(':eventDescription', $_eventDescription),
-    //         array(':eventHost', $_eventHost),
-    //         array(':eventCategory', $_eventCategory),
-    //     );
-
-    //     $this->db->queryDB($sql, Database::EXECUTE, $values);
-    // }
-
-    // ===================================================
-
     public function createEvent($pEventName, $pEventHost, $pEventCategory, $pEventDescription, $pEventImage){
             
         $sql = "INSERT INTO event (eventName, eventHost, eventCategory, eventDescription, eventImage)
@@ -48,6 +29,18 @@ class Event {
 
         $this->db->queryDB($sql, Database::EXECUTE, $values);
 
-    }    
+    }
+    
+    public function getAllEvents() {
+        $sql = "SELECT * FROM event";
+
+        $values = array(
+            array(':event', "event")
+        );
+
+        $allEvents = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        
+        return $allEvents;
+    }
 }
 

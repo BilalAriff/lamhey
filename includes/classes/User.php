@@ -33,6 +33,7 @@ class User {
             return true;                
         
     }
+
     
     public function isValidLogin($pPassword){
         $sql = "SELECT password FROM users WHERE username = :username";
