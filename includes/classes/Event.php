@@ -33,21 +33,21 @@ class Event {
 
     // ===================================================
 
-    public function createEvent($pEventName, $pEventHost, $pEventCategory, $pEventDescription){
+    public function createEvent($pEventName, $pEventHost, $pEventCategory, $pEventDescription, $pEventImage){
             
-        $sql = "INSERT INTO event (eventName, eventHost, eventCategory, eventDescription)
-                VALUES (:eventName, :eventHost, :eventCategory, :eventDescription)";
+        $sql = "INSERT INTO event (eventName, eventHost, eventCategory, eventDescription, eventImage)
+                VALUES (:eventName, :eventHost, :eventCategory, :eventDescription, :eventImage)";
         
         $values = array(
             array(':eventName', $pEventName),
             array(':eventHost', $pEventHost),
             array(':eventCategory', $pEventCategory),
             array(':eventDescription', $pEventDescription),
+            array(':eventImage', $pEventImage)
         );
 
         $this->db->queryDB($sql, Database::EXECUTE, $values);
 
-    }
-
-    
+    }    
 }
+
