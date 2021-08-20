@@ -34,6 +34,18 @@ class User {
         
     }
 
+    public function getUsername(){
+
+        $sql = "SELECT username FROM users WHERE username = :username";
+
+        $values = array(
+            array(':username', $this->username)
+        );
+    
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+        
+        return $result['username'];
+    }
     
     public function isValidLogin($pPassword){
         $sql = "SELECT password FROM users WHERE username = :username";

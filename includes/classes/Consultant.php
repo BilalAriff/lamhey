@@ -9,6 +9,18 @@
             $this->username = $pUsername;
             $this->role = User::CONSULTANT;
         }
+        public function getUsername(){
+
+            $sql = "SELECT username FROM consultants WHERE username = :username";
+    
+            $values = array(
+                array(':username', $this->username)
+            );
+        
+            $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+            
+            return $result['username'];
+        }
         
         public function getUserID(){
 

@@ -43,7 +43,7 @@
                 }
                 else
                 {
-                    $_SESSION['username'] = $username;
+                    $_SESSION['username'] = $consultant->getUsername();
                     $_SESSION['role'] = "consultant";
                     $_SESSION['logged'] = true;
                     $_SESSION['userID'] = $consultant->getUserID(); 

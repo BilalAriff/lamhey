@@ -3,6 +3,13 @@
 class Helper {
     
     //Add methods here
+
+    public function createUserFolder($username) {
+        $dir = "uploads/".$username;
+        if( is_dir($dir) === false ) {
+                mkdir($dir);
+            }
+         }
     
     public function passwordsMatch($pw1, $pw2){
         if ($pw1 == $pw2)
