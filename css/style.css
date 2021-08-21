@@ -23,6 +23,92 @@
     width: 100%;
 }
 
+/* ============ USER PROFILE SECTION ========== */
+
+.consultant-profile-jumbotron {
+    padding: 2em 0em;
+    background: linear-gradient(180deg, #F0F9F8 51%, #fff 50%);
+}
+
+.user-profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profile-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 1px solid #90dcd2;
+    margin-right: 1.2em;
+}
+
+.user-profile-avatar img {
+    width: 100%;
+}
+
+.user-profile-info h1 {font-weight: bold;text-shadow: 2px 2px 4px #0000003b;margin: 0;}
+
+.user-profile-info h5 {
+    text-shadow: 2px 2px 1px #00000021;
+    margin: 0;
+}
+
+.user-profile-info i {
+    color: blue;
+}
+
+.user-profile-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.profile-navigation-section {
+    background-color: #f0f9f8;
+    display: flex;
+    justify-content: center;
+}
+
+/* about me section */
+
+.about-me-section {
+    border-top: 3px solid #f0f9f8;
+    padding: 2em 0em;
+}
+
+.about-me-image {
+    width: 15em;
+    height: 15em;
+    overflow: hidden;
+    padding: 1em;
+    border: 3px solid #f0f9f8;
+    display: flex;
+    justify-content: center;
+}
+
+.about-me-image img {
+
+}
+
+.about-me-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.about-me-descriptin p {
+
+}
+
+.photo-gallery-section {
+    background-color: #f2f7f6;
+}
+
 /* ==========  HOME BANNER =========== */
 
 .home-slider-caption {
@@ -255,7 +341,90 @@
 
 
 
+/* ======= IMAGE GALLERY ================ */
+  
+  /* Gallery */
+  .lightboxgallery-gallery {
+    display: block;
+    margin: 60px -10px;
+  }
+  .lightboxgallery-gallery-item {
+    cursor: zoom-in;
+    display: block;
+    float: left;
+    width: 25%;
+  }
+  
+  .lightboxgallery-gallery-item img {
+    width: 100%;
+  }
+  
+  .lightboxgallery-gallery-item > div {
+    position: relative;
+    margin: 10px;
+  }
+  
+  .lightboxgallery-gallery-item > div:after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.3) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,.3) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.3) 100%);
+    opacity: 0;
+    -webkit-transition: opacity 400ms;
+    transition: opacity 400ms;
+  }
+  
+  .lightboxgallery-gallery-item:hover > div:after {
+    opacity: 1;
+  }
+  
+  .lightboxgallery-gallery-item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 2;
+    opacity: 0;
+    -webkit-transition: opacity 400ms;
+    transition: opacity 400ms;
+  }
+  
+  .lightboxgallery-gallery-item:hover .lightboxgallery-gallery-item-content {
+    opacity: 1;
+  }
+  
+  .lightboxgallery-gallery-item-title {
+    display: block;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
 
+
+
+  @media only screen and (max-width : 767px) {
+    .lightboxgallery-gallery-item {
+      width: 33.3333%;
+    }
+  }
+  
+  @media only screen and (max-width : 479px) {
+    .lightboxgallery-gallery-item {
+      width: 50%;
+    }
+  }
 
 
 
