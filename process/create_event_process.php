@@ -29,8 +29,7 @@ if (isset($_POST['submit'])) {
 
         $myEvent->createEvent(
             $_POST['eventName'],
-            // $_SESSION['userID'],
-            "1231",
+            $_SESSION['userID'],
             $_POST['eventCategory'],
             $_POST['eventDescription'],
             $file_location);
