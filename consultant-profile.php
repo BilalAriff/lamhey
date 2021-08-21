@@ -1,5 +1,9 @@
 <?php
  session_start();
+ include_once "include_files.php";
+ $guest = new Guest("guest");
+ $profile_details = $guest->getProfileDetails("consultant", "BilalJamootConsultant");
+ var_dump($profile_details);
 ?>
 
 <!DOCTYPE html>
@@ -38,17 +42,83 @@
                 <div class="col-lg-6 col-sm-12">
                     <div class="user-profile-header">
                         <div class="user-profile-avatar">
-                            <img src="img/avatars/3-m.jpg" alt="user profile pic">
+                            <img src="<?php echo $profile_details['profile_image'] ?>" alt="user profile pic">
                         </div>
                         <div class="user-profile-info">
-                            <h1>Bilal Arif</h1>
-                            <h5>Individual Consultant</h5>
+                            <h1><?php echo $profile_details['firstname']." ".$profile_details['lastname']; ?></h1>
+                            <h5><?php echo $profile_details['consultant_type']?></h5>
                             <div class="user-rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <?php
+
+                                    $rating = $profile_details['rating']; 
+                                    if($rating == "0") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    
+                                    if ($rating == "1") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "2") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "3") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "4") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "5") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        ';
+                                    }
+                                
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -74,12 +144,12 @@
             <div class="row">
                 <div class="col-sm-12 col-md-4 offset-md-2 text-right">
                     <div class="about-me-image">
-                        <img src="img/avatars/1-m.jpg" alt="about me picture">
+                        <img src="<?php echo $profile_details['profile_image'] ?>" alt="about me picture">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <div class="about-me-description">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga veritatis beatae in unde aut nemo et optio quam voluptas. Repudiandae facere, numquam debitis placeat iste blanditiis sed explicabo provident minima?</p>
+                        <p><?php echo $profile_details['about'] ?></p>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ class User {
 
     const USER = 1;
     const CONSULTANT = 2;
+    const GUEST = 3;
 
     private $username;
     
