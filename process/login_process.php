@@ -47,6 +47,7 @@
                     $_SESSION['role'] = "consultant";
                     $_SESSION['logged'] = true;
                     $_SESSION['userID'] = $consultant->getUserID(); 
+                    $_SESSION['userData'] = $consultant->getUserData();
                     $msg = "Consultant Login Succesfull";
                     header("Location: consultant-dashboard.php");                
                 }

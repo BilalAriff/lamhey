@@ -34,7 +34,7 @@ class User {
         
     }
 
-    public function getUsername($username){
+    public function getUsername(){
 
         $sql = "SELECT username FROM users WHERE username = :username";
 
