@@ -2,6 +2,38 @@
     session_start();
     include_once "include_files.php";
     include_once "./process/register_process.php";
+    
+    // if (isset($_POST['submit'])){
+        
+    //     var_dump($_FILES["profile_image"]);
+    //     echo "<br>";
+    //     echo $_POST["consultant_type"];
+    //     echo "<br>";
+    //     echo $_POST["role"];
+    //     echo "<br>";
+    //     echo $_POST["about"];
+    //     echo "<br>";
+    //     echo $_POST["rating"];
+    //     echo "<br>";
+    //     echo $_POST["username"];
+    //     echo "<br>";
+    //     echo $_POST["email"];
+    //     echo "<br>";
+    //     echo $_POST["firstname"];
+    //     echo "<br>";
+    //     echo $_POST["lastname"];
+    //     echo "<br>";
+    //     echo $_POST["password"];
+    //     echo "<br>";
+    //     echo $_POST["address"];
+    //     echo "<br>";
+    //     echo $_POST["city"];
+    //     echo "<br>";
+    //     echo $_POST["zip"];
+    //     echo "<br>";
+    //     echo $_POST["state"];
+    //     echo "<br>";
+    // }
 ?>
 
 
@@ -56,12 +88,32 @@
             <div class="offset-sm-3 offset-md-3 col-sm-12 col-md-6">
                 <div class="login-form">
                     <div class="form-group text-center">
-
                         <h2>Welcome</h2>
-                        <h6>Create a <span class="text-success">User Profile</span> Now</h6>
+                        <h6>Create <span class="text-success">Consultant</span> Profile</h6>
                         <h4 class="text-success"><?php echo $Msg ?></h4>
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
+                        <div class="consultant-profile-section">
+                            <div class="form-group d-flex justify-content-center align-items-center">
+                                <div class="upload-consultant-profile-photo">
+                                    <label for="profile_image">Profile Photo</label>
+                                    <input name="profile_image" class="form-control-file" type="file">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="consultant_type">Profile Type</label>
+                                <select class="form-control" name="consultant_type" id="consultant_type">
+                                    <option value="Individual Consultant">Individual Consultant</option>
+                                    <option value="Resturant">Resturant</option>
+                                    <option value="Marriage Hall">Mariage Hall</option>
+                                    <option value="Marquee">Marquee</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="about">Write something abour yourself</label>
+                                <textarea class="form-control" name="about" id="" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="uername">Username</label>
                             <input name="username" id="reg_username" type="text" class="form-control" placeholder="Username123" required>
@@ -82,6 +134,8 @@
                                 <input name ="lastname" id="reg_firstname" type="text" class="form-control" placeholder="Doe" required>
                             </div>
                         </div>
+                        <input type="hidden" value="1" name="rating">
+                        <input type="hidden" value="consultant" name="role">
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input name ="password" id="reg_Password" type="password" class="form-control" placeholder="***********" required>
@@ -115,10 +169,10 @@
                             <input name="zip" type="text" class="form-control" id="inputZip" required>
                             </div>
                         </div>
-                        <input type="hidden" value="user" name="role">
+                        <input type="hidden" name="role" value="consultant">
                         <!-- <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input" value="consultant" type="radio" name="role" id="flexRadioDefault1" required>
+                                <input class="form-check-input" value="consultant" type="radio" name="_role" id="flexRadioDefault1" required>
                                 <label class="form-check-label" for="">
                                     Consultant Profile
                                 </label>
@@ -130,7 +184,6 @@
                                 </label>
                             </div>
                         </div> -->
-                
                         <div class="form-group">
                             <h5 class="text-danger"><?php echo $msg; ?></h5>
                         </div>
@@ -145,7 +198,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <a class="btn bg-primary text-white w-100" href="consultant-register.php">Do You Want To Create Consultant Profile?</a>
+                            <a class="btn bg-primary text-white w-100" href="register.php">Do You Want To Create User Profile?</a>
                         </div>
                         <div class="form-group text-center">
                             <p>Already have a account?<a href="login.php"> LOG IN</a></p>

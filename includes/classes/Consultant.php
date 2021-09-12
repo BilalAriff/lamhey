@@ -66,31 +66,58 @@
             
         }
         
-        public function createConsultantProfile($pUsername, $pEmail, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pZip, $pState){
+        // public function createConsultantProfile($pUsername, $pEmail, $pConsultantType, $pRating, $pAbout, $pProfileImage, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pState, $pZip){
             
-            $sql = "INSERT INTO consultants (username, email, firstname, 
-                                             lastname, password, role,
-                                             address, city, zip, state)
-                    VALUES (:username, :email, :firstname, 
-                            :lastname, :password, :role,
-                            :address, :city, :zip, :state)";
+        //     $sql = "INSERT INTO consultants (username, email, consultant_type, rating, about, profile_image, firstname, lastname, password, role, address, city, state, zip)
+        //             VALUES (:username, :email, :consultant_type, :rating, :about, :profile_image :firstname, :lastname, :password, :role, :address, :city, :state, :zip)";
             
-            $values = array(
-                            array(':username', $pUsername),
-                            array(':email', $pEmail),
-                            array(':firstname', $pFirstname),
-                            array(':lastname', $pLastname),
-                            array(':password', password_hash($pPassword, PASSWORD_DEFAULT)),
-                            array(':role', $pRole),
-                            array(':address', $pAddress),
-                            array(':city', $pCity),
-                            array(':zip', $pZip),
-                            array(':state', $pState)
-            );
+        //     $values = array(
+        //                     array(':username', $pUsername),
+        //                     array(':email', $pEmail),
+        //                     array(':consultant_type', $pConsultantType),
+        //                     array(':rating', $pRating),
+        //                     array(':about', $pAbout),
+        //                     array(':profile_image', $pProfileImage),
+        //                     array(':firstname', $pFirstname),
+        //                     array(':lastname', $pLastname),
+        //                     array(':password', password_hash($pPassword, PASSWORD_DEFAULT)),
+        //                     array(':role', $pRole),
+        //                     array(':address', $pAddress),
+        //                     array(':city', $pCity),
+        //                     array(':state', $pState),
+        //                     array(':zip', $pZip)
+        //     );
 
-            $this->db->queryDB($sql, Database::EXECUTE, $values);
+        //     $this->db->queryDB($sql, Database::EXECUTE, $values);
 
+        // }
+
+        public function createConsultantProfile($pUsername, $pEmail, $pConsultantType, 
+        $pRating, $pAbout, $pProfileImage, $pFirstname, $pLastname, $pPassword, $pRole,
+        $pAddress, $pCity, $pState, $pZip) {
+            $sql = "INSERT INTO consultants (username, email, consultant_type, rating, about, profile_image, firstname, lastname, password, role, address, city, state, zip)
+                    VALUES (:username, :email, :consultant_type, :rating, :about, :profile_image, :firstname, :lastname, :password, :role, :address, :city, :state, :zip)";
+        
+                $values = array(
+                    array(':username', $pUsername),
+                    array(':email', $pEmail),
+                    array(':consultant_type', $pConsultantType),
+                    array(':rating', $pRating),
+                    array(':about', $pAbout),
+                    array(':profile_image', $pProfileImage),
+                    array(':firstname', $pFirstname),
+                    array(':lastname', $pLastname),
+                    array(':password', password_hash($pPassword, PASSWORD_DEFAULT)),
+                    array(':role', $pRole),
+                    array(':address', $pAddress),
+                    array(':city', $pCity),
+                    array(':state', $pState),
+                    array(':zip', $pZip));
+
+                    $this->db->queryDB($sql, Database::EXECUTE, $values);
         }
+
+        
         
         public function isValidLogin($pPassword){
             $sql = "SELECT password FROM consultants WHERE username = :username";

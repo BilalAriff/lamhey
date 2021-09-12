@@ -2,14 +2,21 @@
  session_start();
  include_once "include_files.php";
  $guest = new Guest("guest");
- $profile_details = $guest->getProfileDetails("consultant", "BilalJamootConsultant");
- var_dump($profile_details);
+ $helper = new Helper();
+ $consultantProfile = new ConsultantProfile("10");
+ 
+$profileID = $helper->getURLParams("id");
+
+$profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
+//  var_dump($profile_details);
+ 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once "./partials/Head.php"; ?>
 <body>
+
     <?php include_once "./partials/Navigation.php" ?>
 
     <!-- User Profile Navigation -->
@@ -45,7 +52,7 @@
                             <img src="<?php echo $profile_details['profile_image'] ?>" alt="user profile pic">
                         </div>
                         <div class="user-profile-info">
-                            <h1><?php echo $profile_details['firstname']." ".$profile_details['lastname']; ?></h1>
+                            <h1><?php echo $profile_details["firstname"]." ".$profile_details['lastname']; ?></h1>
                             <h5><?php echo $profile_details['consultant_type']?></h5>
                             <div class="user-rating">
                                 <?php
@@ -125,6 +132,17 @@
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="user-profile-actions">
+                        <?php
+                            // if($_SESSION["role"] === "guest") {
+                            //     echo "guest";
+                            // }
+                            // if($_SESSION["role"] === "consultant") {
+                            //     echo "consultant";
+                            // }
+                            // if($_SESSION["role"] === "user") {
+                            //     echo "user";
+                            // }
+                        ?>
                         <button class="btn btn-danger mr-2">Block Profile</button>
                         <button class="btn btn-success mr-2"> Request Event</button>
                         <button class="btn btn-primary"> Add Review </button>
@@ -474,6 +492,5 @@
             });
         });
     </script>
-
 </body>
 </html>

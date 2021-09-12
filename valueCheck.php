@@ -19,7 +19,6 @@ session_start();
             <strong>first name: </strong>".$first_name."<br>
             <strong>last name: </strong>".$last_name."<br>
             ";
-
         var_dump($user_data);
     } 
 

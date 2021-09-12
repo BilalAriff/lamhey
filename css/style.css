@@ -283,7 +283,19 @@
 
 /* ========  EVENT CARD ENDS ====== */
 
-/* ==========  Login Form ========== */
+/* ==========  Login and registeration Form ========== */
+
+.upload-consultant-profile-photo {
+    width: 230px;
+    height: 230px;
+    background-color: #efebeb;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
 
 .login-form {
     -webkit-box-shadow: 0px 0px 5px 2px rgb(193 240 234 / 100%);

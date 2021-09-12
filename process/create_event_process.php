@@ -5,8 +5,6 @@ $msg = '';
 $Msg = '';
 $eventName = "";
 
-$link = mysqli_connect("localhost", "root", "", "lamheycomplete");
-
 if (isset($_POST['submit'])) {
 
         $eventName = $_POST["eventName"];  
