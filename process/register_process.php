@@ -97,7 +97,8 @@ if (isset($_POST['submit']))
                     $file_name = $_FILES['profile_image']['name'];
                     $file_size = $_FILES['profile_image']['size'];
                     $file_type = $_FILES['profile_image']['type'];
-
+                    
+                    $userFolderName = $_POST["username"];
                     $h->createUserFolder($userFolderName);
 
                     $file_location = "uploads/".$userFolderName."/".$file_name;
