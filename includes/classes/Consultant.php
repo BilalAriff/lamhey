@@ -23,6 +23,35 @@
             return $result['username'];
         }
 
+        public function getConsultantProfileInfo() {
+
+            $sql = "SELECT 	
+                            id,
+                            username,
+                            email,
+                            consultant_type,
+                            rating,
+                            about,
+                            profile_image,
+                            firstname,
+                            lastname,
+                            password,
+                            role,
+                            address,
+                            city,
+                            state,
+                            zip
+            FROM consultants WHERE username = :username";
+    
+            $values = array(
+                array(':username', $this->username)
+            );
+
+            $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+            return $result[0];
+            
+        }
+
         public function getUserData(){
 
             $sql = "SELECT * FROM consultants WHERE username = :username";

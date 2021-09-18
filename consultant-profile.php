@@ -1,14 +1,14 @@
 <?php
- session_start();
- include_once "include_files.php";
- $guest = new Guest("guest");
- $helper = new Helper();
- $consultantProfile = new ConsultantProfile("10");
+    session_start();
+    include_once "include_files.php";
+    $guest = new Guest("guest");
+    $helper = new Helper();
+    $consultantProfile = new ConsultantProfile("10");
  
-$profileID = $helper->getURLParams("id");
+    $profileID = $helper->getURLParams("id");
 
-$profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
-//  var_dump($profile_details);
+    $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
+    //  var_dump($profile_details);
  
 ?>
 

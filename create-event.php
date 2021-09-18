@@ -1,12 +1,16 @@
 <?php
     session_start();
     include_once "include_files.php";
-    include_once "./process/create_event_process.php";
+    include_once "process/create_event_process.php";
 
-    // if( empty($_SESSION) || $_SESSION['role'] !== 'consultant') {
-    //     header("Location: index.php");
-    // }
+    if( empty($_SESSION) || $_SESSION['role'] !== 'consultant') {
+        header("Location: index.php");
+    }
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,19 +30,22 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group" >
                             <label for="">Image</label>
-                            <input class="form-control-file"  type="file" name="eventImage">
+                            <input class="form-control-file"  type="file" name="eventThumbnail">
                         </div>
                         <div class="form-group">
                             <label for="">Name</label>
-                            <input class="form-control" type="text" required name="eventName" value="eventName">
+                            <input class="form-control" type="text" required name="eventTitle" value="eventName">
+                        </div>
+                        <input type="hidden" name="eventHostID" value="<?php echo $_SESSION['consultantInfo']['id']?>">
+                        <input type="hidden" name="eventHostAvatar" value="<?php echo $_SESSION['consultantInfo']['profile_image']?>">
+                        <input type="hidden" name="eventHostName" value="<?php echo $_SESSION["consultantInfo"]["username"] ?>">
+                        <div class="form-group">
+                            <label for="starting_price">Starting Price</label>
+                            <input type="number" class="form-control" name="eventPrice">
                         </div>
                         <div class="form-group">
                             <label for="">Description</label>
                             <input class="form-control" type="text" required name="eventDescription"   value="eventDescription">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Host</label>
-                            <input class="form-control" value="eventHost" type="text" required name="eventHost">
                         </div>
                         <div class="form-group">
                             <label for="">Category</label>
@@ -54,7 +61,7 @@
     </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer -->s
 <?php include_once "./partials/Footer.php"?>
 
 <!-- =============   SCRIPTS   ============ -->

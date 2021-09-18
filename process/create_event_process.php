@@ -1,20 +1,18 @@
 <?php
 
 $h = new Helper();
-$msg = '';
-$Msg = '';
-$eventName = "";
+
 
 if (isset($_POST['submit'])) {
 
-        $eventName = $_POST["eventName"];  
+        $eventName = $_POST["eventTitle"];  
         $myEvent = new Event($eventName);
         $userFolderName = $_SESSION['username'];
 
-        $file_tmp = $_FILES['eventImage']['tmp_name'];
-        $file_name = $_FILES['eventImage']['name'];
-        $file_size = $_FILES['eventImage']['size'];
-        $file_type = $_FILES['eventImage']['type'];
+        $file_tmp = $_FILES['eventThumbnail']['tmp_name'];
+        $file_name = $_FILES['eventThumbnail']['name'];
+        $file_size = $_FILES['eventThumbnail']['size'];
+        $file_type = $_FILES['eventThumbnail']['type'];
 
         // change the name below for the folder you want
 
@@ -24,12 +22,15 @@ if (isset($_POST['submit'])) {
         
 
         move_uploaded_file($file_tmp, "uploads/".$userFolderName."/".$file_name);
-
+        
         $myEvent->createEvent(
-            $_POST['eventName'],
-            $_SESSION['userID'],
-            $_POST['eventCategory'],
+            $_POST['eventTitle'],
+            $file_location,
+            $_POST['eventPrice'],
+            $_POST['eventHostID'],
+            $_POST['eventHostAvatar'],
+            $_POST['eventHostName'],
             $_POST['eventDescription'],
-            $file_location);
+            $_POST['eventCategory']);
     }
 ?>      

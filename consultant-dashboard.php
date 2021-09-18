@@ -1,5 +1,6 @@
 <?php
  session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +26,11 @@
     <!-- User Bookings -->
 
     <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="create-event.php" class="btn btn-dark">Create Event</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 text-center my-5">
                 <h3>Your Events</h3>
