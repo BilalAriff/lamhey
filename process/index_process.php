@@ -1,24 +1,16 @@
 <?php
 
-session_start();
-include_once "include_files.php";
+$events = new Event("HomeEvents");
 
 
-
-  
-
-$myEvent = new Event("myEvent");
-
-$events = $myEvent->getEventList();
-
-// var_dump($event);
+$featuredEvents = $events->getFeaturedEvents();
 
 function featuredEventCard($event)
 {   
     $id = $event['event_id'];
     $title = $event['event_title'];
     $thumbnail = $event['event_thumbnail'];
-    $price = $event['price'];
+    $price = $event['event_price'];
     $host = $event['event_host'];
     $hostAvatar = $event['event_host_avatar'];
     $hostName = $event['event_host_name'];
@@ -29,13 +21,13 @@ function featuredEventCard($event)
 
     $card = 
     <<<HTML
-        <div class="event-card">
+        <div class="event-card mx-3">
             <div class="event-card-header">
                 <img src="$thumbnail" alt="">
             </div>
             <div class="event-card-body">
                 <h5 class="event-card-title">$title</h5>
-                <label class="event-card-price">$price</label>
+                <label class="event-card-price">Rs. $price</label>
             </div>
             <div class="event-card-footer">
                 <div class="event-card-profile">
@@ -51,12 +43,8 @@ function featuredEventCard($event)
     echo $card;
 }
   
-// $arr1 = array(1, 2, 3, 4, 5);
 
-function cardList($_events) {
-    print_r(array_map("featuredEventCard", $_events));
+function featuredCardList($_events) {
+    array_map("featuredEventCard", $_events);
 }
 
-cardList($events);
-
-// var_dump($events);
