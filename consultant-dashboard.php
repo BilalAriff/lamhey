@@ -32,6 +32,11 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-12 text-center mt-5">
+                <a href="add-portfolio.php" class="btn btn-dark">Add Portfolio</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12 text-center my-5">
                 <h3>Your Events</h3>
             </div>
