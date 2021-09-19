@@ -163,5 +163,41 @@
                 return false;
 
         }
+
+        public function addPaymentMethods($methods, $id) {
+            $sql = "UPDATE consultants
+                    SET payment_methods = :payment_methods
+                    WHERE id = :id";
+            // $sql = "INSERT INTO consultants ( payment_methods ) VALUES (:payment_methods) WHERE id = :id";
+    
+            $values = array(
+                            array(":payment_methods", serialize($methods)),
+                            array(":id", $id));
+
+            $this->db->queryDB($sql, Database::EXECUTE, $values);
+        }
+
+        public function getPaymentMethods($id) {
+            $sql = "SELECT payment_methods FROM consultants WHERE id = :id";
+            $values = array( array(":id", $id) );
+            $result =  $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+            // return $result;
+            return unserialize($result['payment_methods']);
+        }
+
+
+        public function changeAvailablity($id, $availablity) {
+                $sql = "UPDATE consultants
+                        SET availablity = :availablity
+                        WHERE id = :id";
         
+                $values = array(
+                                array(":availablity", $availablity),
+                                array(":id", $id));
+    
+                $this->db->queryDB($sql, Database::EXECUTE, $values);
+        }
+    
     }
+
+
