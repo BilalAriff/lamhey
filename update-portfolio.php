@@ -3,7 +3,7 @@
     $Msg = "";
     session_start();
     include_once "include_files.php";
-    include_once "process/add_portfolio_process.php";
+    include_once "process/update_portfolio_process.php";
 
 ?>
 
@@ -59,25 +59,30 @@
             <div class="offset-sm-3 offset-md-3 col-sm-12 col-md-6">
                 <div class="login-form">
                     <div class="form-group text-center">
-                        <h2>Add Your Portfolio</h2>
+                        <h2>Update Your Portfolio</h2>
                         <h4 class="text-success"><?php echo $Msg ?></h4>
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="current_imate">Thumbnail</label>
+                            <img src="<?php echo $link?>" alt="">
+                        </div>
                         <div class="form-group">
                             <label for="Thumbnail">Thumbnail</label>
                             <input required type="file" name="link">
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input required name="title" placeholder="Educational Seminar" class="form-control" type="text">
+                            <input required value="<?php echo $title ?>" name="title" placeholder="Educational Seminar" class="form-control" type="text">
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea required name="description" class="form-control" cols="30" rows="10"></textarea>
+                            <textarea required value="<?php echo $description ?>" name="description" class="form-control" cols="30" rows="10"></textarea>
                         </div>
-                        <input required name="consultant" type="hidden" value="<?php echo $_SESSION['consultantInfo']['id']?>">
+                        <input required name="consultant" type="hidden" value="<?php echo $_SESSION['userID']?>">
                         <div class="form-group">
                             <label for="categories">Categories</label>
+                            <label for="old-categories"><?php echo $categories ?></label>
                             <select required name="categories" class="form-control">
                                 <option value="Wedding">Wedding</option>
                                 <option value="Educational Seminar">Education Seminar</option>
@@ -86,7 +91,7 @@
                         </div>
                         <div class="form-group">
                             <label for="date">Date</label>
-                            <input required name="date" type="date" class="form-control">
+                            <input value="<?php echo $date ?>" required name="date" type="date" class="form-control">
                         </div>
                         <div class="form-group">
                             <div class="row">
