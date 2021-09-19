@@ -1,11 +1,10 @@
-<?php
+<?php 
 
-$events = new Event("HomeEvents");
+$events = new Event("eventProcessPage");
 
+$allEvents = $events->getEventList();
 
-$featuredEvents = $events->getFeaturedEvents();
-
-function featuredEventCard($event)
+function eventListCard($event)
 {   
     $id = $event['event_id'];
     $title = $event['event_title'];
@@ -44,7 +43,6 @@ function featuredEventCard($event)
 }
   
 
-function featuredCardList($_events) {
-    array_map("featuredEventCard", $_events);
+function eventsList($_events) {
+    array_map("eventListCard", $_events);
 }
-

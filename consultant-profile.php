@@ -1,14 +1,7 @@
 <?php
     session_start();
     include_once "include_files.php";
-    $guest = new Guest("guest");
-    $helper = new Helper();
-    $consultantProfile = new ConsultantProfile("10");
- 
-    $profileID = $helper->getURLParams("id");
-
-    $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
-    //  var_dump($profile_details);
+    include_once "process/consultant_profile_process.php";
  
 ?>
 
@@ -469,6 +462,11 @@
             <div class="col-12 text-center my-5">
                 <h3>Your Events</h3>
             </div>
+        </div>
+        <div class="row">
+            <div class="dynamic-top-event-list d-flex flex-row justify-content-center align-items-center">
+                <?php featuredCardList($featuredEvents); ?>
+            </div>                   
         </div>
         <div class="row">
             <div class="col-12 text-center my-5">

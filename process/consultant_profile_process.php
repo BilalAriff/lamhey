@@ -1,9 +1,16 @@
 <?php
 
-$events = new Event("HomeEvents");
+    $guest = new Guest("guest");
+    $helper = new Helper();
+    $events = new Event("consultantEvents");
+    $consultantProfile = new ConsultantProfile("10");
+ 
+    $profileID = $helper->getURLParams("id");
+
+    $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
 
 
-$featuredEvents = $events->getFeaturedEvents();
+    $featuredEvents = $events->getEventListByConsultant($profileID);
 
 function featuredEventCard($event)
 {   
@@ -36,7 +43,7 @@ function featuredEventCard($event)
                     </div>
                     <h6 class="event-card-profie-username">$hostName</h6>
                 </div>
-            <a href="event-detail-page?id=$id" class="event-card-btn">View Event</a>
+            <a href="/event_detail?id=$id" class="event-card-btn">View Event</a>
             </div>
         </div>
     HTML;
@@ -47,4 +54,3 @@ function featuredEventCard($event)
 function featuredCardList($_events) {
     array_map("featuredEventCard", $_events);
 }
-
