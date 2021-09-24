@@ -1,11 +1,15 @@
 <?php
 
-// session_start();
+session_start();
 include_once "include_files.php";
 
 $booking = new Booking();
+$user = new User("BilalUser");
 
 $bookingOne = $booking->getAllBookingList();
 
-var_dump($bookingOne);
+$userId = $user->getUserId("BilalUser");
 
+var_dump($userId);
+
+var_dump($_SESSION);

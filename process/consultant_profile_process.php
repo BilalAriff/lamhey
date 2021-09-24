@@ -3,9 +3,10 @@
     $guest = new Guest("guest");
     $helper = new Helper();
     $events = new Event("consultantEvents");
-    $consultantProfile = new ConsultantProfile("10");
- 
     $profileID = $helper->getURLParams("id");
+    $consultant = new Consultant($profileID);
+    $consultantProfile = new ConsultantProfile($profileID);
+ 
 
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
 
@@ -53,4 +54,12 @@ function featuredEventCard($event)
 
 function featuredCardList($_events) {
     array_map("featuredEventCard", $_events);
+}
+
+// give user ratings
+
+var_dump($profile_details["rating"]);
+
+if (isset($_POST["submit_rating"])) {
+  $consultant->addReview($profileID, $profile_details["rating"], $_POST["user_rating"]);   
 }

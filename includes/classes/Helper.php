@@ -79,4 +79,75 @@ class Helper {
         }
 
     }
+
+    public function starRating($_rating) {
+        
+        $rating = $_rating; 
+                                    if($rating == "0") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    
+                                    if ($rating == "1") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "2") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "3") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "4") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star text-dark" aria-hidden="true"></i>
+                                        ';
+                                    }
+
+                                    if ($rating == "5") {
+                                        echo 
+                                        '
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        ';
+                                    }
+    }
 }

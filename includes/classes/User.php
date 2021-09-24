@@ -64,6 +64,13 @@ class User {
 
     }
 
+    public function getUserId($username) {
+        $sql = "SELECT id FROM users WHERE username = :username";
+        $values = array( array(":username", $username) );
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+        return $result["id"];
+    }
+
     public function createUserProfile($pUsername, $pEmail, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pZip, $pState){
             
         $sql = "INSERT INTO users (username, email, firstname, 

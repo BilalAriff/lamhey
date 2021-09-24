@@ -94,32 +94,7 @@
                 return true;                
             
         }
-        
-        // public function createConsultantProfile($pUsername, $pEmail, $pConsultantType, $pRating, $pAbout, $pProfileImage, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pState, $pZip){
-            
-        //     $sql = "INSERT INTO consultants (username, email, consultant_type, rating, about, profile_image, firstname, lastname, password, role, address, city, state, zip)
-        //             VALUES (:username, :email, :consultant_type, :rating, :about, :profile_image :firstname, :lastname, :password, :role, :address, :city, :state, :zip)";
-            
-        //     $values = array(
-        //                     array(':username', $pUsername),
-        //                     array(':email', $pEmail),
-        //                     array(':consultant_type', $pConsultantType),
-        //                     array(':rating', $pRating),
-        //                     array(':about', $pAbout),
-        //                     array(':profile_image', $pProfileImage),
-        //                     array(':firstname', $pFirstname),
-        //                     array(':lastname', $pLastname),
-        //                     array(':password', password_hash($pPassword, PASSWORD_DEFAULT)),
-        //                     array(':role', $pRole),
-        //                     array(':address', $pAddress),
-        //                     array(':city', $pCity),
-        //                     array(':state', $pState),
-        //                     array(':zip', $pZip)
-        //     );
-
-        //     $this->db->queryDB($sql, Database::EXECUTE, $values);
-
-        // }
+    
 
         public function createConsultantProfile($pUsername, $pEmail, $pConsultantType, 
         $pRating, $pAbout, $pProfileImage, $pFirstname, $pLastname, $pPassword, $pRole,
@@ -197,7 +172,20 @@
     
                 $this->db->queryDB($sql, Database::EXECUTE, $values);
         }
-    
+
+        public function getListOfConsultants() {
+            $sql = "SELECT id, username, email, consultant_type, rating, profile_image, city, state FROM consultants where availablity = :availablity";
+            $values = array( array(":availablity", "available") );
+            $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+            return $result;
+        }
+
+        public function addReview($id, $oldRating, $rating) {
+            $newRating = $rating + $oldRating;
+            $sql = "UPDATE consultants SET rating = :rating WHERE id = :id";
+            $values = array ( array(":rating", $newRating), array(":id", $id) );
+            $this->db->queryDB($sql, Database::EXECUTE, $values["id"]);
+        }
     }
 
 

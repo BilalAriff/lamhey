@@ -24,9 +24,11 @@
                 }
                 else
                 {
+                    $userId = $user->getUserId($username);
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = "user";
-                    $_SESSION['logged'] = true;   
+                    $_SESSION['logged'] = true;  
+                    $_SESSION['userID'] = $userId; 
                     $msg = "User Login Succesfull";
                     header("Location: user-dashboard.php");            
                 }
