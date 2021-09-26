@@ -2,17 +2,78 @@
     session_start();
     include_once "include_files.php";
     $helper = new Helper();
+    $profileID = $helper->getURLParams("id");
 
     // $helper->protectedRoute($_SESSION["role"], "user");
 
     // $guest = new Guest("guest");
     $events = new Event("consultantEvents");
-    $profileID = $helper->getURLParams("id");
     $consultant = new Consultant($profileID);
     $consultantProfile = new ConsultantProfile($profileID);
+    $portfolio = new Portfolio();
 
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
     $featuredEvents = $events->getEventListByConsultant($profileID);
+    $videoPortoflio = $portfolio->getConsultantVideoPortfolio($profileID);
+    $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
+    var_dump($videoPortoflio);
+
+
+function videoPortfolioItem($item) {
+
+    $portfolioTitle = $item['portfolio_title'];
+    $portfolioLink = $item['portfolio_link'];
+    $portoflioDescription = $item['portfolio_title'];
+    $portoflioConsultant = $item['portfolio_title'];
+    $portoflioCategories = $item['portfolio_title'];
+    $portoflioDate = $item['portfolio_title'];
+
+    $_item =
+    <<<HTML
+        <a class="lightboxgallery-gallery-item" target="_blank"
+                href="$portfolioLink" data-title="$portfolioTitle"
+                data-alt="$portfolioTitle" data-desc="A lightweight jQuery lightbox gallery plugin.">
+            <div>
+                <img src="$portfolioLink"
+                    title="$portfolioLink" alt="$portfolioLink">
+                <div class="lightboxgallery-gallery-item-content">
+                    <span class="lightboxgallery-gallery-item-title">$portfolioTitle</span>
+                </div>
+            </div>
+        </a>
+    HTML;
+
+    echo $_item;
+}
+
+
+function photoPortfolioItem($item) {
+
+    $portfolioTitle = $item['portfolio_title'];
+    $portfolioLink = $item['portfolio_link'];
+    $portoflioDescription = $item['portfolio_title'];
+    $portoflioConsultant = $item['portfolio_title'];
+    $portoflioCategories = $item['portfolio_title'];
+    $portoflioDate = $item['portfolio_title'];
+
+    $_item =
+    <<<HTML
+        <a class="lightboxgallery-gallery-item" target="_blank"
+                href="$portfolioLink" data-title="$portfolioTitle"
+                data-alt="$portfolioTitle" data-desc="A lightweight jQuery lightbox gallery plugin.">
+            <div>
+                <img src="$portfolioLink"
+                    title="$portfolioLink" alt="$portfolioLink">
+                <div class="lightboxgallery-gallery-item-content">
+                    <span class="lightboxgallery-gallery-item-title">$portfolioTitle</span>
+                </div>
+            </div>
+        </a>
+    HTML;
+
+    echo $_item;
+}
+
 
 function featuredEventCard($event)
 
@@ -56,6 +117,14 @@ function featuredEventCard($event)
 
 function featuredCardList($_events) {
     array_map("featuredEventCard", $_events);
+}
+
+function videoPortfolioList($data) {
+    array_map("videoPortfolioItem", $data);
+}
+
+function photoPortfolioList($data) {
+    array_map("photoPortfolioItem", $data);
 }
 
 // give user ratings

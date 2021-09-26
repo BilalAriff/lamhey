@@ -28,6 +28,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
+                <a class="btn btn-dark" href="consultant-profile.php?id=<?php echo $consultantId?>">View Your Public Profile</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
                 <a href="create-event.php" class="btn btn-dark">Create Event</a>
             </div>
         </div>
