@@ -22,10 +22,10 @@ function bookingTd($booking) {
     $card = 
         <<<HTML
          <tr>
-            <td>$id</td>
+            <td>$id <br><a href="booking-detail.php?id=$id">View Detail</a> </td>
             <td>$event <br> <a href="event-detail-page.php?id=$eventId"> View Detail</a></td>
             <td><p>$description</p></td>
-            <td>$consultant <br> <a href="consultant-profile.php?id=$consultantId"> View Profile</a> </td>
+            <td>$consultant <br> <a href="consultant-profile.php?id=$consultantId"> View Profile</a></td>
             <td>$date</td>
             <td>$status</td>
             <td>$bookingDate</td>

@@ -42,7 +42,7 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Booking ID</th>
+                                <th scope="col">Booking ID <br></th>
                                 <th scope="col">Event Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Consultant Name</th>

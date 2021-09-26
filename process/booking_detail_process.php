@@ -7,7 +7,6 @@ $h = new Helper();
 $b = new Booking();
 
 $bookingId = $h->getURLParams("id");  
-
 $booking = $b->getBooking($bookingId);
 
 if(isset($_POST['submit'])) {

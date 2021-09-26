@@ -47,7 +47,6 @@
                 
                 {
                     
-
                     $_SESSION['username'] = $consultant->getUsername();
                     $_SESSION['role'] = "consultant";
                     $_SESSION['logged'] = true;
