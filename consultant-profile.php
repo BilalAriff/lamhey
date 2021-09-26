@@ -57,11 +57,16 @@
                     <div class="user-profile-actions">
                         <?php
                             if (isset($_SESSION['role'])) {
+                                if($_SESSION['role'] == 'user') {
+                                    echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
+                                    echo '<button class="btn btn-success mr-2"> Request Event</button>';
+                                    echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
+                                 
+                                }
                                 
-                                   echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
-                                   echo '<button class="btn btn-success mr-2"> Request Event</button>';
-                                   echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
-                                
+                                if ($_SESSION['role'] == 'consultant') {
+                                    echo "<a href='consultant-dashboard' class='btn btn-dark'>Visit your Dashboard</a>";
+                                }
                             }
                             else {
                                 echo "<h5>Please <a href='login.php'>Log In</a> for for more</h5>";

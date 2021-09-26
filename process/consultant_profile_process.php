@@ -46,7 +46,6 @@ function videoPortfolioItem($item) {
     echo $_item;
 }
 
-
 function photoPortfolioItem($item) {
 
     $portfolioTitle = $item['portfolio_title'];
@@ -74,10 +73,7 @@ function photoPortfolioItem($item) {
     echo $_item;
 }
 
-
-function featuredEventCard($event)
-
-{   
+function featuredEventCard($event) {   
     $id = $event['event_id'];
     $title = $event['event_title'];
     $thumbnail = $event['event_thumbnail'];
@@ -113,7 +109,6 @@ function featuredEventCard($event)
     HTML;
     echo $card;
 }
-  
 
 function featuredCardList($_events) {
     array_map("featuredEventCard", $_events);
