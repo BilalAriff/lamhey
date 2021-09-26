@@ -16,7 +16,6 @@
     $featuredEvents = $events->getEventListByConsultant($profileID);
     $videoPortoflio = $portfolio->getConsultantVideoPortfolio($profileID);
     $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
-    var_dump($videoPortoflio);
 
 
 function videoPortfolioItem($item) {
@@ -103,7 +102,7 @@ function featuredEventCard($event) {
                     </div>
                     <h6 class="event-card-profie-username">$hostName</h6>
                 </div>
-            <a href="/event_detail?id=$id" class="event-card-btn">View Event</a>
+            <a href="event-detail-page?id=$id" class="event-card-btn">View Event</a>
             </div>
         </div>
     HTML;
@@ -123,8 +122,6 @@ function photoPortfolioList($data) {
 }
 
 // give user ratings
-
-var_dump($profile_details["rating"]);
 
 if (isset($_POST["submit_rating"])) {
   $consultant->addReview($profileID, $profile_details["rating"], $_POST["user_rating"]);   

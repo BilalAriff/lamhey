@@ -1,8 +1,9 @@
 <?php
 
-include_once "include_files.php";
-
 session_start();
+include_once "include_files.php";
+$h = new Helper();
+$h->protectedRoute($_SESSION['role'], 'consultant');
 
 $consultantId = $_SESSION['userID'];
 
@@ -12,8 +13,6 @@ $events = new Event("consultant_events");
 $allEvents = $events->getEventList();
 $bookingList = $bookings->getConsultantBookingList($consultantId);
 $eventListData = $events->getEventListByConsultant($consultantId);
-
-var_dump($bookingList);
 
 function bookingTd($booking) {
 

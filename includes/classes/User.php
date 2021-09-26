@@ -71,17 +71,22 @@ class User {
         return $result["id"];
     }
 
-    public function createUserProfile($pUsername, $pEmail, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pZip, $pState){
+    public function getUserProfileImage($username) {
+        $sql = "SELECT profile_image FROM users WHERE username = :username";
+        $values = array( array(":username", $username) );
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+        return $result["profile_image"];
+    }
+
+    public function createUserProfile($pUsername, $pProfileImage, $pEmail, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pZip, $pState){
             
-        $sql = "INSERT INTO users (username, email, firstname, 
-                                         lastname, password, role,
-                                         address, city, zip, state)
-                VALUES (:username, :email, :firstname, 
-                        :lastname, :password, :role,
+        $sql = "INSERT INTO users (username, profile_image, email, firstname, lastname, password, role, address, city, zip, state)
+                VALUES (:username, :profile_image, :email, :firstname, :lastname, :password, :role,
                         :address, :city, :zip, :state)";
         
         $values = array(
             array(':username', $pUsername),
+            array(':profile_image', $pProfileImage),
             array(':email', $pEmail),
             array(':firstname', $pFirstname),
             array(':lastname', $pLastname),

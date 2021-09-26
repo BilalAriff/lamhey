@@ -63,6 +63,9 @@
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
+                            <input type="file" name="profile_image">
+                        </div>
+                        <div class="form-group">
                             <label for="uername">Username</label>
                             <input name="username" id="reg_username" type="text" class="form-control" placeholder="Username123" required>
                             <h5 class="text-danger" id="usercheck"></h5>
@@ -116,20 +119,6 @@
                             </div>
                         </div>
                         <input type="hidden" value="user" name="role">
-                        <!-- <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" value="consultant" type="radio" name="role" id="flexRadioDefault1" required>
-                                <label class="form-check-label" for="">
-                                    Consultant Profile
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" value="user" type="radio" name="role" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="user">
-                                    User Profile
-                                </label>
-                            </div>
-                        </div> -->
                 
                         <div class="form-group">
                             <h5 class="text-danger"><?php echo $msg; ?></h5>

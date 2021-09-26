@@ -10,7 +10,7 @@
         $username = $_SESSION['username'];
         $user_role = $_SESSION['role'];
         $dashboard_link = ( $user_role == "user") ? "user-dashboard.php" : "consultant-dashboard.php" ;
-        $user_avatar_link = "img/avatars/2-m.jpg";
+        $user_avatar_link = $_SESSION['profile_image'];
     }
 
 ?>

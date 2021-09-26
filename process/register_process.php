@@ -36,7 +36,32 @@ if (isset($_POST['submit']))
                     $msg = "Username Already in Use!";
                 } else {
 
+                    $file_tmp = $_FILES['profile_image']['tmp_name'];
+                    $file_name = $_FILES['profile_image']['name'];
+                    $file_size = $_FILES['profile_image']['size'];
+                    $file_type = $_FILES['profile_image']['type'];
+                    
+                    $userFolderName = $_POST["username"];
+                    $h->createUserFolder($userFolderName);
+
+                    $file_location = "uploads/".$userFolderName."/".$file_name;
+                    
+                    move_uploaded_file($file_tmp, "uploads/".$userFolderName."/".$file_name);
+
+                    // $pUsername, 
+                    // $pProfileImage, 
+                    // $pEmail, 
+                    // $pFirstname, 
+                    // $pLastname, 
+                    // $pPassword, 
+                    // $pRole, 
+                    // $pAddress, 
+                    // $pCity, 
+                    // $pZip, 
+                    // $pState
+
                     $user->createUserProfile($_POST['username'],
+                    $file_location,
                     $_POST['email'],
                     $_POST['firstname'],
                     $_POST['lastname'],

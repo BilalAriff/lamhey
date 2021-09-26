@@ -30,14 +30,6 @@
                 <h3>Your Bookings</h3>
             </div>
             <div class="row">
-                <?php var_dump($bookingList)?>
-                id
-                event detail
-                event description
-                consultant
-                status
-                date
-                booked at
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="thead-dark">

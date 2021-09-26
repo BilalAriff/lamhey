@@ -11,8 +11,6 @@ $booking = $b->getBooking($bookingId);
 
 if(isset($_POST['submit'])) {
     $b->changeBookingStatus($bookingId, $_POST['action']);
-    echo $_POST['action'];
 }
 
-echo $bookingId;
 
