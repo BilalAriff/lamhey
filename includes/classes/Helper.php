@@ -150,4 +150,39 @@ class Helper {
                                         ';
                                     }
     }
+
+    // Protected Routes method
+
+    public function protectedRoute($role, $access) {
+ 
+        // 1. isUser
+        // 2. isConsultant
+        // 3. isAdmin
+        // 4. isGuest
+        // 5. isLoggedIn
+        // 6. onlyRegisteredUsers
+
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+        if($access !== $role) {
+            header('location: index.php');
+        }
+    }
+
+    public function isLoggedIn() {
+        if (isset($_SESSION['role'])) {
+            header('location: index.php');
+        }
+    }
+
+    public function isGuest() {
+        // if (!isset($_SESSION)) {
+        //     $_SESSION['role'] = "guest";
+        // }
+        var_dump($_SESSION);
+    }
+
+    public function protectedView() {
+        
+    }
 }

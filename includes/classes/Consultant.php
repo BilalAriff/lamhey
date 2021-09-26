@@ -65,12 +65,12 @@
             return $result[0];
         }
         
-        public function getUserID(){
+        public function getConsultantId($username){
 
             $sql = "SELECT id FROM consultants WHERE username = :username";
     
             $values = array(
-                array(':username', $this->username)
+                array(':username', $username)
             );
         
             $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);

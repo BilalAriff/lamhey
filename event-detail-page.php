@@ -19,7 +19,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>Welcome to Events</h1>
+                    <div class="event-detail primary-border border-2px border-radius-25">
+                    
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -49,7 +51,6 @@
                                 </div>
                                 <div class="modal-body">
                                     <form class="book-event-form" action="" method="post">
-                                        booking_event (event_id) (hidden)
                                         <input type="hidden" name="event_id" value="<?php echo $event["event_id"] ?>">
                                         <input type="hidden" name="booking_consultant" value="<?php echo $event["event_host"]?>">
                                         <input type="hidden" name="user_id" value="<?php echo $_SESSION["userID"]?>">

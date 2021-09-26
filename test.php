@@ -3,13 +3,10 @@
 session_start();
 include_once "include_files.php";
 
-$booking = new Booking();
-$user = new User("BilalUser");
+$events = new Event("test");
 
-$bookingOne = $booking->getAllBookingList();
-
-$userId = $user->getUserId("BilalUser");
-
-var_dump($userId);
+$eventList = $events->getEventListByConsultant("16");
 
 var_dump($_SESSION);
+
+echo $_SESSION['userID'];

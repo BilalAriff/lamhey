@@ -11,6 +11,18 @@ body{
 
 }
 
+.primary-border {
+    border: 1px solid #C1F0EA;
+}
+
+.border-2px {
+    border: 2px;
+}
+
+.border-radius-25 {
+    border-radius: 25px;
+}
+
 
 /*CSS code for index.php, signup.php, admin.php*/
 

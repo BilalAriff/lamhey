@@ -1,4 +1,5 @@
-<?php 
+<?php
+    session_start();
     include_once "include_files.php";
     include_once "process/index_process.php";
 ?>
@@ -11,8 +12,7 @@
 <?php include "./partials/Head.php"?>
 
 <body>
-
-    <?php include "./partials/Navigation.php" ?>
+    <?php include_once "./partials/Navigation.php" ?>
 
     <div class="new">
         <?php

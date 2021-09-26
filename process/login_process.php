@@ -1,8 +1,8 @@
 <?php
-
     $h = new Helper();
     $msg = '';
     $username = '';
+    $h->isLoggedIn();
 
     if (isset($_POST['submit']))
     {        
@@ -51,7 +51,7 @@
                     $_SESSION['username'] = $consultant->getUsername();
                     $_SESSION['role'] = "consultant";
                     $_SESSION['logged'] = true;
-                    $_SESSION['userID'] = $consultant->getUserID(); 
+                    $_SESSION['userID'] = $consultant->getConsultantId($username); 
                     $_SESSION['userData'] = $consultant->getUserData();
                     $_SESSION['consultantInfo'] = $consultant->getConsultantProfileInfo();
                     $msg = "Consultant Login Succesfull";

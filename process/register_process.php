@@ -118,8 +118,8 @@ if (isset($_POST['submit']))
                         $_POST['role'],
                         $_POST['address'],
                         $_POST['city'],
-                        $_POST['zip'],
-                        $_POST['state']);
+                        $_POST['state'],
+                        $_POST['zip']);
 
                                 
                     //    echo $_POST['username'];

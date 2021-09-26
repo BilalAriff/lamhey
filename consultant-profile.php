@@ -1,11 +1,5 @@
 <?php
-    session_start();
-    
-    include_once "include_files.php";
-    $helper = new Helper();
     include_once "process/consultant_profile_process.php";
- 
-
 ?>
 
 <!DOCTYPE html>
@@ -62,19 +56,17 @@
                 <div class="col-lg-6 col-sm-12">
                     <div class="user-profile-actions">
                         <?php
-                            // if($_SESSION["role"] === "guest") {
-                            //     echo "guest";
-                            // }
-                            // if($_SESSION["role"] === "consultant") {
-                            //     echo "consultant";
-                            // }
-                            // if($_SESSION["role"] === "user") {
-                            //     echo "user";
-                            // }
+                            if (isset($_SESSION['role'])) {
+                                
+                                   echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
+                                   echo '<button class="btn btn-success mr-2"> Request Event</button>';
+                                   echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
+                                
+                            }
+                            else {
+                                echo "<h5>Please <a href='login.php'>Log In</a> for for more</h5>";
+                            }
                         ?>
-                        <button class="btn btn-danger mr-2">Block Profile</button>
-                        <button class="btn btn-success mr-2"> Request Event</button>
-                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review"> Add Review </button>
                     </div>
                 </div>
             </div>

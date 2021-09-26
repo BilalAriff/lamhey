@@ -1,19 +1,21 @@
 <?php
-
-    $guest = new Guest("guest");
+    session_start();
+    include_once "include_files.php";
     $helper = new Helper();
+
+    // $helper->protectedRoute($_SESSION["role"], "user");
+
+    // $guest = new Guest("guest");
     $events = new Event("consultantEvents");
     $profileID = $helper->getURLParams("id");
     $consultant = new Consultant($profileID);
     $consultantProfile = new ConsultantProfile($profileID);
- 
 
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
-
-
     $featuredEvents = $events->getEventListByConsultant($profileID);
 
 function featuredEventCard($event)
+
 {   
     $id = $event['event_id'];
     $title = $event['event_title'];

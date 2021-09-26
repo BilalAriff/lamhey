@@ -8,6 +8,9 @@
             parent::__construct($pUsername);
             $this->username = $pUsername;
             $this->role = User::GUEST;
+            if(!isset($_SESSION)) {
+                $_SESSION['role'] = "guest";
+            }
         }
 
         public function getProfileDetails($page_name, $profile_username){
@@ -50,19 +53,6 @@
             $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
             
             return $result[0];
-        }
-        
-        public function getUserID(){
-
-            $sql = "SELECT id FROM consultants WHERE username = :username";
-    
-            $values = array(
-                array(':username', $this->username)
-            );
-        
-            $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
-            
-            return $result['id'];
         }
         
         public function isDuplicateID(){
