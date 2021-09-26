@@ -8,16 +8,18 @@ class Booking {
         $this->db = new Database();
     }
 
-    public function bookEvent($eventId, $description, $consultant, $user, $date) {
-        $sql = "INSERT INTO bookings (booking_event, booking_description, booking_consultant, 
+    public function bookEvent($eventId, $eventName, $description, $consultant, $consultantName, $user, $date) {
+        $sql = "INSERT INTO bookings (booking_event, booking_event_name, booking_description, booking_consultant, booking_consultant_username, 
                                       booking_user, booking_date)
-                VALUES (:booking_event, :booking_description, :booking_consultant, 
+                VALUES (:booking_event, :booking_event_name, :booking_description, :booking_consultant, :booking_consultant_username,
                         :booking_user, :booking_date)";
 
         $values = array(
                         array(":booking_event", $eventId),
+                        array(":booking_event_name", $eventName),
                         array(":booking_description", $description),
                         array(":booking_consultant", $consultant),
+                        array(":booking_consultant_username", $consultantName),
                         array(":booking_user", $user),
                         array(":booking_date", $date));
 
@@ -31,14 +33,12 @@ class Booking {
         return $result;
     }
 
-
     public function getUserBookingList($id) {
         $sql = "SELECT * FROM bookings WHERE booking_user = :id";
         $values = array( array(":id", $id) );
         $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
         return $result;
     }
-
 
     public function getConsultantBookingList($id) {
         $sql = "SELECT * FROM bookings WHERE booking_consultant = :id";
@@ -53,6 +53,7 @@ class Booking {
         $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
         return $result;
     }
+
     public function changeBookingStatus($id, $status) {
         $sql = "UPDATE bookings SET booking_status = :booking_status WHERE booking_id = :id";
         $values = array( array(":id", $id), array(":booking_status", $status) );

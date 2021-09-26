@@ -54,6 +54,8 @@
                                         <input type="hidden" name="event_id" value="<?php echo $event["event_id"] ?>">
                                         <input type="hidden" name="booking_consultant" value="<?php echo $event["event_host"]?>">
                                         <input type="hidden" name="user_id" value="<?php echo $_SESSION["userID"]?>">
+                                        <input type="hidden" name="event_name" value="<?php echo $event["event_title"]?>">
+                                        <input type="hidden" name="consultant_name" value="<?php echo $event["event_host_name"]?>">
 
                                         <div class="form-group">
                                             <label for="">Enter your Description with Complete Details</label>
