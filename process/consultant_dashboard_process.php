@@ -25,17 +25,25 @@ function bookingTd($booking) {
     $status = $booking['booking_status'];
     $bookingUsername = $booking['booking_user_username'];
     $bookingDate = $booking['booking_createdAt'];
+ 
+    // $dateObj = $booking['booking_date'];    
+    // $date = new DateTime($dateObj);
+
+    // echo $date->diff($now)->format("%d days, %h hours and %i minuts");
+
     
+    // $_date = date_format($date,'y "-" M "-" DD');
     $card = 
+
         <<<HTML
          <tr>
             <td>$id</td>
             <td>$event</td>
             <td>$bookingUsername</td>
-            <td><p>$description</p></td>
-            <td>$date</td>
+            <td> $date</td>
             <td>$status</td>
             <td>$bookingDate</td>
+            <td><a href="booking-detail.php?id=$id">View</a></td>
          <tr>
         HTML;
     echo $card;
