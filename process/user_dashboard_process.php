@@ -10,9 +10,11 @@ $bookingList = $bookings->getUserBookingList($_SESSION['userID']);
 function bookingTd($booking) {
 
     $id = $booking['booking_id'];
-    $event = $booking['booking_event'];
+    $eventId = $booking['booking_event'];
+    $event = $booking['booking_event_name'];
     $description = $booking['booking_description'];
-    $consultant = $booking['booking_consultant'];
+    $consultantId = $booking['booking_consultant'];
+    $consultant = $booking['booking_consultant_username'];
     $date = $booking['booking_date'];
     $status = $booking['booking_status'];
     $bookingDate = $booking['booking_createdAt'];
@@ -21,9 +23,9 @@ function bookingTd($booking) {
         <<<HTML
          <tr>
             <td>$id</td>
-            <td>$event</td>
+            <td>$event <br> <a href="event-detail-page.php?id=$eventId"> View Detail</a></td>
             <td><p>$description</p></td>
-            <td>$consultant</td>
+            <td>$consultant <br> <a href="consultant-profile.php?id=$consultantId"> View Profile</a> </td>
             <td>$date</td>
             <td>$status</td>
             <td>$bookingDate</td>

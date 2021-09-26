@@ -8,7 +8,7 @@ $eventID = $helper->getURLParams("id");
 
 $event = $events->getEvent($eventID);
 
-// $eventId, $eventName, $description, $consultant, $consultantName, $user, $date
+// $eventId, $eventName, $description, $consultant, $consultantName, $user, $username, $date
 
 if (isset($_POST["confirm_booking"])) {
     $booking->bookEvent($_POST["event_id"],
@@ -17,5 +17,6 @@ if (isset($_POST["confirm_booking"])) {
               $_POST["booking_consultant"],
               $_POST["consultant_name"],
               $_POST["user_id"],
+              $_POST["user_username"],
               $_POST["date"]);
 }

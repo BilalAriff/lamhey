@@ -8,11 +8,11 @@ class Booking {
         $this->db = new Database();
     }
 
-    public function bookEvent($eventId, $eventName, $description, $consultant, $consultantName, $user, $date) {
+    public function bookEvent($eventId, $eventName, $description, $consultant, $consultantName, $user, $username, $date) {
         $sql = "INSERT INTO bookings (booking_event, booking_event_name, booking_description, booking_consultant, booking_consultant_username, 
-                                      booking_user, booking_date)
+                                      booking_user, booking_user_username, booking_date)
                 VALUES (:booking_event, :booking_event_name, :booking_description, :booking_consultant, :booking_consultant_username,
-                        :booking_user, :booking_date)";
+                        :booking_user, :booking_user_username, :booking_date)";
 
         $values = array(
                         array(":booking_event", $eventId),
@@ -21,6 +21,7 @@ class Booking {
                         array(":booking_consultant", $consultant),
                         array(":booking_consultant_username", $consultantName),
                         array(":booking_user", $user),
+                        array(":booking_user_username", $username),
                         array(":booking_date", $date));
 
         $this->db->queryDB($sql, Database::EXECUTE, $values);

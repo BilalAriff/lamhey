@@ -43,9 +43,9 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Booking ID</th>
-                                <th scope="col">Event</th>
+                                <th scope="col">Event Name</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Consultant</th>
+                                <th scope="col">Consultant Name</th>
                                 <th scope="col">Event Date</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Booking Date</th>

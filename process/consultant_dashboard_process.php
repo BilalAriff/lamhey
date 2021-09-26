@@ -13,15 +13,17 @@ $allEvents = $events->getEventList();
 $bookingList = $bookings->getConsultantBookingList($consultantId);
 $eventListData = $events->getEventListByConsultant($consultantId);
 
+var_dump($bookingList);
 
 function bookingTd($booking) {
 
     $id = $booking['booking_id'];
-    $event = $booking['booking_event'];
+    $event = $booking['booking_event_name'];
     $description = $booking['booking_description'];
-    $consultant = $booking['booking_consultant'];
+    $consultant = $booking['booking_consultant_username'];
     $date = $booking['booking_date'];
     $status = $booking['booking_status'];
+    $bookingUsername = $booking['booking_user_username'];
     $bookingDate = $booking['booking_createdAt'];
     
     $card = 
@@ -29,8 +31,8 @@ function bookingTd($booking) {
          <tr>
             <td>$id</td>
             <td>$event</td>
+            <td>$bookingUsername</td>
             <td><p>$description</p></td>
-            <td>$consultant</td>
             <td>$date</td>
             <td>$status</td>
             <td>$bookingDate</td>
@@ -41,8 +43,7 @@ function bookingTd($booking) {
 
 // Consultant Events
 
-function eventListCard($event)
-{   
+function eventListCard($event) {   
     $id = $event['event_id'];
     $title = $event['event_title'];
     $thumbnail = $event['event_thumbnail'];
