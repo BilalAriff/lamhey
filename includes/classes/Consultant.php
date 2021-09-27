@@ -23,7 +23,7 @@
             return $result['username'];
         }
 
-        public function getConsultantProfileInfo() {
+        public function getConsultantProfileInfo($username) {
 
             $sql = "SELECT 	
                             id,
@@ -121,7 +121,12 @@
                     $this->db->queryDB($sql, Database::EXECUTE, $values);
         }
 
-        
+        public function featuredConsultants() {
+            $sql = "SELECT * FROM consultants WHERE featured = :featured";
+            $values = array( array(":featured", "1") );
+            $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+            return $result;
+        }
         
         public function isValidLogin($pPassword){
             $sql = "SELECT password FROM consultants WHERE username = :username";
@@ -186,6 +191,8 @@
             $values = array ( array(":rating", $newRating), array(":id", $id) );
             $this->db->queryDB($sql, Database::EXECUTE, $values["id"]);
         }
+
+
     }
 
 

@@ -5,10 +5,9 @@ $helper = new Helper();
 $booking = new Booking();
 
 $eventID = $helper->getURLParams("id");
-
 $event = $events->getEvent($eventID);
-
-// $eventId, $eventName, $description, $consultant, $consultantName, $user, $username, $date
+$consultant = new Consultant($event["event_host_name"]);
+$consultantInfo = $consultant->getConsultantProfileInfo($event["event_host_name"]);
 
 if (isset($_POST["confirm_booking"])) {
     $booking->bookEvent($_POST["event_id"],

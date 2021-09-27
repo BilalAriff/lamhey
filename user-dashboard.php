@@ -27,26 +27,30 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center my-5">
-                <h3>Your Bookings</h3>
+                
             </div>
             <div class="row">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Booking ID <br></th>
-                                <th scope="col">Event Name</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Consultant Name</th>
-                                <th scope="col">Event Date</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Booking Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php echo bookingListRow($bookingList) ?>          
-                        </tbody>
-                    </table>                
+                <div class="col-12">
+                    <div class="theme-blue-border">
+                        <h3 class="text-center font-weight-bold mb-5">Your Bookings</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Booking ID <br></th>
+                                        <th scope="col">Event Name</th>
+                                        <th scope="col">Consultant Name</th>
+                                        <th scope="col">Event Date</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Booking Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php echo bookingListRow($bookingList) ?>          
+                                </tbody>
+                            </table>                
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

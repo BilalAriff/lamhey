@@ -3,8 +3,10 @@
 session_start();
 include_once "include_files.php";
 
-$b = new Booking();
+$consultant = new Consultant('test');
 
-$b->changeBookingStatus("7", "accepted");
+$featuredConsultants = $consultant->featuredConsultants();
+
+var_dump($featuredConsultants);
 
 

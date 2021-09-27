@@ -1,6 +1,4 @@
 <?php
-    session_start();
-    include_once "include_files.php";
     include_once "process/index_process.php";
 ?>
 
@@ -49,88 +47,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="mb-5">Hire Our Best Consultants<br>Now</h2>
+                    <h2 class="mb-5 theme-heading">Hire Our Best Consultants<br>Now</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 col-md-3 col-lg-2">
-                    <div class="consultant-card">
-                        <div class="consultant-card-header">
-                            <img src="./img/avatars/1-f.jpg" alt="">
-                        </div>
-                        <div class="consultant-card-body">
-                            <h5 class="consultant-card-title">Nosheen Quyyum</h5>
-                            <p class="consultant-card-type">Consultant</p>
-                            <p class="consultant-card-location">Karachi, Sindh</p>
-                            <h4 class="consultant-card-rating">5.0</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-2">
-                    <div class="consultant-card">
-                        <div class="consultant-card-header">
-                            <img src="./img/avatars/1-m.jpg" alt="">
-                        </div>
-                        <div class="consultant-card-body">
-                            <h5 class="consultant-card-title">Bilal Arif</h5>
-                            <p class="consultant-card-type">Consultant</p>
-                            <p class="consultant-card-location">Karachi, Sindh</p>
-                            <h4 class="consultant-card-rating">5.0</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-2">
-                    <div class="consultant-card">
-                        <div class="consultant-card-header">
-                            <img src="./img/avatars/2-f.jpg" alt="">
-                        </div>
-                        <div class="consultant-card-body">
-                            <h5 class="consultant-card-title">Road Side Cafe</h5>
-                            <p class="consultant-card-type">Consultant</p>
-                            <p class="consultant-card-location">Karachi, Sindh</p>
-                            <h4 class="consultant-card-rating">5.0</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-2">
-                    <div class="consultant-card">
-                        <div class="consultant-card-header">
-                            <img src="./img/avatars/2-m.jpg" alt="">
-                        </div>
-                        <div class="consultant-card-body">
-                            <h5 class="consultant-card-title">Yousuf Ali</h5>
-                            <p class="consultant-card-type">Consultant</p>
-                            <p class="consultant-card-location">Karachi, Sindh</p>
-                            <h4 class="consultant-card-rating">5.0</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-2">
-                    <div class="consultant-card">
-                        <div class="consultant-card-header">
-                            <img src="./img/avatars/3-m.jpg" alt="">
-                        </div>
-                        <div class="consultant-card-body">
-                            <h5 class="consultant-card-title">Arif Hussain</h5>
-                            <p class="consultant-card-type">Consultant</p>
-                            <p class="consultant-card-location">Karachi, Sindh</p>
-                            <h4 class="consultant-card-rating">5.0</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-2">
-                    <div class="consultant-card">
-                        <div class="consultant-card-header">
-                            <img src="./img/avatars/1-f.jpg" alt="">
-                        </div>
-                        <div class="consultant-card-body">
-                            <h5 class="consultant-card-title">Nosheen Quyyum</h5>
-                            <p class="consultant-card-type">Consultant</p>
-                            <p class="consultant-card-location">Karachi, Sindh</p>
-                            <h4 class="consultant-card-rating">5.0</h4>
-                        </div>
-                    </div>
-                </div>
+                <?php echo featuredConsultantList($featuredConsultants)?>
             </div>
         </div>
     </section>
