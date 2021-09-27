@@ -60,7 +60,8 @@
                                 if($_SESSION['role'] == 'user') {
                                     echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
                                     echo '<button class="btn btn-success mr-2"> Request Event</button>';
-                                    echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
+                                    echo '<button class="btn btn-primary mr-2" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
+                                    echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#complaint"> Lodge Complaint </button>';
                                  
                                 }
                                 
@@ -99,7 +100,7 @@
             </div>
         </div>
     </section>
-    
+
 
     <section class="photo-gallery-section bg-light-blue p-4">
         <div class="container">
@@ -150,12 +151,7 @@
         </div>
     </div>
 
-    <!-- Button trigger modal -->
-    <button >
-        Launch demo modal
-    </button>
-
-    <!-- Modal -->
+    <!-- Review Modal -->
     <div class="modal fade" id="review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -207,6 +203,47 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Complaint Modal -->
+    <div class="modal fade" id="complaint" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">User Rating</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>We are Sorry for inconvienece</h4>
+                    <h6 class="text-danger">Please Let us kwow whats the problem</h6>
+                    <form action="" method="post">
+                        <input type="hidden" name="complaint_user_id" value="<?php echo $_SESSION['userID']?>">
+                        <input type="hidden" name="complaint_username" value="<?php echo $_SESSION['username']?>">
+                        <input type="hidden" name="complaint_consultant_id" value="<?php echo $profile_details['id']?>">
+                        <input type="hidden" name="complaint_consultant_name"
+                            value="<?php echo $profile_details['username']?>">
+                        <input type="hidden" name="complaint_feedback" value="we are working on your complaint">
+                        <div class="form-group">
+                            <label for="">Descripe in Detail about your complaint</label>
+                            <textarea required name="complaint_description" class="form-control" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-dark" type="submit" name="lodge_complaint" value="lodge_complaint">Lodge
+                                Complaint</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+    </div>
     </div>
 
 

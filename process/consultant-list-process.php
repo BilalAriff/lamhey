@@ -5,8 +5,6 @@ $consultant = new Consultant("consultant-list");
 
 $consultantListData = $consultant->getListOfConsultants();
 
-var_dump($consultantListData);
-
 function makeConsultantList($_consultant) {
 
     $id = $_consultant['id'];

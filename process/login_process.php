@@ -51,9 +51,10 @@
                     $_SESSION['username'] = $consultant->getUsername();
                     $_SESSION['role'] = "consultant";
                     $_SESSION['logged'] = true;
+                    $_SESSION['profile_image'] = $consultant->getConsultantProfileImage($username);
                     $_SESSION['userID'] = $consultant->getConsultantId($username); 
                     $_SESSION['userData'] = $consultant->getUserData();
-                    $_SESSION['consultantInfo'] = $consultant->getConsultantProfileInfo();
+                    $_SESSION['consultantInfo'] = $consultant->getConsultantProfileInfo($username);
                     $msg = "Consultant Login Succesfull";
                     header("Location: consultant-dashboard.php");                
                 }

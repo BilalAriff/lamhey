@@ -81,7 +81,7 @@ function eventListCard($event) {
                     </div>
                     <h6 class="event-card-profie-username">$hostName</h6>
                 </div>
-            <a href="/event-detail-page?id=$id" class="event-card-btn">View Event</a>
+            <a href="event-detail-page?id=$id" class="event-card-btn">View Event</a>
             </div>
         </div>
      </div>

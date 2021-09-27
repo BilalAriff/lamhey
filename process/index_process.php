@@ -61,20 +61,20 @@ function featuredConsultantCard($fConsultant) {
 
     $card = 
     <<<HTML
-    <div class="col-sm-12 col-md-3 col-lg-2">
-        <div class="consultant-card">
-            <div class="consultant-card-header">
-                <img src="$profile" alt="">
-            </div>
-            <div class="consultant-card-body">
-                <h5 class="consultant-card-title">$name</h5>
-                <p class="consultant-card-type">$consultantType</p>
-                <p class="consultant-card-location">$city, $state</p>
-                <h4 class="consultant-card-rating">$rating</h4>
-                <a href="consultant-profile.php?id=$id">View Profile</a>
+        <div class="col-sm-12 col-md-3 col-lg-2">
+            <div class="consultant-card">
+                <div class="consultant-card-header">
+                    <img src="$profile" alt="">
+                </div>
+                <div class="consultant-card-body">
+                    <h5 class="consultant-card-title">$name</h5>
+                    <p class="consultant-card-type">$consultantType</p>
+                    <p class="consultant-card-location">$city, $state</p>
+                    <h4 class="consultant-card-rating">$rating</h4>
+                    <a href="consultant-profile.php?id=$id">View Profile</a>
+                </div>
             </div>
         </div>
-    <div>
     HTML;
     echo $card;
 }

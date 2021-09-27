@@ -9,6 +9,25 @@
 <body>
     <?php include_once "./partials/Navigation.php" ?>
 
+        <!-- User Profile Navigation -->
+
+    <section class="profile-navigation-section bg-light-blue mt-3 sticky-top">
+        <ul class="nav">
+            <li class="nav-item">
+                <a href="create-event.php" class="nav-link mr-2">Create Event</a>
+            </li>
+            <li class="nav-item">
+                <a href="add-portfolio.php" class="nav-link mr-2">Add Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a href="add-portfolio.php" class="nav-link mr-2">Add Payment Methods</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="consultant-profile.php?id=<?php echo $consultantId?>">View Your Public Profile</a>
+            </li>
+        </ul>
+    </section>
+
     <!-- Header -->
 
     <div class="jumbotron bg-light-blue mt-3">
@@ -26,26 +45,6 @@
     <!-- User Bookings -->
 
     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <a class="btn btn-dark" href="consultant-profile.php?id=<?php echo $consultantId?>">View Your Public Profile</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center">
-                <a href="create-event.php" class="btn btn-dark">Create Event</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center mt-5">
-                <a href="add-portfolio.php" class="btn btn-dark">Add Portfolio</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center mt-5">
-                <a href="add-portfolio.php" class="btn btn-dark">Add Payment Methods</a>
-            </div>
-        </div>
         <div class="row">
             <div class="col-12 text-center my-5">
                 <h3>Your Events</h3>

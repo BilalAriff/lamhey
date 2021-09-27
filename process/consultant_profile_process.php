@@ -11,12 +11,12 @@
     $consultant = new Consultant($profileID);
     $consultantProfile = new ConsultantProfile($profileID);
     $portfolio = new Portfolio();
+    $complaint = new Complaint();
 
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
     $featuredEvents = $events->getEventListByConsultant($profileID);
     $videoPortoflio = $portfolio->getConsultantVideoPortfolio($profileID);
     $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
-
 
 function videoPortfolioItem($item) {
 
@@ -125,4 +125,11 @@ function photoPortfolioList($data) {
 
 if (isset($_POST["submit_rating"])) {
   $consultant->addReview($profileID, $profile_details["rating"], $_POST["user_rating"]);   
+}
+
+if (isset($_POST['lodge_complaint'])) {
+
+    $complaint->lodgeComplaint($_POST['complaint_user_id'], $_POST['complaint_username'], 
+    $_POST['complaint_consultant_id'], $_POST['complaint_consultant_name'], 
+    $_POST['complaint_description'], $_POST['complaint_feedback']);
 }

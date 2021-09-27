@@ -52,6 +52,13 @@
             
         }
 
+        public function getConsultantProfileImage($username) {
+            $sql = "SELECT profile_image FROM consultants WHERE username = :username";
+            $values = array( array(":username", $username) );
+            $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+            return $result["profile_image"];
+        }
+
         public function getUserData(){
 
             $sql = "SELECT * FROM consultants WHERE username = :username";
@@ -97,8 +104,8 @@
     
 
         public function createConsultantProfile($pUsername, $pEmail, $pConsultantType, 
-        $pRating, $pAbout, $pProfileImage, $pFirstname, $pLastname, $pPassword, $pRole,
-        $pAddress, $pCity, $pState, $pZip) {
+                $pRating, $pAbout, $pProfileImage, $pFirstname, $pLastname, $pPassword, $pRole,
+                $pAddress, $pCity, $pState, $pZip) {
             $sql = "INSERT INTO consultants (username, email, consultant_type, rating, about, profile_image, firstname, lastname, password, role, address, city, state, zip)
                     VALUES (:username, :email, :consultant_type, :rating, :about, :profile_image, :firstname, :lastname, :password, :role, :address, :city, :state, :zip)";
         
