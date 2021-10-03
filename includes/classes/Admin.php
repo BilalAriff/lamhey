@@ -136,4 +136,123 @@ class Admin extends User {
         $this->db->queryDB($sql, Database::EXECUTE, $values);
 
     }
+
+
+    // ======================= ADMIN REQUIRED FUNCTIONALITY =====================
+
+    public function getBookingList() {
+        $sql = "SELECT * FROM bookings";
+        // $values = array( array(":username", $username) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL);
+        return $result;
+    }
+
+    public function blockUser($userID) {
+        $sql = "UPDATE users SET profile_status = :status WHERE id = :userID";
+        $values = array( array(":userID", $userID), array(":status", "block") );
+        $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+    public function unblockUser($userID) {
+        $sql = "UPDATE users SET profile_status = :status WHERE id = :userID";
+        $values = array( array(":userID", $userID), array(":status", "fine") );
+        $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+    public function blockConsultant($consultantID) {
+        $sql = "UPDATE consultants SET profile_status = :status WHERE id = :userID";
+        $values = array( array(":userID", $consultantID), array(":status", "block") );
+        $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+    public function unblockConsultant($consultantID) {
+        $sql = "UPDATE consultants SET profile_status = :status WHERE id = :userID";
+        $values = array( array(":userID", $consultantID), array(":status", "fine") );
+        $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+    public function getComplaintList() {
+        $sql = "SELECT * FROM complaint";
+        $result = $this->db->queryDB($sql, Database::SELECTALL);
+        return $result;
+    }
+
+    public function getComplaint($complaintID) {
+        $sql = "SELECT * FROM complaint WHERE id = :id";
+        $values = array( array(":id", $complaintID) );
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+        return $result;
+    }
+
+    public function updateComplaintFeedback($complaintID, $complaintFeedback) {
+        $sql = "UPDATE complaint SET feedback = :feedback WHERE id = :id";
+        $values = array( array(":feedback", $complaintFeedback), array(":id", $complaintID));
+        $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+    public function updateComplaintStatus($complaintID, $complaintStatus) {
+        $sql = "UPDATE complaint SET status = :status WHERE id = :id";
+        $values = array( array(":status", $complaintStatus), array(":id", $complaintID));
+        $result = $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+    
+    public function addCategory($categoryName) {
+        $sql = "INSERT INTO Categories (name) VALUES (:name)";
+        $values = array( array(":name", $categoryName) );
+        $this->db->queryDB($sql, Database::EXECUTE, $values);    
+    }
+    public function getCategory($id) {
+        $sql = "SELECT * FROM Categories WHERE id = :id";
+        $values = array( array(":id", $id) );
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+        return $result;
+    }
+
+    public function getCategoryList() {
+        $sql = "SELECT * FROM Categories";
+        $result = $this->db->queryDB($sql, Database::SELECTALL);
+        return $result;
+    }
+
+    public function removeCategory($id) {
+        $sql = "DELETE FROM Categories WHERE id = :id";
+        $values = array( array(":id", $id) );
+        $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+    public function addPaymentMethod($name, $icon) {
+
+        $sql = "INSERT
+                INTO payment_methods ( pm_name, pm_icon ) 
+                VALUES (:pm_name, :pm_icon)";
+        
+        $values = array(
+            array(":pm_name", $name),
+            array(":pm_icon", $icon));
+
+        $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+        public function getPaymentMethod($id) {
+            $sql = "SELECT * FROM payment_methods WHERE pm_id = :pm_id";
+            $values = array( array(":pm_id", $id));
+            $result =  $this->db->queryDB($sql, DATABASE::SELECTSINGLE, $values);
+            return $result;
+        }
+
+        public function removePaymentMethod($id) {
+            $sql = "DELETE FROM payment_methods WHERE pm_id = :pm_id";
+            $values = array( array(":pm_id", $id));
+            $result =  $this->db->queryDB($sql, DATABASE::EXECUTE, $values);
+        }
+        
+        public function getPaymentMethodsList() {
+            $sql = "SELECT * FROM payment_methods";
+            $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);
+            return $result;
+        }
+
+
+        public function removeEvent() {}
+
 }

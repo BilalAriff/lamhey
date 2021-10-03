@@ -34,6 +34,7 @@ class PaymentMethod {
         $values = array( array(":pm_id", $id));
         $result =  $this->db->queryDB($sql, DATABASE::EXECUTE, $values);
     }
+    
     public function getPaymentMethodsList() {
         $sql = "SELECT * FROM payment_methods";
         $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);

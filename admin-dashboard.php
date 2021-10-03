@@ -1,5 +1,5 @@
 <?php
- session_start();
+ include_once "./process/admin_dashboard_process.php";
 ?>
 
 <!DOCTYPE html>

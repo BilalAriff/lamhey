@@ -5,6 +5,8 @@ $msg = '';
 $Msg = '';
 $username = '';
 
+// =========== LOGIN ==============
+
 if (isset($_POST['submit']))
     {        
         $username = $_POST['username'];                
@@ -56,8 +58,9 @@ if (isset($_POST['submit']))
     }
 
 
-
- if(isset($_POST['admin_login'])) {
+// ========== LOGIN ================
+ 
+if(isset($_POST['admin_login'])) {
     $username = $_POST['username'];
     $admin = new Admin($username);
 
@@ -80,5 +83,5 @@ if (isset($_POST['submit']))
                     header("Location: admin-dashboard.php");                
     }
  } 
-
+ 
 ?>
