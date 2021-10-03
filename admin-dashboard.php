@@ -112,12 +112,30 @@
                         </div>
 
                         <div class="tab-pane fade" id="blockedUsers" role="tabpanel" aria-labelledby="contact-tab">
-                            <h1>Blocked Users</h1>
+                            <h1 class="theme-heading my-4 text-uppercase text-center">Blocked Users</h1>
+                            
                         </div>
 
                         <div class="tab-pane fade" id="blockedConsultants" role="tabpanel"
                             aria-labelledby="contact-tab">
-                            <h1>Blocked Consultants</h1>
+                            <h1 class="theme-heading py-4 text-uppercase text-center">Blocked Consultants</h1>
+                            <div class="blocked-consultant-table">
+
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Consultant Name</th>
+                                            <th scope="col">Profile Status</th>
+                                            <th scope="col">Consultant Type</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php echo blockedConsultantList($blockedConsultants)?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                         <div class="tab-pane fade" id="paymentMethods" role="tabpanel" aria-labelledby="contact-tab">

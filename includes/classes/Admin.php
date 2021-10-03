@@ -153,6 +153,13 @@ class Admin extends User {
         $this->db->queryDB($sql, Database::EXECUTE, $values);
     }
 
+    public function getBlockedUserList() {
+        $sql = "SELECT id, username, profile_status, consultant_type FROM users WHERE profile_status = :profile_status";
+        $values = array( array( ":profile_status", "blocked" ) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        return $result;
+    }
+
     public function unblockUser($userID) {
         $sql = "UPDATE users SET profile_status = :status WHERE id = :userID";
         $values = array( array(":userID", $userID), array(":status", "fine") );
@@ -163,6 +170,13 @@ class Admin extends User {
         $sql = "UPDATE consultants SET profile_status = :status WHERE id = :userID";
         $values = array( array(":userID", $consultantID), array(":status", "block") );
         $this->db->queryDB($sql, Database::EXECUTE, $values);
+    }
+
+    public function getBlockedConsultantList() {
+        $sql = "SELECT id, username, profile_status, consultant_type FROM consultants WHERE profile_status = :profile_status";
+        $values = array( array( ":profile_status", "blocked" ) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        return $result;
     }
 
     public function unblockConsultant($consultantID) {

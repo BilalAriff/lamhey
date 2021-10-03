@@ -94,6 +94,11 @@ a:hover {
     color: white;
 }
 
+.blocked {
+    background-color: red;
+    color: white;
+}
+
 /* ============ VIDEO PORTFOLIO SECTION ========== */
 
 .video-portfolio {

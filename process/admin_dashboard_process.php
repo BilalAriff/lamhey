@@ -7,6 +7,35 @@ $admin = new Admin("admin");
 
 $bookingData = $admin->getBookingList();
 $complaintData = $admin->getComplaintList();
+$blockedConsultants = $admin->getBlockedConsultantList();
+
+var_dump($blockedConsultants);
+
+function blockedConsultantTd($consultant) {
+
+    $id = $consultant['id'];
+    $username = $consultant['username'];
+    $profileStatus = $consultant['profile_status'];
+    $consultantType = $consultant['consultant_type'];
+
+    $td = 
+
+        <<<HTML
+         <tr>
+            <td>$id</td>
+            <td><a href="consultant-profile.php?id=$id">$username</a></td>
+            <td>$consultantType</td>
+            <td><label class="rounded-pill py-1 px-3 $profileStatus text-uppercase">$profileStatus</label></td>
+            <td>
+                <form action="" method="post">
+                    <input type="hidden" name="blockedConsultantId" value="$id">
+                    <button type="submit" class="btn btn-danger" name="unblockConsultant" value="unblockConsultant">Unblock</button>
+                </form>
+            </td>
+         <tr>
+        HTML;
+    echo $td;
+}
 
 function bookingTd($booking) {
 
@@ -120,8 +149,18 @@ function complaintList($data) {
     array_map("complaintTd", $data);
 }
 
+function blockedConsultantList($data) {
+    array_map("blockedConsultantTd", $data);
+}
+
 if(isset($_POST['updateStatus'])) {
     $admin->updateComplaintStatus($_POST['complaint-id'], $_POST['complaint-status']);
     $admin->updateComplaintFeedback($_POST['complaint-id'], $_POST['complaint-feedback']);
+    header("Refresh:1");
+}
+
+
+if(isset($_POST['unblockConsultant'])) {
+    $admin->blockConsultant($_POST['blockedConsultantId']);
     header("Refresh:1");
 }
