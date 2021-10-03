@@ -23,12 +23,18 @@ if (isset($_POST['submit'])) {
 
         move_uploaded_file($file_tmp, "uploads/".$userFolderName."/".$file_name);
 
-        $portfolio->createPortfolio( $_POST["title"],
-                                     $file_location,
-                                     $_POST["description"],
-                                     $_POST["consultant"],
-                                     $_POST["categories"],
-                                     $_POST["date"],
-                                     $_POST["type"]);
+        // $portfolio->createPortfolio( $_POST["title"],
+        //                              $file_location,
+        //                              $_POST["description"],
+        //                              $_POST["consultant"],
+        //                              $_POST["categories"],
+        //                              $_POST["date"],
+        //                              $_POST["type"]);
+                
+                echo $file_location;
+                var_dump($_POST);
     
         }
+        
+        echo $file_location;
+        var_dump($_POST);

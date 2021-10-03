@@ -15,8 +15,9 @@
 
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
     $featuredEvents = $events->getEventListByConsultant($profileID);
-    $videoPortoflio = $portfolio->getConsultantVideoPortfolio($profileID);
+    $videoPortfolio = $portfolio->getConsultantVideoPortfolio($profileID);
     $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
+    var_dump($videoPortfolio);
 
 function videoPortfolioItem($item) {
 
@@ -29,17 +30,19 @@ function videoPortfolioItem($item) {
 
     $_item =
     <<<HTML
-        <a class="lightboxgallery-gallery-item" target="_blank"
-                href="$portfolioLink" data-title="$portfolioTitle"
-                data-alt="$portfolioTitle" data-desc="A lightweight jQuery lightbox gallery plugin.">
-            <div>
-                <img src="$portfolioLink"
-                    title="$portfolioLink" alt="$portfolioLink">
-                <div class="lightboxgallery-gallery-item-content">
-                    <span class="lightboxgallery-gallery-item-title">$portfolioTitle</span>
+        <div class="col-4">
+            <div class="video-portfolio">
+                <div class="video-portfolio-header">
+                    <video width="320" height="240" controls autoplay muted>
+                        <source src="$portfolioLink" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-portfolio-body">
+                    <h5>$portfolioTitle</h5>
+                    <p>$portoflioDescription</p>
                 </div>
             </div>
-        </a>
+        </div>
     HTML;
 
     echo $_item;

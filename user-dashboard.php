@@ -34,7 +34,7 @@
                     <div class="theme-blue-border">
                         <h3 class="text-center font-weight-bold mb-5">Your Bookings</h3>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="bookingTable" class="table">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Booking ID <br></th>
@@ -58,6 +58,9 @@
 
     <?php include_once "./partials/Footer.php" ?>
     <?php include_once "./partials/ScriptTags.php" ?>
+    <script>
+        $('#bookingTable').DataTable();
+    </script>
 </body>
 
 </html>

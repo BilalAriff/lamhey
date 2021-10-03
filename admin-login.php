@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once "include_files.php";
-    include_once "./process/login_process.php";
+    include_once "./process/admin_authentication_process.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
             <div class="offset-sm-3 offset-md-3 col-sm-12 col-md-6">
                 <div class="login-form">
                     <div class="form-group text-center">
-                        <h2>Welcome Admin</h2>
+                        <h2>Welcome Back</h2>
                         <h4>Please Log In</h4>
                     </div>
                     <form action="" method="post">
@@ -33,14 +33,22 @@
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
                         </div>
-                        <div class="form-group form-check">
-                            <input name="user_role" value="admin" type="hidden" class="form-check-input" id="user_role">
-                        </div>
+                        <!-- <div class="form-group form-check">
+                            <input name="user_role" value="user" type="checkbox" class="form-check-input" id="user_role">
+                            <label class="form-check-label" for="exampleCheck1">User Login</label>
+                            <br>
+                            <input name="user_role" value="consultant" type="checkbox" class="form-check-input" id="user_role">
+                            <label class="form-check-label" for="exampleCheck1">Consultant Login</label>
+                        </div> -->
                         <div class="form-group text-center">
                             <h5 class="text-danger"><?php echo $msg; ?></h5>
                         </div>
                         <div class="form-group text-center">
-                            <button name="submit" value="submit" type="submit" class="btn bg-dark text-white">Submit</button>
+                            <button name="admin_login" value="admin_login" type="submit" class="btn bg-dark text-white">Submit</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <p>Dont' have a Account? <a href="register.php">REGISTER</a> Now</p>
+                            <small><a href="">Forgot Password?</small></a>
                         </div>
                     </form>
                 </div>

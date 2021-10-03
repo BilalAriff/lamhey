@@ -128,9 +128,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="lightboxgallery-gallery clearfix">
-                        <?php echo videoPortfolioList($videoPortoflio)?>
-                    </div>
+                    <?php echo videoPortfolioList($videoPortfolio)?>        
                 </div>
             </div>
         </div>
@@ -231,7 +229,8 @@
                                 rows="10"></textarea>
                         </div>
                         <div class="form-group text-center">
-                            <button class="btn btn-dark" type="submit" name="lodge_complaint" value="lodge_complaint">Lodge
+                            <button class="btn btn-dark" type="submit" name="lodge_complaint"
+                                value="lodge_complaint">Lodge
                                 Complaint</button>
                         </div>
                     </form>

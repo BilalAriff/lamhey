@@ -92,7 +92,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <label for="photo">Photo</label>
-                                    <input required type="radio" value="photo" name="type">
+                                    <input required type="radio" name="type" value="photo">
                                 </div>
                                 <div class="col-6">
                                     <label for="video">Video</label>

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/font-awesome-4.7/css/font-awesome.css" >
     <!-- Lightbox gallery CSS -->
     <link rel="stylesheet" href="css/lightboxgallery.css" >
+    <!-- DataTables -->
+    <link rel="stylesheet" href="css/plugins/datatables/datatables.css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
     <title>Home - Lamhey</title>

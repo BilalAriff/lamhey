@@ -172,7 +172,6 @@
             return unserialize($result['payment_methods']);
         }
 
-
         public function changeAvailablity($id, $availablity) {
                 $sql = "UPDATE consultants
                         SET availablity = :availablity
@@ -198,7 +197,6 @@
             $values = array ( array(":rating", $newRating), array(":id", $id) );
             $this->db->queryDB($sql, Database::EXECUTE, $values["id"]);
         }
-
 
     }
 

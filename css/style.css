@@ -84,6 +84,22 @@ a:hover {
     color: white;
 }
 
+/* ============ VIDEO PORTFOLIO SECTION ========== */
+
+.video-portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.video-portfolio-header {}
+.video-portfolio-body {}
+.video-portfolio-body h5 {
+    font-weight: bold;
+    color: lightblue;
+}
+.video-portfolio-body p {}
+
 
 /* ============ USER PROFILE SECTION ========== */
 

@@ -40,6 +40,7 @@
                             <input name="user_role" value="consultant" type="checkbox" class="form-check-input" id="user_role">
                             <label class="form-check-label" for="exampleCheck1">Consultant Login</label>
                         </div>
+                        <input type="hidden" name="role" value="admin">
                         <div class="form-group text-center">
                             <h5 class="text-danger"><?php echo $msg; ?></h5>
                         </div>
