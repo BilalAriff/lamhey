@@ -74,6 +74,16 @@ a:hover {
     color: white;
 }
 
+.completed {
+    background-color: green;
+    color: white;
+}
+
+.resolved {
+    background-color: green;
+    color: white;
+}
+
 .pending {
     background-color: #d3d305;
     color: white;
