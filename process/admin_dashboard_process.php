@@ -8,8 +8,34 @@ $admin = new Admin("admin");
 $bookingData = $admin->getBookingList();
 $complaintData = $admin->getComplaintList();
 $blockedConsultants = $admin->getBlockedConsultantList();
+$blockedUsers = $admin->getBlockedUserList();
 
-var_dump($blockedConsultants);
+var_dump($blockedUsers);
+
+
+function blockedUserTd($user) {
+
+    $id = $user['id'];
+    $username = $user['username'];
+    $profileStatus = $user['profile_status'];
+
+    $td = 
+
+        <<<HTML
+         <tr>
+            <td>$id</td>
+            <td><a href="user-dashboard.php?id=$id">$username</a></td>
+            <td><label class="rounded-pill py-1 px-3 $profileStatus text-uppercase">$profileStatus</label></td>
+            <td>
+                <form action="" method="post">
+                    <input type="hidden" name="unblockedUserAction" value="$id">
+                    <button type="submit" class="btn btn-danger" name="unblockUser" value="unblockConsultant">Unblock</button>
+                </form>
+            </td>
+         <tr>
+        HTML;
+    echo $td;
+}
 
 function blockedConsultantTd($consultant) {
 
@@ -149,6 +175,10 @@ function complaintList($data) {
     array_map("complaintTd", $data);
 }
 
+function blockedUserList($data) {
+    array_map("blockedUserTd", $data);
+}
+
 function blockedConsultantList($data) {
     array_map("blockedConsultantTd", $data);
 }
@@ -162,5 +192,10 @@ if(isset($_POST['updateStatus'])) {
 
 if(isset($_POST['unblockConsultant'])) {
     $admin->blockConsultant($_POST['blockedConsultantId']);
+    header("Refresh:1");
+}
+
+if(isset($_POST['unblockUser'])) {
+    $admin->unblockUser($_POST['unblockedUserAction']);
     header("Refresh:1");
 }

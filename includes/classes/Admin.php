@@ -154,7 +154,7 @@ class Admin extends User {
     }
 
     public function getBlockedUserList() {
-        $sql = "SELECT id, username, profile_status, consultant_type FROM users WHERE profile_status = :profile_status";
+        $sql = "SELECT id, username, profile_status FROM users WHERE profile_status = :profile_status";
         $values = array( array( ":profile_status", "blocked" ) );
         $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
         return $result;

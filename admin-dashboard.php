@@ -112,8 +112,24 @@
                         </div>
 
                         <div class="tab-pane fade" id="blockedUsers" role="tabpanel" aria-labelledby="contact-tab">
-                            <h1 class="theme-heading my-4 text-uppercase text-center">Blocked Users</h1>
-                            
+                            <h1 class="theme-heading py-4 text-uppercase text-center">Blocked Users</h1>
+                            <div class="blocked-consultant-table">
+
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Profile Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php echo blockedUserList($blockedUsers)?>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
 
                         <div class="tab-pane fade" id="blockedConsultants" role="tabpanel"
@@ -183,9 +199,9 @@
     <?php include_once "./partials/Footer.php" ?>
     <?php include_once "./partials/ScriptTags.php" ?>
     <script>
-       let getID = (id) => {
-           console.log(id);
-       }
+    let getID = (id) => {
+        console.log(id);
+    }
     </script>
 </body>
 
