@@ -10,8 +10,9 @@ $complaintData = $admin->getComplaintList();
 $blockedConsultants = $admin->getBlockedConsultantList();
 $blockedUsers = $admin->getBlockedUserList();
 $paymentMethods = $admin->getPaymentMethodsList();
+$categories = $admin->getCategoryList();
 
-var_dump($paymentMethods);
+// var_dump($categories);
 
 
 function blockedUserTd($user) {
@@ -168,6 +169,54 @@ function complaintTd($complaint) {
         echo $td;
 }
 
+function category($c) {
+        $id = $c['id'];
+        $name = $c['name'];
+    
+        $_c = <<<HTML
+                    
+                        <div class="category-pill rounded-pill">
+                            <span>$name</span>
+                            <div class="delete-category">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary category-delete-btn" data-toggle="modal" data-target="#category$id">
+                                <i class="fa fa-close "></i>
+                            </button>
+    
+                            <!-- Modal -->
+                            <div class="modal fade" id="category$id" tabindex="-1" role="dialog" aria-labelledby="$name" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <h5 class="text-danger">ARE YOU SURE YOU WANT TO DELETE THIS CATEOGRY? </h5>
+                                            <h4>You are Deleting</h4>
+                                                <div class="name">
+                                                    <h3>$name</h3>
+                                                </div>
+                                        </div>
+                                            <div class="modal-footer d-flex align-items-center justify-content-center">
+                                                <form action="" method="post">
+                                                    <input type="hidden" name="category_id" value="$id">
+                                                    <button type="submit" name="deleteCategory" value="deleteCateogry" class="btn bg-danger text-white">Delete</button>
+                                                </form>
+                                                <button data-dismiss="modal" type="button" class="btn btn-primary">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+HTML;
+    
+    echo $_c;
+}
+
 function paymentMethod($p) {
 
     $id = $p['pm_id'];
@@ -246,6 +295,10 @@ function paymentMethodList($data) {
     array_map("paymentMethod", $data);
 }
 
+function categoryList($data) {
+    array_map("category", $data);
+}
+
 if(isset($_POST['updateStatus'])) {
     $admin->updateComplaintStatus($_POST['complaint-id'], $_POST['complaint-status']);
     $admin->updateComplaintFeedback($_POST['complaint-id'], $_POST['complaint-feedback']);
@@ -287,3 +340,13 @@ if(isset($_POST['addPaymentMethod'])) {
     header("Refresh:1");
 }
 
+if(isset($_POST['addCategory'])) {
+    $admin->addCategory($_POST['category_name']);
+    header("Refresh:1");
+}
+
+
+if(isset($_POST['deleteCategory'])) {
+    $admin->removeCategory($_POST['category_id']);
+    header("Refresh:1");
+}

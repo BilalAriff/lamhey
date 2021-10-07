@@ -158,21 +158,24 @@
                         <div class="tab-pane fade" id="paymentMethods" role="tabpanel" aria-labelledby="contact-tab">
                             <h1 class="theme-heading py-4 text-uppercase text-center">Payment Methods</h1>
                             <div class="row">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPaymentMethod">
-                                        Launch demo modal
-                                        </button>
+                                <div class="col-12 text-center pb-5">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addPaymentMethod">
+                                        Add Payment Method
+                                    </button>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="addPaymentMethod" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="addPaymentMethod" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="addPaymentMethod">Add Payment Method</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                                    <h5 class="modal-title" id="addPaymentMethod">Add Payment Method
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
@@ -187,15 +190,18 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                                                            <button type="submit" name="addPaymentMethod" value="addPaymentMethod" class="btn btn-primary">Add</button>
+                                                            <button type="submit" name="addPaymentMethod"
+                                                                value="addPaymentMethod"
+                                                                class="btn btn-primary">Add</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-12">
                                     <div class="payment-method-list">
                                         <?php echo paymentMethodList($paymentMethods) ?>
@@ -206,7 +212,54 @@
                         </div>
 
                         <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="contact-tab">
-                            <h1>Categories</h1>
+                        <h1 class="theme-heading py-4 text-uppercase text-center">Categories</h1>
+                            <div class="row">
+                                <div class="col-12 text-center pb-5">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addCategories">
+                                        Add Categories
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="addCategories" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addCategories">Add Categories
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="" method="post" enctype="multipart/form-data">
+                                                        <div class="form-group">
+                                                            <label for="Name">Enter Category Name</label>
+                                                            <input class="form-control" name="category_name" type="text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                            <button type="submit" name="addCategory"
+                                                                value="addCategory"
+                                                                class="btn btn-primary">Add</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="payment-method-list">
+                                        <?php echo categoryList($categories) ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
