@@ -99,6 +99,37 @@ a:hover {
     color: white;
 }
 
+/* ============ Payment Methods ========== */
+
+.payment-method-list {
+    display: flex;
+    justify-content: center;
+}
+.payment-method {
+    display: flex;
+    flex-direction: row;
+    /* background-color: #f5f4f4; */
+    padding: 5px 15px;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+}
+.payment-method-large {}
+.payment-method .logo {
+    /* display: flex; */
+    /* justify-content: center; */
+    width: 150px;
+}
+.payment-method .logo img {}
+.payment-method .name {}
+.payment-method .name spane {}
+.payment-method .delete-payment button {
+    display: none;
+}
+.payment-method:hover .delete-payment button {
+    display: block;
+}
+
 /* ============ VIDEO PORTFOLIO SECTION ========== */
 
 .video-portfolio {

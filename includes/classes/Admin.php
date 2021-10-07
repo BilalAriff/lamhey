@@ -247,26 +247,26 @@ class Admin extends User {
         $this->db->queryDB($sql, Database::EXECUTE, $values);
     }
 
-        public function getPaymentMethod($id) {
+    public function getPaymentMethod($id) {
             $sql = "SELECT * FROM payment_methods WHERE pm_id = :pm_id";
             $values = array( array(":pm_id", $id));
             $result =  $this->db->queryDB($sql, DATABASE::SELECTSINGLE, $values);
             return $result;
-        }
+    }
 
-        public function removePaymentMethod($id) {
+    public function removePaymentMethod($id) {
             $sql = "DELETE FROM payment_methods WHERE pm_id = :pm_id";
             $values = array( array(":pm_id", $id));
             $result =  $this->db->queryDB($sql, DATABASE::EXECUTE, $values);
-        }
+    }
         
-        public function getPaymentMethodsList() {
+    public function getPaymentMethodsList() {
             $sql = "SELECT * FROM payment_methods";
             $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);
             return $result;
-        }
+    }
 
 
-        public function removeEvent() {}
+    public function removeEvent() {}
 
 }

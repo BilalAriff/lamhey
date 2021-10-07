@@ -64,6 +64,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tab-content" id="myTabContent">
+
                         <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="home-tab">
                             <h1 class="text-center my-5 text-uppercase theme-heading">Bookings</h1>
                             <div class="admin-booking-list-table">
@@ -155,7 +156,15 @@
                         </div>
 
                         <div class="tab-pane fade" id="paymentMethods" role="tabpanel" aria-labelledby="contact-tab">
-                            <h1>Payment Methods</h1>
+                            <h1 class="theme-heading py-4 text-uppercase text-center">Payment Methods</h1>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="payment-method-list">
+                                        <?php echo paymentMethodList($paymentMethods) ?>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="contact-tab">

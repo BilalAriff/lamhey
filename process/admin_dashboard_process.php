@@ -9,8 +9,9 @@ $bookingData = $admin->getBookingList();
 $complaintData = $admin->getComplaintList();
 $blockedConsultants = $admin->getBlockedConsultantList();
 $blockedUsers = $admin->getBlockedUserList();
+$paymentMethods = $admin->getPaymentMethodsList();
 
-var_dump($blockedUsers);
+var_dump($paymentMethods);
 
 
 function blockedUserTd($user) {
@@ -167,6 +168,64 @@ function complaintTd($complaint) {
         echo $td;
 }
 
+function paymentMethod($p) {
+
+    $id = $p['pm_id'];
+    $name = $p['pm_name'];
+    $icon = $p['pm_icon']; 
+
+    $_p = <<<HTML
+                
+                    <div class="payment-method payment-method-large">
+                        <div class="logo">
+                            <img src="$icon" class="w-100" alt="">
+                        </div>
+                        <div class="delete-payment">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary payment-delete-btn" data-toggle="modal" data-target="#paymentMethod$id">
+                            <i class="fa fa-close "></i>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="paymentMethod$id" tabindex="-1" role="dialog" aria-labelledby="paymentMethod$name" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <h5 class="text-danger">ARE YOU SURE? </h5>
+                                        <h4>You are Deleting</h4>
+                                        <div class="payment-method payment-method-large">
+                                            <div class="logo">
+                                                <img src="$icon" class="w-100" alt="">
+                                            </div>
+                                            <br>
+                                            <div class="name">
+                                                <h3>$name</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="modal-footer d-flex align-items-center justify-content-center">
+                                            <form action="" method="post">
+                                                <input type="hidden" name="payment_id" value="$id">
+                                                <button type="submit" name="delete_payment" value="delete_payment" class="btn bg-danger text-white">Delete</button>
+                                            </form>
+                                            <button data-dismiss="modal" type="button" class="btn btn-primary">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+HTML;
+
+echo $_p;
+}
+
 function bookingList($data) {
     array_map("bookingTd", $data);
 }
@@ -181,6 +240,10 @@ function blockedUserList($data) {
 
 function blockedConsultantList($data) {
     array_map("blockedConsultantTd", $data);
+}
+
+function paymentMethodList($data) {
+    array_map("paymentMethod", $data);
 }
 
 if(isset($_POST['updateStatus'])) {
@@ -198,4 +261,10 @@ if(isset($_POST['unblockConsultant'])) {
 if(isset($_POST['unblockUser'])) {
     $admin->unblockUser($_POST['unblockedUserAction']);
     header("Refresh:1");
+}
+
+if(isset($_POST['delete_payment'])) {
+    $admin->removePaymentMethod($_POST['payment_id']);
+    echo $_POST['payment_id'];
+    // header("Refresh:1");
 }
