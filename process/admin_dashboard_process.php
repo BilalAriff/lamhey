@@ -266,5 +266,24 @@ if(isset($_POST['unblockUser'])) {
 if(isset($_POST['delete_payment'])) {
     $admin->removePaymentMethod($_POST['payment_id']);
     echo $_POST['payment_id'];
-    // header("Refresh:1");
+    header("Refresh:1");
 }
+
+if(isset($_POST['addPaymentMethod'])) {
+
+    $file_tmp = $_FILES['payment_icon']['tmp_name'];
+                    $file_name = $_FILES['payment_icon']['name'];
+                    $file_size = $_FILES['payment_icon']['size'];
+                    $file_type = $_FILES['payment_icon']['type'];
+                    
+                    // $userFolderName = $_POST["username"];
+                    // $h->createUserFolder($userFolderName);
+
+                    $file_location = "img/payment_methods/".$file_name;
+                    
+                    move_uploaded_file($file_tmp, "img/payment_methods/".$file_name);
+
+    $admin->addPaymentMethod($_POST['payment_name'], $file_location);
+    header("Refresh:1");
+}
+
