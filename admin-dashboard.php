@@ -68,20 +68,31 @@
                         <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="home-tab">
                             <h1 class="text-center my-5 text-uppercase theme-heading">Bookings</h1>
                             <div class="admin-booking-list-table">
-
-                                <table class="table">
+                                <table border="0" cellspacing="5" cellpadding="5">
+                                    <tbody>
+                                        <tr>
+                                            <td>Minimum age:</td>
+                                            <td><input type="date" id="startDate" name="startDate"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maximum age:</td>
+                                            <td><input type="date" id="endDate" name="endDate"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table" id="bookingsTableTwo">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">User</th>
-                                            <th scope="col">Event Date</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Booking Date</th>
-                                            <th scope="col">Details</th>
+                                            <th>ID</th>
+                                            <th>Title</th>
+                                            <th>User</th>
+                                            <th>Event Date</th>
+                                            <th>Status</th>
+                                            <th>Booking Date</th>
+                                            <th>Details</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="bookingTableBody">
                                         <?php echo bookingList($bookingData)?>
                                     </tbody>
                                 </table>
@@ -119,9 +130,9 @@
                                 <table class="table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Profile Status</th>
+                                            <th>ID</th>
+                                            <th>Username</th>
+                                            <th>Profile Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -212,7 +223,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="contact-tab">
-                        <h1 class="theme-heading py-4 text-uppercase text-center">Categories</h1>
+                            <h1 class="theme-heading py-4 text-uppercase text-center">Categories</h1>
                             <div class="row">
                                 <div class="col-12 text-center pb-5">
                                     <!-- Button trigger modal -->
@@ -238,12 +249,12 @@
                                                     <form action="" method="post" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             <label for="Name">Enter Category Name</label>
-                                                            <input class="form-control" name="category_name" type="text">
+                                                            <input class="form-control" name="category_name"
+                                                                type="text">
                                                         </div>
                                                         <div class="form-group">
                                                             <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                                                            <button type="submit" name="addCategory"
-                                                                value="addCategory"
+                                                            <button type="submit" name="addCategory" value="addCategory"
                                                                 class="btn btn-primary">Add</button>
                                                         </div>
                                                     </form>
@@ -298,10 +309,69 @@
 
     <?php include_once "./partials/Footer.php" ?>
     <?php include_once "./partials/ScriptTags.php" ?>
+
     <script>
-    let getID = (id) => {
-        console.log(id);
-    }
+    $('#myTab a').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
+
+    // on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+    $('#myTab a[href="' + hash + '"]').tab('show');
+
+
+
+    // admin dashaboard tables 
+
+    // $(document).ready( function () {
+
+    $('.bookingTableBody').children().last().remove()
+
+    //     $('#bookingsTableTwo').DataTable({
+    //     "paging":   true,
+    //     "ordering": true,
+    //     "info": true
+    //     });
+    // });
+
+
+    // $(document).ready(function() {
+    //     $('#bookingsTableTwo').DataTable({
+    //         buttons: [
+    //         'copy', 'excel', 'pdf']
+    //     });
+    // });
+
+    /* Custom filtering function which will search data in column four between two values */
+    $.fn.dataTable.ext.search.push(
+        function(settings, data, dataIndex) {
+            var startDate = parseInt($('#startDate').val(), 10);
+            var endDate = parseInt($('#endDate').val(), 10);
+            var date = parseFloat(data[5]) || 0; // use data for the age column
+
+            if ((isNaN(startDate) && isNaN(endDate)) ||
+                (isNaN(startDate) && date <= endDate) ||
+                (startDate <= date && isNaN(endDate)) ||
+                (startDate <= date && date <= endDate)) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+    $(document).ready(function() {
+        var table = $('#bookingsTableTwo').DataTable();
+
+        $('#startDate').keyup( function() { table.draw(); } );
+        $('#endDate').keyup( function() { table.draw(); } );
+    });
     </script>
 </body>
 

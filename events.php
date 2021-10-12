@@ -19,6 +19,13 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <div class="payment-method-list">
+                    <?php echo categoryList($categoryList)?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <h1>Welcome to Events</h1>
             </div>
         </div>

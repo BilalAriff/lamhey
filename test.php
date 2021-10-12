@@ -3,12 +3,18 @@
 session_start();
 include_once "include_files.php";
 
-$admin = new Admin("test");
+$consultant = new Consultant("test");
+
+$consultant->changeProfileAvailablity("16", "available");
+
+$consultantAvailablity = $consultant->getProfileAvailablity("16");
+
+var_dump($consultantAvailablity);
+echo $consultantAvailablity;
+
+?>
 
 
-$payment = $admin->getPaymentMethodsList("2");
-
-var_dump($payment);
 
 
 

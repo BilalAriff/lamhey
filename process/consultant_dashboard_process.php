@@ -4,6 +4,7 @@ session_start();
 include_once "include_files.php";
 $h = new Helper();
 $h->protectedRoute($_SESSION['role'], 'consultant');
+$consultant = new Consultant("consultant-dashboard");
 
 $consultantId = $_SESSION['userID'];
 
@@ -13,6 +14,7 @@ $events = new Event("consultant_events");
 $allEvents = $events->getEventList();
 $bookingList = $bookings->getConsultantBookingList($consultantId);
 $eventListData = $events->getEventListByConsultant($consultantId);
+$consultantAvailablity = $consultant->getProfileAvailablity($consultantId);
 
 function bookingTd($booking) {
 
@@ -95,4 +97,10 @@ function bookingListRow($data) {
 
 function eventsList($_events) {
     array_map("eventListCard", $_events);
+}
+
+
+if (isset($_POST['change_status'])) {
+    $consultant->changeProfileAvailablity($consultantId, $_POST['profile_status']);
+    header("Refresh:0.1");
 }

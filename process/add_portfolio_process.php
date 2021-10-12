@@ -1,8 +1,26 @@
 <?php
 
+$app = new App();
 $h = new Helper();
 $portfolio = new Portfolio();
 
+$categories = $app->getAllCategories();
+
+function catOption($category)
+{   
+    $cat = $category['name'];
+
+    $catOption = 
+    <<<HTML
+        <option value="$cat">$cat</option>
+    HTML;
+    echo $catOption;
+}
+
+
+function categoryList($data) {
+    array_map("catOption", $data);
+}
 
 if (isset($_POST['submit'])) {
 
@@ -35,6 +53,3 @@ if (isset($_POST['submit'])) {
                 var_dump($_POST);
     
         }
-        
-        echo $file_location;
-        var_dump($_POST);

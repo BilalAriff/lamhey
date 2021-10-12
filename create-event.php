@@ -30,26 +30,28 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group" >
                             <label for="">Image</label>
-                            <input class="form-control-file"  type="file" name="eventThumbnail">
+                            <input required class="form-control-file"  type="file" name="eventThumbnail">
                         </div>
                         <div class="form-group">
                             <label for="">Name</label>
-                            <input class="form-control" type="text" required name="eventTitle" value="eventName">
+                            <input required class="form-control" type="text" required name="eventTitle" value="eventName">
                         </div>
                         <input type="hidden" name="eventHostID" value="<?php echo $_SESSION['consultantInfo']['id']?>">
                         <input type="hidden" name="eventHostAvatar" value="<?php echo $_SESSION['consultantInfo']['profile_image']?>">
                         <input type="hidden" name="eventHostName" value="<?php echo $_SESSION["consultantInfo"]["username"] ?>">
                         <div class="form-group">
                             <label for="starting_price">Starting Price</label>
-                            <input type="number" class="form-control" name="eventPrice">
+                            <input required type="number" class="form-control" name="eventPrice">
                         </div>
                         <div class="form-group">
                             <label for="">Description</label>
-                            <input class="form-control" type="text" required name="eventDescription"   value="eventDescription">
+                            <textarea required class="form-control" name="eventDescription" cols="30" rows="10"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Category</label>
-                            <input class="form-control" value="eventCategory" type="text" required name="eventCategory">
+                            <select required class="form-control" required name="eventCategory">
+                                <?php echo categoryList($categories)?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-dark" name="submit" value="submit"  type="submit">Create Event</button>

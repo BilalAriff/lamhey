@@ -8,7 +8,9 @@
     <!-- Lightbox gallery CSS -->
     <link rel="stylesheet" href="css/lightboxgallery.css" >
     <!-- DataTables -->
-    <link rel="stylesheet" href="css/plugins/datatables/datatables.css">
+    <!-- <link rel="stylesheet" href="css/plugins/datatables/datatables.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="plugins/DataTables/datatables.css"/>
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
     <title>Home - Lamhey</title>

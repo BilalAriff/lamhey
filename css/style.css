@@ -323,6 +323,28 @@ a:hover {
     padding-right: 2em;
 }
 
+/* ========== CONSULTANT DASHBOARD ======== */
+
+.consultant-status {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+} 
+.consultant-status.available {
+    background-color: #3ea33e;
+}
+.consultant-status.unavailable {
+    background-color: red;
+}
+
+.consultant-status.Available {
+    background-color: #3ea33e;
+}
+.consultant-status.Unavailable {
+    background-color: red;
+}
+
 /* ==========  TOP CONSULTANT SECTION ======== */
 
 .top-consultant-section {
@@ -628,9 +650,6 @@ a:hover {
     letter-spacing: 1px;
   }
   
-
-
-
   @media only screen and (max-width : 767px) {
     .lightboxgallery-gallery-item {
       width: 33.3333%;

@@ -1,8 +1,42 @@
 <?php 
 
+$h = new Helper();
+$app = new App();
 $events = new Event("eventProcessPage");
 
+// $searchCategory = "all";
+
+$searchCategory = $h->getURLParams("category");
 $allEvents = $events->getEventList();
+$categoryList = $app->getAllCategories();
+
+// var_dump($categoryList);
+
+function categoryData($category) {
+    if(!isset($category)) {
+        echo "no category selected";
+    } else {
+        echo $category;
+    }
+}
+
+categoryData($searchCategory);
+
+function category($c) {
+    $id = $c['id'];
+    $name = $c['name'];
+
+    $_c = <<<HTML
+                
+                    <div class="category-pill rounded-pill">
+                        <span><a href="events.php?category=$name">$name</a></span>
+                    </div>
+                
+HTML;
+
+echo $_c;
+}
+
 
 function eventListCard($event)
 {   
@@ -45,4 +79,8 @@ function eventListCard($event)
 
 function eventsList($_events) {
     array_map("eventListCard", $_events);
+}
+
+function categoryList($data) {
+    array_map("category", $data);
 }

@@ -84,9 +84,7 @@
                             <label for="categories">Categories</label>
                             <label for="old-categories"><?php echo $categories ?></label>
                             <select required name="categories" class="form-control">
-                                <option value="Wedding">Wedding</option>
-                                <option value="Educational Seminar">Education Seminar</option>
-                                <option value="Birthday">Birthday</option>
+                                <?php echo catOption($categories)?>
                             </select>
                         </div>
                         <div class="form-group">

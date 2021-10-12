@@ -1,11 +1,30 @@
 <?php
 
+$app = new App();
 $h = new Helper();
 $portfolio = new Portfolio();
 
 $oldPortfolio = $portfolio->getSinglePortfolio("1", "16");
 
 var_dump($oldPortfolio);
+
+$categories = $app->getAllCategories();
+
+function catOption($category)
+{   
+    $cat = $category['name'];
+
+    $catOption = 
+    <<<HTML
+        <option value="$cat">$cat</option>
+    HTML;
+    echo $catOption;
+}
+
+
+function categoryList($data) {
+    array_map("catOption", $data);
+}
 
 $title = $oldPortfolio['title'];
 $link = $oldPortfolio['portfolio_link'];

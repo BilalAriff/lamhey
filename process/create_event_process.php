@@ -1,7 +1,26 @@
 <?php
 
+$app = new App();
 $h = new Helper();
 
+
+$categories = $app->getAllCategories();
+
+function catOption($category)
+{   
+    $cat = $category['name'];
+
+    $catOption = 
+    <<<HTML
+        <option value="$cat">$cat</option>
+    HTML;
+    echo $catOption;
+}
+
+
+function categoryList($data) {
+    array_map("catOption", $data);
+}
 
 if (isset($_POST['submit'])) {
 

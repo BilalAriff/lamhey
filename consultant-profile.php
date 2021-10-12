@@ -50,6 +50,10 @@
                                     $helper->starRating($profile_details['rating']);
                                 ?>
                             </div>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <h5 class="text-uppercase my-auto mr-2"><?php echo $consultantAvailablity; ?></h5>
+                                <div class="consultant-status <?php echo $consultantAvailablity; ?> mr-3"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -68,6 +72,34 @@
                                 if ($_SESSION['role'] == 'consultant') {
                                     echo "<a href='consultant-dashboard' class='btn btn-dark'>Visit your Dashboard</a>";
                                 }
+                                if ($_SESSION['role'] == 'admin') {
+                                    $blockProfile = <<<HTML
+                                        <button class="btn btn-danger" data-toggle="modal" data-target="#blockProfile">Block Profile</button>;
+                                        <div class="modal fade" id="blockProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5 class="text-danger">Are you sure you want to block this profile?</h5>
+                                                    <form action="" method="post">
+                                                        <input type="hidden" name="profilelId" value="$profileID">
+                                                        <div class="form-group">
+                                                            <a type="button" class="btn btn-success" data-dismiss="modal">Cancel</a>
+                                                            <button type="submit" name="block_profile" value="block_profile" class="btn btn-danger">YES!</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+HTML;
+                                        echo $blockProfile;
+                                }
                             }
                             else {
                                 echo "<h5>Please <a href='login.php'>Log In</a> for for more</h5>";
@@ -76,7 +108,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
+    </div>
     </div>
 
     <section class="about-me-section">
@@ -128,7 +162,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <?php echo videoPortfolioList($videoPortfolio)?>        
+                    <?php echo videoPortfolioList($videoPortfolio)?>
                 </div>
             </div>
         </div>

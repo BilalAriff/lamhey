@@ -9,15 +9,16 @@
     // $guest = new Guest("guest");
     $events = new Event("consultantEvents");
     $consultant = new Consultant($profileID);
+    $admin = new Admin('profile_admin');
     $consultantProfile = new ConsultantProfile($profileID);
     $portfolio = new Portfolio();
     $complaint = new Complaint();
+    $consultantAvailablity = $consultant->getProfileAvailablity($profileID);
 
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
     $featuredEvents = $events->getEventListByConsultant($profileID);
     $videoPortfolio = $portfolio->getConsultantVideoPortfolio($profileID);
     $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
-    var_dump($videoPortfolio);
 
 function videoPortfolioItem($item) {
 
@@ -135,4 +136,9 @@ if (isset($_POST['lodge_complaint'])) {
     $complaint->lodgeComplaint($_POST['complaint_user_id'], $_POST['complaint_username'], 
     $_POST['complaint_consultant_id'], $_POST['complaint_consultant_name'], 
     $_POST['complaint_description'], $_POST['complaint_feedback']);
+}
+
+
+if (isset($_POST['block_profile'])) {
+    $admin->blockConsultant($_POST['profilelId']);
 }

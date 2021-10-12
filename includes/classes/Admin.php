@@ -147,6 +147,13 @@ class Admin extends User {
         return $result;
     }
 
+    public function getBookingReport($start_date, $end_date ) {
+        $sql = "SELECT * FROM bookings WHERE booking_date BETWEEN :start_date AND :end_date";
+        $values = array( array(":start_date", $start_date), array("end_date", $end_date) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        return $result;
+    }
+
     public function blockUser($userID) {
         $sql = "UPDATE users SET profile_status = :status WHERE id = :userID";
         $values = array( array(":userID", $userID), array(":status", "block") );
@@ -168,7 +175,7 @@ class Admin extends User {
 
     public function blockConsultant($consultantID) {
         $sql = "UPDATE consultants SET profile_status = :status WHERE id = :userID";
-        $values = array( array(":userID", $consultantID), array(":status", "block") );
+        $values = array( array(":userID", $consultantID), array(":status", "blocked") );
         $this->db->queryDB($sql, Database::EXECUTE, $values);
     }
 
@@ -215,6 +222,7 @@ class Admin extends User {
         $values = array( array(":name", $categoryName) );
         $this->db->queryDB($sql, Database::EXECUTE, $values);    
     }
+
     public function getCategory($id) {
         $sql = "SELECT * FROM Categories WHERE id = :id";
         $values = array( array(":id", $id) );
@@ -265,8 +273,5 @@ class Admin extends User {
             $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);
             return $result;
     }
-
-
-    public function removeEvent() {}
 
 }

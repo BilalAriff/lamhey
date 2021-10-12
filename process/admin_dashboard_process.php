@@ -307,7 +307,7 @@ if(isset($_POST['updateStatus'])) {
 
 
 if(isset($_POST['unblockConsultant'])) {
-    $admin->blockConsultant($_POST['blockedConsultantId']);
+    $admin->unblockConsultant($_POST['blockedConsultantId']);
     header("Refresh:1");
 }
 

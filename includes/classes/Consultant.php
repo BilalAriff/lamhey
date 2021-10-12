@@ -71,6 +71,19 @@
             
             return $result[0];
         }
+
+        public function getProfileAvailablity($id) {
+            $sql = "SELECT availablity FROM consultants WHERE id = :id";
+            $values = array( array(":id", $id) );
+            $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+            return $result['availablity'];
+        }
+
+        public function changeProfileAvailablity($id, $availablity) {
+            $sql = "UPDATE consultants SET availablity = :availablity WHERE id = :id";
+            $values = array( array(":availablity", $availablity), array(":id", $id) );
+            $this->db->queryDB($sql, Database::EXECUTE, $values);
+        }
         
         public function getConsultantId($username){
 
