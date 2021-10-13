@@ -1,9 +1,54 @@
 <?php
 
+$app = new App();
 $h = new Helper();
 $msg = '';
 $Msg = '';
 $username = '';
+
+// payment method list
+
+$paymentMethods = $app->getPaymentMethodsList();
+$categories = $app->getAllCategories();
+
+var_dump($paymentMethods);
+
+function paymentMethodOption($p) {
+    $id = $p['id'];
+    $name = $p['pm_name'];
+
+    $_p = <<<HTML
+                
+        <option class="text-uppercase" value="$name">$name</option>    
+HTML;
+
+echo $_p;
+}
+
+function paymentMethodList($data) {
+    array_map("paymentMethodOption", $data);
+}
+
+// categories list
+
+
+function categoriesOption($c) {
+    $id = $c['id'];
+    $name = $c['name'];
+
+    $_c = <<<HTML
+                
+        <option class="text-uppercase" value="$name">$name</option>   
+HTML;
+
+echo $_c;
+}
+
+function categoriesOptionList($data) {
+    array_map("categoriesOption", $data);
+}
+
+
 
 if (isset($_POST['submit']))
 {        
@@ -141,10 +186,14 @@ if (isset($_POST['submit']))
                         $_POST['lastname'],
                         $_POST['password'],
                         $_POST['role'],
+                        $_POST['paymentMethods'],
+                        $_POST['categories'],
                         $_POST['address'],
                         $_POST['city'],
                         $_POST['state'],
                         $_POST['zip']);
+
+                    // var_dump($_POST);
 
                                 
                     //    echo $_POST['username'];

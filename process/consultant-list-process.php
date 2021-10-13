@@ -63,6 +63,7 @@ function categoryList($data) {
     array_map("category", $data);
 }
 
+
 if(!isset($_POST["search-submit"])) {
     
 } else {

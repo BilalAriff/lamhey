@@ -116,11 +116,57 @@
         }
     
 
-        public function createConsultantProfile($pUsername, $pEmail, $pConsultantType, 
-                $pRating, $pAbout, $pProfileImage, $pFirstname, $pLastname, $pPassword, $pRole,
-                $pAddress, $pCity, $pState, $pZip) {
-            $sql = "INSERT INTO consultants (username, email, consultant_type, rating, about, profile_image, firstname, lastname, password, role, address, city, state, zip)
-                    VALUES (:username, :email, :consultant_type, :rating, :about, :profile_image, :firstname, :lastname, :password, :role, :address, :city, :state, :zip)";
+        public function createConsultantProfile(
+            $pUsername, 
+            $pEmail, 
+            $pConsultantType, 
+            $pRating, 
+            $pAbout, 
+            $pProfileImage,
+            $pFirstname,
+            $pLastname, 
+            $pPassword,
+            $pRole, 
+            $pPaymentMethods, 
+            $pCategories,
+            $pAddress, 
+            $pCity, 
+            $pState, 
+            $pZip) {
+            $sql = "INSERT INTO consultants (
+              username, 
+              email,
+              consultant_type,
+              rating, 
+              about, 
+              profile_image, 
+              firstname, 
+              lastname, 
+              password, 
+              role, 
+              payment_methods, 
+              categories, 
+              address, 
+              city, 
+              state, 
+              zip)
+                    VALUES (
+                        :username, 
+                        :email, 
+                        :consultant_type, 
+                        :rating, 
+                        :about, 
+                        :profile_image, 
+                        :firstname, 
+                        :lastname, 
+                        :password, 
+                        :role, 
+                        :payment_methods, 
+                        :categories, 
+                        :address, 
+                        :city, 
+                        :state, 
+                        :zip)";
         
                 $values = array(
                     array(':username', $pUsername),
@@ -133,6 +179,8 @@
                     array(':lastname', $pLastname),
                     array(':password', password_hash($pPassword, PASSWORD_DEFAULT)),
                     array(':role', $pRole),
+                    array(':payment_methods', serialize($pPaymentMethods)),
+                    array(':categories', serialize($pCategories)),
                     array(':address', $pAddress),
                     array(':city', $pCity),
                     array(':state', $pState),

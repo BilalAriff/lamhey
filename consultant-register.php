@@ -2,38 +2,6 @@
     session_start();
     include_once "include_files.php";
     include_once "./process/register_process.php";
-    
-    // if (isset($_POST['submit'])){
-        
-    //     var_dump($_FILES["profile_image"]);
-    //     echo "<br>";
-    //     echo $_POST["consultant_type"];
-    //     echo "<br>";
-    //     echo $_POST["role"];
-    //     echo "<br>";
-    //     echo $_POST["about"];
-    //     echo "<br>";
-    //     echo $_POST["rating"];
-    //     echo "<br>";
-    //     echo $_POST["username"];
-    //     echo "<br>";
-    //     echo $_POST["email"];
-    //     echo "<br>";
-    //     echo $_POST["firstname"];
-    //     echo "<br>";
-    //     echo $_POST["lastname"];
-    //     echo "<br>";
-    //     echo $_POST["password"];
-    //     echo "<br>";
-    //     echo $_POST["address"];
-    //     echo "<br>";
-    //     echo $_POST["city"];
-    //     echo "<br>";
-    //     echo $_POST["zip"];
-    //     echo "<br>";
-    //     echo $_POST["state"];
-    //     echo "<br>";
-    // }
 ?>
 
 
@@ -83,12 +51,13 @@
                         <div class="form-group">
                             <label for="categories">Select your Categories</label>
                             <select multiple="multiple" size="5" class="form-control ultraSelect" name="categories[]" id="categories">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
+                                <?php echo categoriesOptionList($categories) ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment_methods">Add Your Prefered Payment Methods</label>
+                            <select multiple="multiple" size="5" class="form-control ultraSelect" name="payment_methods[]" id="paymentMethods">
+                                <?php echo paymentMethodList($paymentMethods) ?>
                             </select>
                         </div>
                         <div class="form-group">
@@ -205,6 +174,7 @@
     <script>
         $(document).ready(function () {
             $("#categories").ultraselect();
+            $("#paymentMethods").ultraselect();
         });
     </script>
 </body>

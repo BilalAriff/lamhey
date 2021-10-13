@@ -12,6 +12,12 @@ class App {
     public function protectedView() {}
     public function alertMsg() {}
 
+    public function getPaymentMethodsList() {
+        $sql = "SELECT * FROM payment_methods";
+        $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);
+        return $result;
+    }
+
     public function getAllCategories() {
         $sql = "SELECT * FROM Categories";
         $result = $this->db->queryDB($sql, Database::SELECTALL);
