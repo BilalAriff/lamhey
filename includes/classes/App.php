@@ -28,7 +28,7 @@ class App {
 
     public function searchConsultants($input) {
           
-        $sql = "SELECT * FROM consultants WHERE (username LIKE '%$input%' OR email LIKE '%$input%' OR firstname LIKE '%$input%' lastname LIKE '%$input%' address LIKE '%$input%' city LIKE '%$input%' state LIKE '%$input%')";
+        $sql = "SELECT * FROM consultants WHERE (username LIKE '%$input%' OR email LIKE '%$input%' OR firstname LIKE '%$input%' OR lastname LIKE '%$input%' OR address LIKE '%$input%' OR city LIKE '%$input%' OR state LIKE '%$input%')";
         $result = $this->db->queryDB($sql, Database::SELECTALL);
         return $result;
 

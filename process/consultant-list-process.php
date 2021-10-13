@@ -1,9 +1,28 @@
 <?php
 
+$app = new App();
 $h = new Helper();
 $consultant = new Consultant("consultant-list");
+$categoryList = $app->getAllCategories();
 
 $consultantListData = $consultant->getListOfConsultants();
+
+function category($c) {
+    $id = $c['id'];
+    $name = $c['name'];
+
+    $_c = <<<HTML
+                
+        <form method="post" class="category-pill rounded-pill">
+            <input type="hidden" name="search_consultant_category" value="$name">
+                <span><button class="category-pill-submit-btn" type="submit" name="search_by_consultant_category" value="search_by_event_category">$name</button></span>
+            </form>    
+HTML;
+
+echo $_c;
+}
+
+
 
 function makeConsultantList($_consultant) {
 
@@ -40,4 +59,38 @@ function consultantList($_consultantData) {
     array_map("makeConsultantList", $_consultantData);
 }
 
-?>      
+function categoryList($data) {
+    array_map("category", $data);
+}
+
+if(!isset($_POST["search-submit"])) {
+    
+} else {
+    $consultantListData = $app->searchConsultants($_POST["consultant_search"]);   
+}
+
+if(isset($_POST['search_by_consultant_category'])) {
+    $consultantListData = $app->searchConsultantsByCategory($_POST['search_consultant_category']);   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
