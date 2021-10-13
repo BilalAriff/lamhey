@@ -12,6 +12,19 @@ class App {
     public function protectedView() {}
     public function alertMsg() {}
 
+    public function isProfileBlocked($username, $table) {
+        $sql = "SELECT profile_status FROM $table WHERE username = :username";
+        $values = array( array(":username", $username));
+        $result =  $this->db->queryDB($sql, DATABASE::SELECTSINGLE, $values);
+        if( $result['profile_status'] == 'fine' ) {
+            return true;
+        } else {
+            return false;
+        }
+
+        // echo $sql;
+    }
+
     public function getPaymentMethodsList() {
         $sql = "SELECT * FROM payment_methods";
         $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);

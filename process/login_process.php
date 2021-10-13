@@ -1,4 +1,5 @@
 <?php
+    $app = new App();
     $h = new Helper();
     $msg = '';
     $username = '';
@@ -17,48 +18,53 @@
             if($_POST["user_role"]  == "user") {
 
                 $user = new User($username);
-
+                $profileBlocked = $app->isProfileBlocked($username, "users");
                 if (!$user->isValidLogin($_POST['password']))
                 {
                     $msg = "Invalid Username or Password";
                 }
-                else
-                {
-                    $userId = $user->getUserId($username);
-                    $_SESSION['username'] = $username;
-                    $_SESSION['role'] = "user";
-                    $_SESSION['logged'] = true;  
-                    $_SESSION['userID'] = $userId;
-                    $_SESSION['profile_image'] = $user->getUserProfileImage($username); 
-                    $msg = "User Login Succesfull";
-                    header("Location: user-dashboard.php");            
-                }
+                    if(!$profileBlocked) {
+                        header("Location: profile-blocked.php"); 
+                    } else
+                        {
+                            $userId = $user->getUserId($username);
+                            $_SESSION['username'] = $username;
+                            $_SESSION['role'] = "user";
+                            $_SESSION['logged'] = true;  
+                            $_SESSION['userID'] = $userId;
+                            $_SESSION['profile_image'] = $user->getUserProfileImage($username); 
+                            $msg = "User Login Succesfull";
+                            header("Location: user-dashboard.php");            
+                        }
                 
             }
 
             if ($_POST["user_role"] == "consultant" ) {
                 
                 $consultant = new Consultant($username);
+                $profileBlocked = $app->isProfileBlocked($username, "consultants");
 
                 if (!$consultant->isValidLogin($_POST['password']))
                 {
                     $msg = "Invalid Username or Password";
                 }
-                else
+                    if (!$profileBlocked) {
+                        header("Location: profile-blocked.php");
+                    } else
                 
-                {
+                    {
                     
-                    $_SESSION['username'] = $consultant->getUsername();
-                    $_SESSION['role'] = "consultant";
-                    $_SESSION['logged'] = true;
-                    $_SESSION['profile_image'] = $consultant->getConsultantProfileImage($username);
-                    $_SESSION['userID'] = $consultant->getConsultantId($username); 
-                    $_SESSION['userData'] = $consultant->getUserData();
-                    $_SESSION['consultantInfo'] = $consultant->getConsultantProfileInfo($username);
-                    $msg = "Consultant Login Succesfull";
-                    header("Location: consultant-dashboard.php");                
+                        $_SESSION['username'] = $consultant->getUsername();
+                        $_SESSION['role'] = "consultant";
+                        $_SESSION['logged'] = true;
+                        $_SESSION['profile_image'] = $consultant->getConsultantProfileImage($username);
+                        $_SESSION['userID'] = $consultant->getConsultantId($username); 
+                        $_SESSION['userData'] = $consultant->getUserData();
+                        $_SESSION['consultantInfo'] = $consultant->getConsultantProfileInfo($username);
+                        $msg = "Consultant Login Succesfull";
+                        header("Location: consultant-dashboard.php");                
+                    }
                 }
-            }
 
             if ($_POST["user_role"] == "admin" ) {
                 

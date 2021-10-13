@@ -11,8 +11,6 @@ $username = '';
 $paymentMethods = $app->getPaymentMethodsList();
 $categories = $app->getAllCategories();
 
-var_dump($paymentMethods);
-
 function paymentMethodOption($p) {
     $id = $p['id'];
     $name = $p['pm_name'];
