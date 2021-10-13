@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Category</label>
-                            <select required class="form-control" required name="eventCategory">
+                            <select required class="form-control" name="eventCategory">
                                 <?php echo categoryList($categories)?>
                             </select>
                         </div>

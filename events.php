@@ -12,39 +12,55 @@
 
 <body>
 
-<!-- Navigation -->
-<?php include_once "./partials/Navigation.php";?>
+    <!-- Navigation -->
+    <?php include_once "./partials/Navigation.php";?>
 
-<section class="events-page-section my-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="payment-method-list">
-                    <?php echo categoryList($categoryList)?>
+    <section class="events-page-section my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4>Search Here..</h4>
+                    <form class="form-inline w-100" method="post" action="">
+                        <input name="event_search" placeholder="Birthday Party, consultantUserName etc....." type="text" class="form-control large-search-field">
+                        <button type="submit" name="search-submit" value="search-submit" class="btn bg-light-blue text-white d-inline-block"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="payment-method-list">
+                        <?php echo categoryList($categoryList)?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1>Welcome to Events</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="list d-flex justify-content-center align-items-center">
+                        <?php 
+                            if(empty($allEvents)) {
+                                echo "<h1 class='text-center'> No Events Available</h1>";
+                            } else {
+                                eventsList($allEvents);
+                            }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h1>Welcome to Events</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="list d-flex justify-content-center align-items-center">
-                    <?php eventsList($allEvents)?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<?php include_once "./partials/Footer.php"?>
+    <!-- Footer -->
+    <?php include_once "./partials/Footer.php"?>
 
-<!-- =============   SCRIPTS   ============ -->
+    <!-- =============   SCRIPTS   ============ -->
 
-<?php include_once "./partials/ScriptTags.php" ?>
+    <?php include_once "./partials/ScriptTags.php" ?>
 
 </body>
+
 </html>

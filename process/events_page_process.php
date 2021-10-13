@@ -12,6 +12,8 @@ $categoryList = $app->getAllCategories();
 
 // var_dump($categoryList);
 
+// SEARCH BY SEARCH_FIELD 
+
 function categoryData($category) {
     if(!isset($category)) {
         echo "no category selected";
@@ -83,4 +85,12 @@ function eventsList($_events) {
 
 function categoryList($data) {
     array_map("category", $data);
+}
+
+
+if(!isset($_POST["search-submit"])) {
+    echo "nothing submited";
+} else {
+    $allEvents = $app->searchEvents($_POST["event_search"]);   
+    var_dump($allEvents);  
 }

@@ -40,47 +40,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/style.css">
-    <title>Home - Lamhey</title>
-</head>
+<?php include "./partials/Head.php"?>
+
 <body>
 
 <!-- Navigation -->
 
-<section class="navigation">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand text-white" href="index.php">Logo</a>
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link text-white" href="index.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="about-us.php">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="login.php">Contact Us</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link text-white">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</section>
+<?php include_once "./partials/Navigation.php" ?>
 
 <section class="login-page-section">
     <div class="container">
@@ -97,12 +63,12 @@
                             <div class="form-group d-flex justify-content-center align-items-center">
                                 <div class="upload-consultant-profile-photo">
                                     <label for="profile_image">Profile Photo</label>
-                                    <input name="profile_image" class="form-control-file" type="file">
+                                    <input required name="profile_image" class="form-control-file" type="file">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="consultant_type">Profile Type</label>
-                                <select class="form-control" name="consultant_type" id="consultant_type">
+                                <select required class="form-control" name="consultant_type" id="consultant_type">
                                     <option value="Individual Consultant">Individual Consultant</option>
                                     <option value="Resturant">Resturant</option>
                                     <option value="Marriage Hall">Mariage Hall</option>
@@ -110,35 +76,46 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="about">Write something abour yourself</label>
-                                <textarea class="form-control" name="about" id="" cols="30" rows="10"></textarea>
+                                <label  for="about">Write something abour yourself</label>
+                                <textarea required class="form-control" name="about" id="" cols="30" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="categories">Select your Categories</label>
+                            <select multiple="multiple" size="5" class="form-control ultraSelect" name="categories[]" id="categories">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="uername">Username</label>
-                            <input name="username" id="reg_username" type="text" class="form-control" placeholder="Username123" required>
+                            <input required name="username" id="reg_username" type="text" class="form-control" placeholder="Username123" required>
                             <h5 class="text-danger" id="usercheck"></h5>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input name="email" id="reg_email" type="email" class="form-control" placeholder="jhondoe@gmail.com" required>
+                            <input required name="email" id="reg_email" type="email" class="form-control" placeholder="jhondoe@gmail.com" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="firstname">First Name</label>
-                                <input class="form-control" name="firstname" id="reg_firstname" placeholder="Jhon" type="text" required>
+                                <input required class="form-control" name="firstname" id="reg_firstname" placeholder="Jhon" type="text" required>
                                 <h5 id="passcheck" class="text-danger"></h5>
                              </div>
                             <div class="form-group col-md-6">
                                 <label for="lastname">Last Name</label>
-                                <input name ="lastname" id="reg_firstname" type="text" class="form-control" placeholder="Doe" required>
+                                <input required name ="lastname" id="reg_firstname" type="text" class="form-control" placeholder="Doe" required>
                             </div>
                         </div>
                         <input type="hidden" value="1" name="rating">
                         <input type="hidden" value="consultant" name="role">
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input name ="password" id="reg_Password" type="password" class="form-control" placeholder="***********" required>
+                            <input required name ="password" id="reg_Password" type="password" class="form-control" placeholder="***********" required>
                         </div>
                         <div class="form-group">
                             <label for="confirm-password">Confrim Password</label>
@@ -223,9 +200,12 @@
 
 <!-- =============   SCRIPTS   ============ -->
 
-    <script src="js/jquery.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
+<!-- =============   SCRIPTS   ============ -->
+    <?php include "./partials/ScriptTags.php" ?>
+    <script>
+        $(document).ready(function () {
+            $("#categories").ultraselect();
+        });
+    </script>
 </body>
 </html>

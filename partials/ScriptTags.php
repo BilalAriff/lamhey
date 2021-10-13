@@ -8,5 +8,6 @@
 
 <script src="//cdn.datatables.net/plug-ins/1.11.3/filtering/row-based/range_dates.jscx"></script>
 <script type="text/javascript" src="plugins/DataTables/datatables.js"></script>
+<script src="plugins/ultraselect/ultraselect.js"></script>
 <script src="js/script.js"></script>
  
