@@ -350,3 +350,7 @@ if(isset($_POST['deleteCategory'])) {
     $admin->removeCategory($_POST['category_id']);
     header("Refresh:1");
 }
+
+if(isset($_POST['generate_report'])) {
+    $bookingData = $admin->getBookingReport($_POST['start_date'], $_POST['end_date']);
+}

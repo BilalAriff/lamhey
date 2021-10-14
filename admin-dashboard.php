@@ -11,7 +11,7 @@
 
     <!-- Header -->
 
-    <div class="jumbotron bg-dark mt-3">
+    <div class="jumbotron bg-dark mt-3 dont-print">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -30,7 +30,7 @@
     <section class="consultant-options">
         <div class="container">
 
-            <div class="row">
+            <div class="row dont-print">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -68,18 +68,23 @@
                         <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="home-tab">
                             <h1 class="text-center my-5 text-uppercase theme-heading">Bookings</h1>
                             <div class="admin-booking-list-table">
-                                <table border="0" cellspacing="5" cellpadding="5">
-                                    <tbody>
-                                        <tr>
-                                            <td>Minimum age:</td>
-                                            <td><input type="date" id="startDate" name="startDate"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maximum age:</td>
-                                            <td><input type="date" id="endDate" name="endDate"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <form class="dont-print" action="" method="post">
+                                    <div class="form-group row">
+                                        <div class="col-6">
+                                            <label for="" class="for-col-label">Start Date</label>
+                                            <input type="date" class="form-control" name="start_date">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="" class="for-col-label">End Date</label>
+                                            <input type="date" class="form-control" name="end_date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-dark" type="sumbit" name="generate_report" value="generate_report">Get Bookings</button>
+                                        <a class="btn btn-success" href="admin-dashboard.php#bookings">All Bookings</a>
+                                        <button class="btn btn-primary" onClick="window.print()">Print Report</button>
+                                    </div>
+                                </form>
                                 <table class="table" id="bookingsTableTwo">
                                     <thead class="thead-light">
                                         <tr>
@@ -372,6 +377,8 @@
         $('#startDate').keyup( function() { table.draw(); } );
         $('#endDate').keyup( function() { table.draw(); } );
     });
+
+    bookingsTableTwo
     </script>
 </body>
 

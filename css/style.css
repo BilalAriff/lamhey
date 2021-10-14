@@ -85,6 +85,11 @@ a:hover {
     color: white;
 }
 
+.inprocess {
+    background-color: lightblue;
+    color: white;
+}
+
 .resolved {
     background-color: green;
     color: white;
@@ -674,3 +679,9 @@ a:hover {
       width: 50%;
     }
   }
+
+  @media print {
+    .dont-print {
+      display: none;
+    }
+}
