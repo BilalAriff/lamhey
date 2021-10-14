@@ -32,6 +32,13 @@
         </ul>
     </section>
 
+    <?php 
+        if(!$Msg == "") {
+           echo '<div class="alert alert-success text-center" role="alert"> <h4>'.$Msg.' </h4></div>';
+        }
+    ?>
+
+
     <!-- Header -->
 
     <div class="consultant-profile-jumbotron bg-light-blue mt-3">
@@ -63,10 +70,10 @@
                             if (isset($_SESSION['role'])) {
                                 if($_SESSION['role'] == 'user') {
                                     echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
-                                    echo '<button class="btn btn-success mr-2"> Request Event</button>';
+                                    echo '<button class="btn btn-success mr-2" type="button" data-toggle="modal" data-target="#customEventRequest"> Request Event</button>';
                                     echo '<button class="btn btn-primary mr-2" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
                                     echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#complaint"> Lodge Complaint </button>';
-                                 
+                                
                                 }
                                 
                                 if ($_SESSION['role'] == 'consultant') {
@@ -108,7 +115,6 @@ HTML;
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     </div>
@@ -254,8 +260,7 @@ HTML;
                         <input type="hidden" name="complaint_user_id" value="<?php echo $_SESSION['userID']?>">
                         <input type="hidden" name="complaint_username" value="<?php echo $_SESSION['username']?>">
                         <input type="hidden" name="complaint_consultant_id" value="<?php echo $profile_details['id']?>">
-                        <input type="hidden" name="complaint_consultant_name"
-                            value="<?php echo $profile_details['username']?>">
+                        <input type="hidden" name="complaint_consultant_name" value="<?php echo $profile_details['username']?>">
                         <input type="hidden" name="complaint_feedback" value="we are working on your complaint">
                         <div class="form-group">
                             <label for="">Descripe in Detail about your complaint</label>
@@ -278,6 +283,38 @@ HTML;
     </div>
     </div>
     </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="customEventRequest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form action="" method="post">
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION['userID']?>">
+            <input type="hidden" name="username" value="<?php echo $_SESSION['username']?>">
+            <input type="hidden" name="consultant_id" value="<?php echo $profile_details['id']?>">
+            <input type="hidden" name="consultant_name" value="<?php echo $profile_details['username']?>">
+            <div class="form-group">
+                <h3>Request for Event</h3>
+            </div>
+            <div class="form-group">
+                <label for="">Enter Description of your Event</label>
+                <textarea name="event_description" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Date of your Event</label>
+                <input class="form-control" type="date" name="event_date">
+            </div>
+            <div class="form-group">
+                <button type="submit" name="request_event" value="request_event" class="btn btn-success">Request Event</button>
+                <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <?php include_once "./partials/Footer.php" ?>

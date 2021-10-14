@@ -4,15 +4,9 @@ include_once "include_files.php";
 
 
 $app = new App();
-$result = $app->isProfileBlocked("BilalConsultant", "consultants");
+$customEvent = new CustomEvent();
 
-if( $result) {
-    echo "profile is fine";
-}
+$req = $customEvent->getConsultantCustomReqest("1");
 
-else { 
-    echo "profile is blocked";
-}
-
-
+var_dump($req);
 

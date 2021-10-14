@@ -1,7 +1,9 @@
 <?php
     session_start();
+    $Msg = "";
     include_once "include_files.php";
     $helper = new Helper();
+    $customEvent = new CustomEvent();
     $profileID = $helper->getURLParams("id");
 
     // $helper->protectedRoute($_SESSION["role"], "user");
@@ -142,3 +144,15 @@ if (isset($_POST['lodge_complaint'])) {
 if (isset($_POST['block_profile'])) {
     $admin->blockConsultant($_POST['profilelId']);
 }
+
+if(isset($_POST['request_event'])) {
+    $customEvent->requestForEvent(
+        $_POST['user_id'], 
+        $_POST['username'], 
+        $_POST['consultant_id'],
+        $_POST['consultant_name'], 
+        $_POST['event_description'], 
+        $_POST['event_date']);
+
+        $Msg = "Your Request Has Been Submitted";
+    }

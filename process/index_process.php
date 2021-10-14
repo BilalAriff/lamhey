@@ -81,8 +81,6 @@ function featuredConsultantCard($fConsultant) {
 
 // CONSULTANT CARD
 
-
-
 function featuredCardList($_events) {
     array_map("featuredEventCard", $_events);
 }
