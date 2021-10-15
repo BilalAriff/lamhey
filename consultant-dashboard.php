@@ -92,6 +92,7 @@
                 <h3>Your Booking Requests</h3>
             </div>
         </div>
+        $customEvents
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive">
@@ -109,6 +110,32 @@
                         </thead>
                         <tbody>
                             <?php echo bookingListRow($bookingList) ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h3>Custom Event Requests</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Event ID</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Event Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php echo customEventList($customEvents) ?>
                         </tbody>
                     </table>
                 </div>

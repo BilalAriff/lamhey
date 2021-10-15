@@ -5,6 +5,7 @@ include_once "include_files.php";
 $h = new Helper();
 $h->protectedRoute($_SESSION['role'], 'consultant');
 $consultant = new Consultant("consultant-dashboard");
+$customEvent = new CustomEvent();
 
 $consultantId = $_SESSION['userID'];
 
@@ -15,6 +16,8 @@ $allEvents = $events->getEventList();
 $bookingList = $bookings->getConsultantBookingList($consultantId);
 $eventListData = $events->getEventListByConsultant($consultantId);
 $consultantAvailablity = $consultant->getProfileAvailablity($consultantId);
+$customEvents = $customEvent->getConsultantCustomRequest($consultantId); 
+var_dump($customEvents);
 
 function bookingTd($booking) {
 
@@ -47,6 +50,66 @@ function bookingTd($booking) {
             <td><a href="booking-detail.php?id=$id">View</a></td>
          <tr>
         HTML;
+    echo $card;
+}
+
+function customEventTd($event) {
+
+    $id = $event['id'];
+    $userId = $event['user_id'];
+    $username = $event['username'];
+    $consultantId = $event['consultant_id'];
+    $consultantName = $event['consultant_name'];
+    $description = $event['event_description'];
+    $eventDate = $event['event_date'];
+    $eventStatus = $event['event_status'];
+
+    
+
+    $card = 
+
+        <<<HTML
+         <tr>
+            <td>$id</td>
+            <td>$username</td>
+            <td>$eventDate</td>
+            <td> <label class="rounded-pill px-3 py-1 $eventStatus" for="">$eventStatus</label></td>
+            <td>
+                <!-- Action -->
+                <a class="btn btn-primary" data-toggle="modal" data-target="#customEventDetail$id">
+                    View Details
+                </a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="customEventDetail$id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h4 class="theme-heading">Event Request ID is: $id</h4>
+                                <h6>Description</h6>
+                                <p>$description</p>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <form action="" method="post">
+                                    <input type="hidden" name="action" value="accepted">
+                                    <input type="hidden" name="event_id" value="$id">
+                                    <button name="custom_event_status" value="custom_event_status" class="btn btn-success mr-3" type="submit">Accept</button>
+                                </form>
+                                <form action="" method="post">
+                                    <input type="hidden" name="action" value="rejected">
+                                    <input type="hidden" name="event_id" value="$id">   
+                                    <button name="custom_event_status" value="custom_event_status" class="btn btn-danger" type="submit">Reject</button>
+                                </form>
+                            </div>
+                        <div class="modal-footer text-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </td>
+         <tr>
+HTML;
     echo $card;
 }
 
@@ -87,7 +150,7 @@ function eventListCard($event) {
             </div>
         </div>
      </div>
-    HTML;
+HTML;
     echo $card;
 }
 
@@ -99,8 +162,17 @@ function eventsList($_events) {
     array_map("eventListCard", $_events);
 }
 
+function customEventList($data) {
+    array_map("customEventTd", $data);
+}
+
 
 if (isset($_POST['change_status'])) {
     $consultant->changeProfileAvailablity($consultantId, $_POST['profile_status']);
     header("Refresh:0.1");
+}
+
+if(isset($_POST['custom_event_status'])) {
+    $customEvent->manageCustomRequest($_POST['action'], $_POST['event_id']);
+    header("refresh:1");
 }

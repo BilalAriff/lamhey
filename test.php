@@ -6,7 +6,7 @@ include_once "include_files.php";
 $app = new App();
 $customEvent = new CustomEvent();
 
-$req = $customEvent->getConsultantCustomReqest("1");
+$req = $customEvent->getConsultantCustomRequest("16");
 
 var_dump($req);
 

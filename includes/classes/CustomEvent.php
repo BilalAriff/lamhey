@@ -37,6 +37,13 @@
             return $result;
         }
 
+        public function getConsultantCustomRequest($consultantId) {
+            $sql = "SELECT * FROM custom_event_request WHERE consultant_id = :consultant_id";
+            $values = array( array(":consultant_id", $consultantId) );
+            $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+            return $result;
+        }
+
         public function getCustomRequestById($id) {
             $sql = "SELECT * FROM custom_event_request WHEREnid = :id";
             $values = array( array(":id", $id) );
