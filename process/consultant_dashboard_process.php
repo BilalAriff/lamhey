@@ -17,7 +17,6 @@ $bookingList = $bookings->getConsultantBookingList($consultantId);
 $eventListData = $events->getEventListByConsultant($consultantId);
 $consultantAvailablity = $consultant->getProfileAvailablity($consultantId);
 $customEvents = $customEvent->getConsultantCustomRequest($consultantId); 
-var_dump($customEvents);
 
 function bookingTd($booking) {
 

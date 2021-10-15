@@ -50,6 +50,6 @@ if (isset($_POST['submit'])) {
         //                              $_POST["type"]);
                 
                 echo $file_location;
-                var_dump($_POST);
+
     
         }

@@ -6,8 +6,6 @@ $portfolio = new Portfolio();
 
 $oldPortfolio = $portfolio->getSinglePortfolio("1", "16");
 
-var_dump($oldPortfolio);
-
 $categories = $app->getAllCategories();
 
 function catOption($category)

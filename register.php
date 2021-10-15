@@ -63,7 +63,7 @@
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <input type="file" name="profile_image">
+                            <input required type="file" name="profile_image">
                         </div>
                         <div class="form-group">
                             <label for="uername">Username</label>

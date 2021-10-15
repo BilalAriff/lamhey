@@ -34,10 +34,10 @@
                             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
                         </div>
                         <div class="form-group form-check">
-                            <input name="user_role" value="user" type="checkbox" class="form-check-input" id="user_role">
+                            <input name="user_role" value="user" type="radio" class="form-check-input" id="user_role">
                             <label class="form-check-label" for="exampleCheck1">User Login</label>
                             <br>
-                            <input name="user_role" value="consultant" type="checkbox" class="form-check-input" id="user_role">
+                            <input name="user_role" value="consultant" type="radio" class="form-check-input" id="user_role">
                             <label class="form-check-label" for="exampleCheck1">Consultant Login</label>
                         </div>
                         <input type="hidden" name="role" value="admin">

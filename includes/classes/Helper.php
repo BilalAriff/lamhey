@@ -139,7 +139,7 @@ class Helper {
                                         ';
                                     }
 
-                                    if ($rating == "5") {
+                                    if ($rating > "4") {
                                         echo 
                                         '
                                             <i class="fa fa-star" aria-hidden="true"></i>

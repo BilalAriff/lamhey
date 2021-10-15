@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="payment_methods">Add Your Prefered Payment Methods</label>
-                            <select multiple="multiple" size="5" class="form-control ultraSelect" name="payment_methods[]" id="paymentMethods">
+                            <select required multiple="multiple" size="5" class="form-control ultraSelect" name="payment_methods[]" id="paymentMethods">
                                 <?php echo paymentMethodList($paymentMethods) ?>
                             </select>
                         </div>
@@ -98,7 +98,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="city">City</label>
-                                <input name="city" id="reg_city" type="text" class="form-control" id="inputCity" required>
+                                <input required name="city" id="reg_city" type="text" class="form-control" id="inputCity" required>
                             </div>
                             <div class="form-group col-md-4">
                             <label for="inputState">State</label>
@@ -116,20 +116,7 @@
                             </div>
                         </div>
                         <input type="hidden" name="role" value="consultant">
-                        <!-- <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" value="consultant" type="radio" name="_role" id="flexRadioDefault1" required>
-                                <label class="form-check-label" for="">
-                                    Consultant Profile
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" value="user" type="radio" name="role" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="user">
-                                    User Profile
-                                </label>
-                            </div>
-                        </div> -->
+                        
                         <div class="form-group">
                             <h5 class="text-danger"><?php echo $msg; ?></h5>
                         </div>

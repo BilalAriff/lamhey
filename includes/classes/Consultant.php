@@ -256,7 +256,7 @@
             $newRating = $rating + $oldRating;
             $sql = "UPDATE consultants SET rating = :rating WHERE id = :id";
             $values = array ( array(":rating", $newRating), array(":id", $id) );
-            $this->db->queryDB($sql, Database::EXECUTE, $values["id"]);
+            $this->db->queryDB($sql, Database::EXECUTE, $values);
         }
 
     }
