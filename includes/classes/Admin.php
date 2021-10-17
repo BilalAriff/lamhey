@@ -274,4 +274,16 @@ class Admin extends User {
             return $result;
     }
 
+    public function featureEvent($featured, $eventId) {
+        $sql = "UPDATE events SET event_featured = :event_featured WHERE event_id = :event_id";
+        $values = array( array(':event_featured', $featured), array(':event_id', $eventId) );
+        $this->db->queryDB($sql, DATABASE::EXECUTE, $values);
+    }
+
+    public function featureConsultant($featured, $id) {
+        $sql = "UPDATE consultants SET featured = :featured WHERE id = :id";
+        $values = array( array(':featured', $featured), array(':event_id', $id) );
+        $this->db->queryDB($sql, DATABASE::EXECUTE, $values);
+    }
+
 }

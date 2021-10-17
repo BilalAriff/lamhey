@@ -9,8 +9,21 @@
     if (isset($_SESSION['logged']) == true) {
         $username = $_SESSION['username'];
         $user_role = $_SESSION['role'];
-        $dashboard_link = ( $user_role == "user") ? "user-dashboard.php" : "consultant-dashboard.php" ;
+        $dashboard_link = dashboardLink($user_role);
+        // $dashboard_link = ( $user_role == "user") ? "user-dashboard.php" : "consultant-dashboard.php" ;
         $user_avatar_link = $_SESSION['profile_image'];
+    }
+
+    function dashboardLink($role) {
+        if($role == "admin") {
+            return "admin-dashboard.php";
+        }
+        if($role == "user") {
+            return "user-dashboard.php";
+        }
+        if ($role == "consultant") {
+            return "consultant-dashboard.php";
+        }
     }
 
 ?>

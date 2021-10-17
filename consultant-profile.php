@@ -68,17 +68,23 @@
                     <div class="user-profile-actions">
                         <?php
                             if (isset($_SESSION['role'])) {
-                                if($_SESSION['role'] == 'user') {
-                                    echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
-                                    echo '<button class="btn btn-success mr-2" type="button" data-toggle="modal" data-target="#customEventRequest"> Request Event</button>';
-                                    echo '<button class="btn btn-primary mr-2" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
-                                    echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#complaint"> Lodge Complaint </button>';
                                 
+                                if ($consultantAvailablity == "unavailable") {
+                                    echo "<h5>Consultant is Unavailable at the moment!</h5>";
+                                } else {
+                                    if($_SESSION['role'] == 'user') {
+                                        echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
+                                        echo '<button class="btn btn-success mr-2" type="button" data-toggle="modal" data-target="#customEventRequest"> Request Event</button>';
+                                        echo '<button class="btn btn-primary mr-2" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
+                                        echo '<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#complaint"> Lodge Complaint </button>';
+                                    
+                                    }
+                                    
+                                    if ($_SESSION['role'] == 'consultant') {
+                                        echo "<a href='consultant-dashboard' class='btn btn-dark'>Visit your Dashboard</a>";
+                                    }
                                 }
-                                
-                                if ($_SESSION['role'] == 'consultant') {
-                                    echo "<a href='consultant-dashboard' class='btn btn-dark'>Visit your Dashboard</a>";
-                                }
+
                                 if ($_SESSION['role'] == 'admin') {
                                     $blockProfile = <<<HTML
                                         <button class="btn btn-danger" data-toggle="modal" data-target="#blockProfile">Block Profile</button>;

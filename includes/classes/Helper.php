@@ -81,6 +81,13 @@ class Helper {
     }
 
     public function starRating($_rating) {
+
+        $oneStarPoints = 1;
+        $twoStarPoints = 10;
+        $threeStarPoints = 20;
+        $fourStarPoints = 30;
+        $fiveStarPoints = 40;
+
         
         $rating = $_rating; 
                                     if($rating == "0") {
@@ -95,7 +102,7 @@ class Helper {
                                     }
 
                                     
-                                    if ($rating == "1") {
+                                    if ($rating > 0 && $rating < $oneStarPoints ) {
                                         echo 
                                         '
                                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -106,7 +113,7 @@ class Helper {
                                         ';
                                     }
 
-                                    if ($rating == "2") {
+                                    if ($rating > $oneStarPoints && $rating < $threeStarPoints) {
                                         echo 
                                         '
                                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -117,7 +124,7 @@ class Helper {
                                         ';
                                     }
 
-                                    if ($rating == "3") {
+                                    if ($rating > $threeStarPoints && $rating < $fourStarPoints ) {
                                         echo 
                                         '
                                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -128,7 +135,7 @@ class Helper {
                                         ';
                                     }
 
-                                    if ($rating == "4") {
+                                    if ($rating > $fourStarPoints && $rating < $fiveStarPoints) {
                                         echo 
                                         '
                                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -139,7 +146,7 @@ class Helper {
                                         ';
                                     }
 
-                                    if ($rating > "4") {
+                                    if ( $rating > $fiveStarPoints ) {
                                         echo 
                                         '
                                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -148,6 +155,42 @@ class Helper {
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         ';
+                                    }
+    }
+
+    public function numericRating($_rating) {
+
+        $oneStarPoints = 1;
+        $twoStarPoints = 10;
+        $threeStarPoints = 20;
+        $fourStarPoints = 30;
+        $fiveStarPoints = 40;
+
+        
+        $rating = $_rating; 
+                                    if($rating == 1) {
+                                        return 0.0;
+                                    }
+
+                                    
+                                    if ($rating > 0 && $rating < $oneStarPoints ) {
+                                        return 1.0;
+                                    }
+
+                                    if ($rating > $oneStarPoints && $rating < $threeStarPoints) {
+                                        return 2.0;
+                                    }
+
+                                    if ($rating > $threeStarPoints && $rating < $fourStarPoints ) {
+                                        return 3.0;
+                                    }
+
+                                    if ($rating > $fourStarPoints && $rating < $fiveStarPoints) {
+                                        return 4.0;
+                                    }
+
+                                    if ( $rating > $fiveStarPoints ) {
+                                        return 5.0;
                                     }
     }
 

@@ -17,11 +17,13 @@
     $complaint = new Complaint();
     $consultantAvailablity = $consultant->getProfileAvailablity($profileID);
 
+
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
     $featuredEvents = $events->getEventListByConsultant($profileID);
     $videoPortfolio = $portfolio->getConsultantVideoPortfolio($profileID);
     $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
 
+    var_dump($consultantAvailablity);
 function videoPortfolioItem($item) {
 
     $portfolioTitle = $item['portfolio_title'];
@@ -104,7 +106,7 @@ function featuredEventCard($event) {
             <div class="event-card-footer">
                 <div class="event-card-profile">
                     <div class="event-card-profile-header">
-                        <img src="$thumbnail" alt="">
+                        <img src="$hostAvatar" alt="">
                     </div>
                     <h6 class="event-card-profie-username">$hostName</h6>
                 </div>

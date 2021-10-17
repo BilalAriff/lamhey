@@ -14,6 +14,30 @@ class Event {
         $this->eventName = $_eventName;
     }
 
+    public function isEventBook($eventId, $userId) {
+        // $sql = "SELECT * from bookings WHERE  booking_event = :booking_event AND booking_user = :booking_user";
+        $sql = "SELECT count(booking_user) AS num FROM bookings WHERE  booking_event = :booking_event AND booking_user = :booking_user";
+        $values = array( array(":booking_event", $eventId), array(":booking_user", $userId));
+        $result = $this->db->queryDB($sql, Database::EXECUTE, $values);
+        
+        if ($result['num'] == 0)
+            return false;
+        else
+            return true;  
+    }
+
+    public function isEventFeatured($eventId) {
+                $sql = "SELECT event_featured FROM events WHERE event_id = :event_id";
+                $values = array( array(":event_id", $eventId));
+                $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+                
+                // if ($result['num'] == 0)
+                //     return false;
+                // else
+                //     return true;  
+                return $result['event_featured'];
+    }
+
 
     public function createEvent($pTitle, $pThumbnail, $pEventPrice, $pHost, $pHostAvatar, $eventHostName, $pDescription, $pCategories) {
         $sql = "INSERT INTO events (

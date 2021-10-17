@@ -38,7 +38,7 @@ function featuredEventCard($event) {
             <div class="event-card-footer">
                 <div class="event-card-profile">
                     <div class="event-card-profile-header">
-                        <img src="$thumbnail" alt="">
+                        <img src="$hostAvatar" alt="">
                     </div>
                     <h6 class="event-card-profie-username">$hostName</h6>
                 </div>

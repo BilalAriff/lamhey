@@ -24,34 +24,7 @@
 
 <!-- Navigation -->
 
-<section class="navigation">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand text-white" href="index.php">Logo</a>
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link text-white" href="index.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="about-us.php">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="login.php">Contact Us</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link text-white">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</section>
+<?php include_once('partials/navigation.php')?>
 
 <section class="login-page-section">
     <div class="container">
@@ -60,12 +33,13 @@
                 <div class="login-form">
                     <div class="form-group text-center">
                         <h2>Add Your Portfolio</h2>
+                        <h4><?php echo $Msg?></h4>
                         <h4 class="text-success"><?php echo $Msg ?></h4>
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="Thumbnail">Thumbnail</label>
-                            <input required type="file" name="link">
+                            <input required accept="video/mp4,video/x-m4v,video/*" type="file" name="link">
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
@@ -109,21 +83,12 @@
 </section>
 
 <!-- Footer -->
-<section class="main-footer-section">
-    <footer class="main-footer text-center bg-dark">
-        <h4>Book Online Event Managment Consultant</h4>
-        <h5><strong>Bilal Arif</strong> - FYP</h5>
-    </footer>
-    <footer class="copyright-footer">
-        <h6>Bilal Arif - BC170400198 - 2021</h6>
-    </footer>
-</section>
+
+<?php include_once('partials/footer.php')?>
 
 <!-- =============   SCRIPTS   ============ -->
 
-    <script src="js/jquery.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
+<?php include_once('partials/ScriptTags.php')?>
+
 </body>
 </html>

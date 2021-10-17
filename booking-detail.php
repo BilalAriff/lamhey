@@ -43,24 +43,8 @@
                             <div class="col-12 text-center">
                                 <form action="" method="post">
                                     <?php
-                                    $btn = <<<HTML
-                                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                <label class="btn btn-danger mr-4">
-                                                    Reject
-                                                    <input type="radio" name="action" value="rejected">
-                                                </label>
-                                                <label class="btn btn-success">
-                                                    Accept
-                                                    <input type="radio" name="action" value="accepted">
-                                                </label>
-                                            </div>
-                                            <div class="form-group text-center mt-4">
-                                                <button type="submit" name="submit" value="submit"
-                                                class="btn btn-dark">Confirm</button>
-                                             </div>
-                                            HTML;
                                     if($_SESSION['role'] == 'consultant') {
-                                        echo $btn;
+                                        echo bookingOptions($bookingStatus);
                                     }
                                     ?>
                                 </form>

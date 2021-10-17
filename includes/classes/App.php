@@ -3,14 +3,16 @@
 class App {
     
     protected $db;
-    protected $alertMsg;
+    private $alertMsg;
 
     public function __construct(){
         $this->db = new Database();
     }
 
     public function protectedView() {}
-    public function alertMsg() {}
+    public function alertMsg($msg) {
+        $this->alertMsg = $msg;
+    }
 
     public function isProfileBlocked($username, $table) {
         $sql = "SELECT profile_status FROM $table WHERE username = :username";
@@ -21,8 +23,37 @@ class App {
         } else {
             return false;
         }
-
         // echo $sql;
+    }
+
+    public function isEventBookedTest($eventId, $userId){
+            
+        $sql = "SELECT count(booking_id) AS num FROM bookings WHERE booking_user = :booking_user AND booking_event = :booking_event";
+        
+        $values = array( array(":booking_user", $userId), array(':booking_event', $eventId));
+    
+        $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+
+        if ($result['num'] == 0)
+            return false;
+        else
+            return true;                
+        
+    }
+
+    public function isEventBooked($eventId, $userId) {
+        $sql = "SELECT booking_id FROM bookings WHERE booking_user = :booking_user AND booking_event = :booking_event";
+        $values = array( array(":booking_user", $userId), array(':booking_event', $eventId));
+        $result =  $this->db->queryDB($sql, DATABASE::SELECTSINGLE, $values);
+
+        // if($result == "false") {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
+
+        return $result;
+
     }
 
     public function getPaymentMethodsList() {

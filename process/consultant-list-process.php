@@ -26,12 +26,14 @@ echo $_c;
 
 function makeConsultantList($_consultant) {
 
+    $h = new Helper();
+
     $id = $_consultant['id'];
     $username = $_consultant['username'];
     $consultant_type = $_consultant['consultant_type'];
     $state = $_consultant['state'];
     $city = $_consultant['city'];
-    $rating = $_consultant['rating'];
+    $rating = $h->numericRating($_consultant['rating']);
     $avatar = $_consultant['profile_image'];
     
     $card = 

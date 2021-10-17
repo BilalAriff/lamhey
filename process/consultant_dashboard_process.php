@@ -44,7 +44,7 @@ function bookingTd($booking) {
             <td>$event</td>
             <td>$bookingUsername</td>
             <td> $date</td>
-            <td>$status</td>
+            <td><span class="rounded-pill px-3 py-1 $status">$status</span></td>
             <td>$bookingDate</td>
             <td><a href="booking-detail.php?id=$id">View</a></td>
          <tr>
@@ -141,7 +141,7 @@ function eventListCard($event) {
             <div class="event-card-footer">
                 <div class="event-card-profile">
                     <div class="event-card-profile-header">
-                        <img src="$thumbnail" alt="">
+                        <img src="$hostAvatar" alt="">
                     </div>
                     <h6 class="event-card-profie-username">$hostName</h6>
                 </div>

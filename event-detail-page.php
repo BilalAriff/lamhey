@@ -31,19 +31,14 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="event-description">
                         <h1 class="event-title text-capitalize"><?php echo $event['event_title'] ?></h1>
-                        <h5 class="event-price"><?php echo $event['event_price'] ?><span class="featured-event">Featured</span> </h5>
+                        <h5 class="event-price"><?php echo $event['event_price']; echo eventFeatured($eventFeatured); ?></h5>
                         <p class="event-description-tag"><?php echo $event['event_description'] ?></p>
                     </div>
                     <div class="book-now">
                     <?php
                         if(isset($_SESSION['role'])) {
                             if($_SESSION['role'] == 'user') {
-                                $bookBtn = <<<HTML
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                    Book Event
-                                                </button>        
-                                            HTML;
-                                echo $bookBtn;
+                                bookingBtn($eventBooked);
                             }
                             if($_SESSION['role'] == 'consultant') {
                                 echo "";

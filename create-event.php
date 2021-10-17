@@ -6,11 +6,7 @@
     if( empty($_SESSION) || $_SESSION['role'] !== 'consultant') {
         header("Location: index.php");
     }
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +24,9 @@
             <div class="offset-sm-3 offset-md-3 col-sm-12 col-md-6">
                 <div class="event-creation-form login-form">
                     <form action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3 class="text-center text-success"><?php echo $Msg ?></h3>
+                        </div>
                         <div class="form-group" >
                             <label for="">Image</label>
                             <input required class="form-control-file"  type="file" name="eventThumbnail">

@@ -4,6 +4,8 @@ $app = new App();
 $h = new Helper();
 
 
+$Msg = "";
+
 $categories = $app->getAllCategories();
 
 function catOption($category)
@@ -51,5 +53,7 @@ if (isset($_POST['submit'])) {
             $_POST['eventHostName'],
             $_POST['eventDescription'],
             $_POST['eventCategory']);
+
+            $Msg = "Event Created <br> <small>Create More or <a href='consultant-dashboard.php?id=".$_POST['eventHostID']."'>Go back to Dashboard</a></small>";
     }
 ?>      
