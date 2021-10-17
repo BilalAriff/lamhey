@@ -5,11 +5,12 @@ $events = new Event("eventProcessPage");
 $helper = new Helper();
 $booking = new Booking();
 
+
 $eventID = $helper->getURLParams("id");
 $event = $events->getEvent($eventID);
 $consultant = new Consultant($event["event_host_name"]);
 $consultantInfo = $consultant->getConsultantProfileInfo($event["event_host_name"]);
-$eventBooked = $app->isEventBookedTest($eventID, $_SESSION['userID']);
+$eventBooked = $app->isEventBookedTest($eventID, (isset($_SESSION['userID'])) ? $_SESSION['userID'] : 'null');
 $eventFeatured = $events->isEventFeatured($eventID);
 
 if (isset($_POST["confirm_booking"])) {

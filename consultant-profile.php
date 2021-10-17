@@ -73,6 +73,7 @@
                                     echo "<h5>Consultant is Unavailable at the moment!</h5>";
                                 } else {
                                     if($_SESSION['role'] == 'user') {
+                                        
                                         echo '<button class="btn btn-danger mr-2">Block Profile</button>'; 
                                         echo '<button class="btn btn-success mr-2" type="button" data-toggle="modal" data-target="#customEventRequest"> Request Event</button>';
                                         echo '<button class="btn btn-primary mr-2" type="button" data-toggle="modal" data-target="#review"> Add Review </button>';
@@ -80,12 +81,13 @@
                                     
                                     }
                                     
-                                    if ($_SESSION['role'] == 'consultant') {
+                                    if ($_SESSION['role'] == 'consultant' && $_SESSION['userID'] == $profileID) {
                                         echo "<a href='consultant-dashboard' class='btn btn-dark'>Visit your Dashboard</a>";
                                     }
                                 }
 
-                                if ($_SESSION['role'] == 'admin') {
+                                if ( $_SESSION['role'] == 'admin' ) {
+                                    
                                     $blockProfile = <<<HTML
                                         <button class="btn btn-danger" data-toggle="modal" data-target="#blockProfile">Block Profile</button>;
                                         <div class="modal fade" id="blockProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

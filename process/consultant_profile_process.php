@@ -9,21 +9,21 @@
     // $helper->protectedRoute($_SESSION["role"], "user");
 
     // $guest = new Guest("guest");
+
     $events = new Event("consultantEvents");
     $consultant = new Consultant($profileID);
     $admin = new Admin('profile_admin');
     $consultantProfile = new ConsultantProfile($profileID);
     $portfolio = new Portfolio();
     $complaint = new Complaint();
+    
     $consultantAvailablity = $consultant->getProfileAvailablity($profileID);
-
 
     $profile_details = $consultantProfile->getConsultantProfileDetails($profileID);
     $featuredEvents = $events->getEventListByConsultant($profileID);
     $videoPortfolio = $portfolio->getConsultantVideoPortfolio($profileID);
     $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
 
-    var_dump($consultantAvailablity);
 function videoPortfolioItem($item) {
 
     $portfolioTitle = $item['portfolio_title'];
@@ -142,7 +142,6 @@ if (isset($_POST['lodge_complaint'])) {
     $_POST['complaint_description'], $_POST['complaint_feedback']);
 }
 
-
 if (isset($_POST['block_profile'])) {
     $admin->blockConsultant($_POST['profilelId']);
 }
@@ -157,4 +156,5 @@ if(isset($_POST['request_event'])) {
         $_POST['event_date']);
 
         $Msg = "Your Request Has Been Submitted";
+    
     }

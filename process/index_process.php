@@ -51,12 +51,14 @@ function featuredEventCard($event) {
 
 function featuredConsultantCard($fConsultant) {   
 
+    $h = new Helper();
+
     $id = $fConsultant['id'];
     $name = $fConsultant['firstname']." ".$fConsultant['lastname'];
     $city = $fConsultant['city'];
     $consultantType = $fConsultant['consultant_type'];
     $state = $fConsultant['state'];
-    $rating = $fConsultant['rating'];
+    $rating = $h->numericRating($fConsultant['rating']);
     $profile = $fConsultant['profile_image'];
 
     $card = 
@@ -70,7 +72,7 @@ function featuredConsultantCard($fConsultant) {
                     <h5 class="consultant-card-title">$name</h5>
                     <p class="consultant-card-type">$consultantType</p>
                     <p class="consultant-card-location">$city, $state</p>
-                    <h4 class="consultant-card-rating">$rating</h4>
+                    <h4 class="consultant-card-rating">$rating.0</h4>
                     <a href="consultant-profile.php?id=$id">View Profile</a>
                 </div>
             </div>
