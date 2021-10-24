@@ -9,9 +9,6 @@ $bookings = new Booking();
 $bookingList = $bookings->getUserBookingList($_SESSION['userID']);
 $complaints = $app->getUserComplaints($_SESSION['username']);
 
-var_dump($complaints);
-
-
 function complaintTd($c) {
 
     $id = $c['id'];
