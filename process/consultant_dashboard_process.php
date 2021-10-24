@@ -2,6 +2,7 @@
 
 session_start();
 include_once "include_files.php";
+$app = new App();
 $h = new Helper();
 $h->protectedRoute($_SESSION['role'], 'consultant');
 $consultant = new Consultant("consultant-dashboard");
@@ -16,7 +17,59 @@ $allEvents = $events->getEventList();
 $bookingList = $bookings->getConsultantBookingList($consultantId);
 $eventListData = $events->getEventListByConsultant($consultantId);
 $consultantAvailablity = $consultant->getProfileAvailablity($consultantId);
-$customEvents = $customEvent->getConsultantCustomRequest($consultantId); 
+$customEvents = $customEvent->getConsultantCustomRequest($consultantId);
+$allCategories = $app->getAllCategories();
+$allPaymentMethods =  $app->getPaymentMethodsList();
+$paymentMethods = $consultant->getPaymentMethods($consultantId);
+$categories = $consultant->getCategories($consultantId);
+
+function paymentMethod($p) {
+
+    $name = $p;
+    $payment =
+    <<<HTML
+        <div class="small-payment-method-label"> 
+            <label>$name</label>
+        </div>
+    HTML; 
+    echo $payment;
+}
+
+function category($c) {
+
+    $name = $c;
+
+    $category =
+    <<<HTML
+        <div class="small-category-label"> 
+            <label>$name</label>
+        </div>
+    HTML; 
+
+    echo $category;
+}
+
+function categoryOption($_category) {
+    $id = $_category['id'];
+    $name = $_category['name'];
+    
+
+    $option = <<<HTML
+                    <input style="margin-right: 10px;" type="checkbox" id="$id" name="categories[]" value="$name">$name</option><br> 
+                HTML;
+    echo $option;
+}
+
+function paymentOption($_payment) {
+    $id = $_payment['pm_id'];
+    $name = $_payment['pm_name'];
+    
+
+    $option = <<<HTML
+                    <input style="margin-right: 10px;" type="checkbox" id="pm_$id" name="payment_method[]" value="$name">$name</option><br> 
+                HTML;
+    echo $option;
+}
 
 function bookingTd($booking) {
 
@@ -28,14 +81,7 @@ function bookingTd($booking) {
     $status = $booking['booking_status'];
     $bookingUsername = $booking['booking_user_username'];
     $bookingDate = $booking['booking_createdAt'];
- 
-    // $dateObj = $booking['booking_date'];    
-    // $date = new DateTime($dateObj);
 
-    // echo $date->diff($now)->format("%d days, %h hours and %i minuts");
-
-    
-    // $_date = date_format($date,'y "-" M "-" DD');
     $card = 
 
         <<<HTML
@@ -165,6 +211,23 @@ function customEventList($data) {
     array_map("customEventTd", $data);
 }
 
+function paymentMethodList($data) {
+    array_map("paymentOption", $data);
+}
+
+function categoryList($data) {
+    array_map("categoryOption", $data);
+}
+
+
+function consultantPaymentMethodList($data) {
+    array_map("paymentMethod", $data);
+}
+
+function consultantCategoryList($data) {
+    array_map("category", $data);
+}
+
 
 if (isset($_POST['change_status'])) {
     $consultant->changeProfileAvailablity($consultantId, $_POST['profile_status']);
@@ -173,5 +236,15 @@ if (isset($_POST['change_status'])) {
 
 if(isset($_POST['custom_event_status'])) {
     $customEvent->manageCustomRequest($_POST['action'], $_POST['event_id']);
-    header("refresh:1");
+    header("Refresh:0.1");
+}
+
+if(isset($_POST['add_payment_methods'])) {
+    $consultant->addPaymentMethods($_POST['payment_method'], $consultantId);
+    header("Refresh:0.1");
+}
+
+if(isset($_POST['add-categories'])) {
+    $consultant->addCategories($_POST['categories'], $consultantId);
+    header("Refresh:0.1");   
 }

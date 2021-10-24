@@ -53,6 +53,29 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="theme-blue-border">
+                        <h3 class="text-center font-weight-bold mb-5">Your Complaints</h3>
+                        <div class="table-responsive">
+                            <table id="bookingTable" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Consultant</th>
+                                        <th scope="col">Your Description</th>
+                                        <th scope="col">Admin Feedback</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php echo complaintListRow($complaints) ?>          
+                                </tbody>
+                            </table>                
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -78,6 +78,13 @@ class User {
         return $result["profile_image"];
     }
 
+    public function getUserComplaints($username) {
+        $sql = "SELECT * FROM complaints WHERE username = :username";
+        $values = array( array(":username", $username) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        return $result;
+    }
+
     public function createUserProfile($pUsername, $pProfileImage, $pEmail, $pFirstname, $pLastname, $pPassword, $pRole, $pAddress, $pCity, $pZip, $pState){
             
         $sql = "INSERT INTO users (username, profile_image, email, firstname, lastname, password, role, address, city, zip, state)

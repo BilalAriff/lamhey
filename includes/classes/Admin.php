@@ -255,6 +255,11 @@ class Admin extends User {
         $this->db->queryDB($sql, Database::EXECUTE, $values);
     }
 
+    public function addPaymentMethods($paymentMethods) {
+        $payments = serialize($paymentMethods);
+        echo $payments;
+    }
+
     public function getPaymentMethod($id) {
             $sql = "SELECT * FROM payment_methods WHERE pm_id = :pm_id";
             $values = array( array(":pm_id", $id));

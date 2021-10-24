@@ -14,9 +14,7 @@ $categories = $app->getAllCategories();
 function paymentMethodOption($p) {
     $id = $p['id'];
     $name = $p['pm_name'];
-
     $_p = <<<HTML
-                
         <option class="text-uppercase" value="$name">$name</option>    
 HTML;
 

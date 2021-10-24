@@ -3,9 +3,39 @@
 include_once "include_files.php";
 session_start();
 
+$app = new App();
 $bookings = new Booking();
 
 $bookingList = $bookings->getUserBookingList($_SESSION['userID']);
+$complaints = $app->getUserComplaints($_SESSION['username']);
+
+var_dump($complaints);
+
+
+function complaintTd($c) {
+
+    $id = $c['id'];
+    $userId = $c['user_id'];
+    $userName = $c['username'];
+    $consultantId = $c['consultant_id'];
+    $consultantName = $c['consultant_name'];
+    $description = $c['description'];
+    $feedback = $c['feedback'];
+    $status = $c['status'];
+    
+    $card = 
+        <<<HTML
+         <tr>
+            <td class="">$id</td>
+            <td class=""><a href="consultant-profile?id=$consultantId">$consultantName</a></td>
+            <td>$description</td>
+            <td>$feedback</td>
+            <td><span class="$status font-weight-bold rounded-pill px-5 py-1"> $status</span></td>            
+         <tr>
+        HTML;
+    echo $card;
+}
+
 
 function bookingTd($booking) {
 
@@ -22,11 +52,11 @@ function bookingTd($booking) {
     $card = 
         <<<HTML
          <tr>
-            <td class=""><div class="d-flex w-100 justify-content-between text-center"> $id<a href="booking-detail.php?id=$id"><i class="fa fa-eye ml-3" aria-hidden="true"></i></a></div> </td>
-            <td class=""><div class="d-flex w-100 justify-content-between text-center"></div> $event <a href="event-detail-page.php?id=$eventId"><i class="fa fa-eye ml-3" aria-hidden="true"></i></a></div></td>
-            <td class=""><div class="d-flex w-100 justify-content-between text-center"></div> $consultant<a href="consultant-profile.php?id=$consultantId"><i class="fa fa-eye ml-3" aria-hidden="true"></i></a></div></td>
+            <td class=""><a href="booking-detail.php?id=$id">$id</a></td>
+            <td class=""><a href="event-detail-page.php?id=$eventId">$event</a></td>
+            <td class=""><a href="consultant-profile.php?id=$consultantId">$consultant</a></td>
             <td class="">$date</td>
-            <td class=""><span class="$status font-weight-bold rounded-pill px-5 py-1"> $status </span></td>
+            <td class=""><span class="$status font-weight-bold rounded-pill px-5 py-1">$status</span></td>
             <td class="">$bookingDate</td>
          <tr>
         HTML;
@@ -35,4 +65,8 @@ function bookingTd($booking) {
 
 function bookingListRow($data) {
     array_map("bookingTd", $data);
+}
+
+function complaintListRow($data) {
+    array_map("complaintTd", $data);
 }

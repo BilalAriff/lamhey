@@ -51,6 +51,4 @@ if (isset($_POST['submit'])) {
 
             $Msg =  $_POST['type']." Portfolio Succesfully Added";
 
-
-
         }

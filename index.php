@@ -29,10 +29,9 @@
                         <div class="home-slider-caption">
                             <h1 class="slider-heading">Online Event<br>Managment<br>Consultant System</h1>
                             <div class="home-banner-search">
-                                <form class="form-group mt-4">
-                                    <input class="form-control" type="text">
-                                    <button class="btn home-search-btn btn-rounded">Search</button>
-                                </form>
+                                <a href="consultant-list.php" style="font-size: 2em;font-weight: bold;">Consultants</a>
+                                OR
+                                <a href="events.php" style="font-size: 2em;font-weight: bold;">Events</a>
                             </div>
                             <img class="mt-3" src="img/vu-logo.jpg" width="140px">
                         </div>

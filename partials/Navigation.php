@@ -35,7 +35,9 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand text-white" href="index.php">Logo</a>
+                <a class="navbar-brand text-white" href="index.php">
+                    <img class="brand-logo" src="img/white-logo.png" alt="">
+                </a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link text-white" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -74,6 +76,12 @@
                                 echo "
                                 <li class='nav-item'>
                                     <a href='login.php' class='nav-link text-white'>Log in</a>
+                                </li>
+                                <li class='nav-item'>
+                                    <span class='nav-link text-white'>|</span>
+                                </li>
+                                <li class='nav-item'>
+                                    <a href='consultant-register.php' class='nav-link text-white'>Join as Consultant</a>
                                 </li>";
                              }
                     ?>

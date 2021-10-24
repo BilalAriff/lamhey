@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     $Msg = "";
     include_once "include_files.php";
@@ -23,6 +24,36 @@
     $featuredEvents = $events->getEventListByConsultant($profileID);
     $videoPortfolio = $portfolio->getConsultantVideoPortfolio($profileID);
     $photoPortfolio = $portfolio->getConsultantPhotoPortfolio($profileID);
+    $paymentMethods = $consultant->getPaymentMethods($profileID);
+    $categories = $consultant->getCategories($profileID);
+
+function paymentMethod($p) {
+
+    $name = $p;
+
+    $payment =
+    <<<HTML
+        <div class="small-payment-method-label"> 
+            <label>$name</label>
+        </div>
+    HTML; 
+
+    echo $payment;
+}
+
+function category($c) {
+
+    $name = $c;
+
+    $category =
+    <<<HTML
+        <div class="small-category-label"> 
+            <label>$name</label>
+        </div>
+    HTML; 
+
+    echo $category;
+}
 
 function videoPortfolioItem($item) {
 
@@ -127,6 +158,14 @@ function videoPortfolioList($data) {
 
 function photoPortfolioList($data) {
     array_map("photoPortfolioItem", $data);
+}
+
+function paymentMethodList($data) {
+    array_map("paymentMethod", $data);
+}
+
+function categoryList($data) {
+    array_map("category", $data);
 }
 
 // give user ratings

@@ -56,6 +56,13 @@ class App {
 
     }
 
+    public function getUserComplaints($username) {
+        $sql = "SELECT * FROM complaint WHERE username = :username";
+        $values = array( array(":username", $username) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        return $result;
+    }
+
     public function getPaymentMethodsList() {
         $sql = "SELECT * FROM payment_methods";
         $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);

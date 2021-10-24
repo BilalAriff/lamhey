@@ -233,6 +233,39 @@
             return unserialize($result['payment_methods']);
         }
 
+        public function getPaymentMethodsList() {
+            $sql = "SELECT * FROM payment_methods";
+            $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);
+            return $result;
+        }
+
+        public function addCategories($categories, $id) {
+            $sql = "UPDATE consultants
+                    SET categories = :categories
+                    WHERE id = :id";
+            // $sql = "INSERT INTO consultants ( payment_methods ) VALUES (:payment_methods) WHERE id = :id";
+
+            $values = array(
+                      array(":categories", serialize($categories)),
+                      array(":id", $id));
+
+            $this->db->queryDB($sql, Database::EXECUTE, $values);
+        }
+
+        public function getCategories($id) {
+            $sql = "SELECT categories FROM consultants WHERE id = :id";
+            $values = array( array(":id", $id) );
+            $result =  $this->db->queryDB($sql, DATABASE::SELECTALL, $values);
+            return unserialize($result[0]['categories']);
+        }
+
+        public function getConsultantPaymentMethodList($id) {
+            $sql = "SELECT payment_methods FROM consultants WHERE id = :id ";
+            $values = array( array( ":id", $id ) );
+            $result =  $this->db->queryDB($sql, DATABASE::SELECTALL);
+            return $result;
+        }
+
         public function changeAvailablity($id, $availablity) {
                 $sql = "UPDATE consultants
                         SET availablity = :availablity
