@@ -27,22 +27,24 @@ function featuredEventCard($event) {
 
     $card = 
     <<<HTML
-        <div class="event-card mx-3">
-            <div class="event-card-header">
-                <img src="$thumbnail" alt="">
-            </div>
-            <div class="event-card-body">
-                <h5 class="event-card-title">$title</h5>
-                <label class="event-card-price">Rs. $price</label>
-            </div>
-            <div class="event-card-footer">
-                <div class="event-card-profile">
-                    <div class="event-card-profile-header">
-                        <img src="$hostAvatar" alt="">
-                    </div>
-                    <h6 class="event-card-profie-username">$hostName</h6>
+        <div class="col-3">
+            <div class="event-card">
+                <div class="event-card-header">
+                    <img src="$thumbnail" alt="">
                 </div>
-            <a href="event-detail-page?id=$id" class="event-card-btn">View Event</a>
+                <div class="event-card-body">
+                    <h5 class="event-card-title">$title</h5>
+                    <label class="event-card-price">Rs. $price</label>
+                </div>
+                <div class="event-card-footer">
+                    <div class="event-card-profile">
+                        <div class="event-card-profile-header">
+                            <img src="$hostAvatar" alt="">
+                        </div>
+                        <h6 class="event-card-profie-username">$hostName</h6>
+                    </div>
+                <a href="event-detail-page?id=$id" class="event-card-btn">View Event</a>
+                </div>
             </div>
         </div>
     HTML;

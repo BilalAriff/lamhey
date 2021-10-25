@@ -4,20 +4,17 @@ include_once "include_files.php";
 
 $admin = new Event("dfd");
 
-// $app = new App();
-// $customEvent = new CustomEvent();
-// $event = new Event("d");
+$app = new App();
 
-// $booked = $app->isEventBooked("16", "40");
+$status = $app->isProfileBlocked("BilalConsultant", 'consultants');
 
-// var_dump($booked);
+if ($status == true) {
+    echo "blocked";
+}
 
-// $req = $customEvent->getConsultantCustomRequest("16");
+if ($status == false) {
+    echo "fine";
+}
 
-// var_dump($req);
-
-$result =  $admin->isEventFeatured("18");
-
-var_dump($result);
 
 

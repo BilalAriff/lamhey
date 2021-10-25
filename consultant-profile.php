@@ -167,7 +167,7 @@ HTML;
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="font-weight-bold">Photo Gallery</h2>
+                    <h2 class="font-weight-bold theme-heading">Photo Gallery</h2>
                 </div>
             </div>
             <div class="row">
@@ -184,13 +184,11 @@ HTML;
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="font-weight-bold">Video Gallery</h2>
+                    <h2 class="font-weight-bold theme-heading">Video Gallery</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <?php echo videoPortfolioList($videoPortfolio)?>
-                </div>
+                <?php echo videoPortfolioList($videoPortfolio)?>
             </div>
         </div>
     </section>
@@ -204,9 +202,7 @@ HTML;
             </div>
         </div>
         <div class="row">
-            <div class="dynamic-top-event-list d-flex flex-row justify-content-center align-items-center">
-                <?php featuredCardList($featuredEvents); ?>
-            </div>
+            <?php featuredCardList($featuredEvents); ?>
         </div>
     </div>
 
@@ -253,12 +249,12 @@ HTML;
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" name="submit_rating" class="btn-dark">Give your ratings</button>
+                        <div class="form-group text-center">
+                            <button type="submit" name="submit_rating" class="btn btn-success">Give your
+                                ratings</button>
+                            <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

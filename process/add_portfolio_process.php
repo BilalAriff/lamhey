@@ -35,10 +35,10 @@ if (isset($_POST['submit'])) {
 
         $h->createUserFolder($userFolderName);
 
+        move_uploaded_file($file_tmp, "uploads/".$userFolderName."/".$file_name);
         $file_location = "uploads/".$userFolderName."/".$file_name;
         
 
-        move_uploaded_file($file_tmp, "uploads/".$userFolderName."/".$file_name);
 
         $portfolio->createPortfolio( 
             $_POST['title'], 
@@ -50,5 +50,7 @@ if (isset($_POST['submit'])) {
             $_POST['type'] );
 
             $Msg =  $_POST['type']." Portfolio Succesfully Added";
+
+           var_dump($_POST);   
 
         }

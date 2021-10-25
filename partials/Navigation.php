@@ -46,10 +46,10 @@
                         <a class="nav-link text-white" href="about-us.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white mr-4 btn bg-light-purple" href="events.php">Events</a>
+                        <a class="nav-link text-white" href="events.php">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white btn bg-light-purple" href="consultant-list.php">Consultants</a>
+                        <a class="nav-link text-white" href="consultant-list.php">Consultants</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

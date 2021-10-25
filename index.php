@@ -60,15 +60,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="mb-5">Book Our Top Rated Events<br>Now</h2>
+                    <h2 class="mb-5 theme-heading">Book Our Top Rated Events<br>Now</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="dynamic-top-event-list d-flex flex-row justify-content-center align-items-center">
-                        <?php featuredCardList($featuredEvents); ?>
-                    </div>
-                </div>
+                <?php featuredCardList($featuredEvents); ?>
             </div>
         </div>
     </section>

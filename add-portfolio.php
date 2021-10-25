@@ -39,7 +39,7 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="Thumbnail">Thumbnail</label>
-                            <input required accept="video/mp4,video/x-m4v,video/*" type="file" name="link">
+                            <input required type="file" name="link">
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
@@ -61,7 +61,11 @@
                             <input required name="date" type="date" class="form-control">
                         </div>
                         <div class="form-group">
-                            <div class="row">
+                            <select name="type" class="form-control" id="">
+                                <option value="video">Video</option>
+                                <option value="Photo">Photo</option>
+                            </select>
+                            <!-- <div class="row">
                                 <div class="col-6">
                                     <label for="photo">Photo</label>
                                     <input required type="radio" name="type" value="photo">
@@ -70,7 +74,7 @@
                                     <label for="video">Video</label>
                                     <input required type="radio" name="type" value="video">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <button class="btn btn-dark" value="submit" name="submit" type="submit">Submit</button>

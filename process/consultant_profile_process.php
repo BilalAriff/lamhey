@@ -126,7 +126,8 @@ function featuredEventCard($event) {
 
     $card = 
     <<<HTML
-        <div class="event-card mx-3">
+     <div class="col-3">
+        <div class="event-card my-3">
             <div class="event-card-header">
                 <img src="$thumbnail" alt="">
             </div>
@@ -143,7 +144,9 @@ function featuredEventCard($event) {
                 </div>
             <a href="event-detail-page?id=$id" class="event-card-btn">View Event</a>
             </div>
-        </div>
+        </div>     
+     </div>
+
     HTML;
     echo $card;
 }
@@ -172,6 +175,7 @@ function categoryList($data) {
 
 if (isset($_POST["submit_rating"])) {
   $consultant->addReview($profileID, $profile_details["rating"], $_POST["user_rating"]);   
+  $Msg = "Your Rating Was Submiting Succesfully!";
 }
 
 if (isset($_POST['lodge_complaint'])) {
@@ -179,6 +183,7 @@ if (isset($_POST['lodge_complaint'])) {
     $complaint->lodgeComplaint($_POST['complaint_user_id'], $_POST['complaint_username'], 
     $_POST['complaint_consultant_id'], $_POST['complaint_consultant_name'], 
     $_POST['complaint_description'], $_POST['complaint_feedback']);
+    $Msg = "Sorry for inconvenience, We have recieved your Complaint";
 }
 
 if (isset($_POST['block_profile'])) {

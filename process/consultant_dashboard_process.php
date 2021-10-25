@@ -3,15 +3,18 @@
 session_start();
 include_once "include_files.php";
 $app = new App();
+
 $h = new Helper();
-$h->protectedRoute($_SESSION['role'], 'consultant');
+// $h->protectedRoute($_SESSION['role'], 'consultant');
 $consultant = new Consultant("consultant-dashboard");
 $customEvent = new CustomEvent();
 
 $consultantId = $_SESSION['userID'];
 
+$app = new App();
 $bookings = new Booking();
 $events = new Event("consultant_events");
+
 
 $allEvents = $events->getEventList();
 $bookingList = $bookings->getConsultantBookingList($consultantId);
@@ -22,7 +25,7 @@ $allCategories = $app->getAllCategories();
 $allPaymentMethods =  $app->getPaymentMethodsList();
 $paymentMethods = $consultant->getPaymentMethods($consultantId);
 $categories = $consultant->getCategories($consultantId);
-
+ 
 function paymentMethod($p) {
 
     $name = $p;
@@ -176,7 +179,7 @@ function eventListCard($event) {
     $card = 
     <<<HTML
      <div class="col-3">
-        <div class="event-card mx-3">
+        <div class="event-card my-3">
             <div class="event-card-header">
                 <img src="$thumbnail" alt="">
             </div>
