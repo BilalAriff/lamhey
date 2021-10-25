@@ -13,10 +13,6 @@ $blockedUsers = $admin->getBlockedUserList();
 $paymentMethods = $admin->getPaymentMethodsList();
 $categories = $admin->getCategoryList();
 
-var_dump($customBookingData);
-// var_dump($categories);
-
-
 function blockedUserTd($user) {
 
     $id = $user['id'];
@@ -89,11 +85,6 @@ function custoomBookingTd($booking) {
             <td><label class="rounded-pill px-3 py-1 text-uppercase $status" for="">$status</label></td>
             <td>$bookingDate</td>
             <td><a href="custom-booking-detail.php?id=$id" data-toggle="modal" data-target="#customRequestInformation_$id">View</a>
-            
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" >
-                Launch demo modal
-                </button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="customRequestInformation_$id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -118,7 +109,6 @@ function custoomBookingTd($booking) {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                         </div>
                     </div>

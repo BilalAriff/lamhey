@@ -139,7 +139,7 @@
         </div>
         <div class="row">
             <div class="col-12 text-center my-5">
-                <h3>Custom Event Requests</h3>
+                <h3 class="theme-heading">Custom Event Requests</h3>
             </div>
         </div>
 

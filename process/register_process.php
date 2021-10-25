@@ -188,38 +188,6 @@ if (isset($_POST['submit']))
                         $_POST['city'],
                         $_POST['state'],
                         $_POST['zip']);
-
-                    // var_dump($_POST);
-
-                                
-                    //    echo $_POST['username'];
-                    //    echo "<br>";
-                    //    echo $_POST['email'];
-                    //    echo "<br>";
-                    //    echo $_POST["consultant_type"];
-                    //    echo "<br>";
-                    //    echo $_POST["rating"];
-                    //    echo "<br>";
-                    //    echo $_POST["about"];
-                    //    echo "<br>";
-                    //    echo $file_location;
-                    //    echo "<br>";
-                    //    echo $_POST['firstname'];
-                    //    echo "<br>";
-                    //    echo $_POST['lastname'];
-                    //    echo "<br>";
-                    //    echo $_POST['password'];
-                    //    echo "<br>";
-                    //    echo $_POST['role'];
-                    //    echo "<br>";
-                    //    echo $_POST['address'];
-                    //    echo "<br>";
-                    //    echo $_POST['city'];
-                    //    echo "<br>";
-                    //    echo $_POST['zip'];
-                    //    echo "<br>";
-                    //    echo $_POST['state'];
-                    //    echo "<br>";
                 
                   $Msg = "Consultant Profile Succesfully Created!";
                

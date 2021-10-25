@@ -222,7 +222,6 @@ class Helper {
         // if (!isset($_SESSION)) {
         //     $_SESSION['role'] = "guest";
         // }
-        var_dump($_SESSION);
     }
 
     public function protectedView() {

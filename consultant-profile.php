@@ -15,19 +15,16 @@
     <section class="profile-navigation-section bg-light-blue mt-3 sticky-top">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active" href="#">About Me</a>
+                <a class="nav-link active" href="#aboutMe">About Me</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Photo Gallery</a>
+                <a class="nav-link" href="#photoGallery">Photo Gallery</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Video Gallery</a>
+                <a class="nav-link" href="#videoGallery">Video Gallery</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Events</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Reviews</a>
+                <a class="nav-link" href="#events">Events</a>
             </li>
         </ul>
     </section>
@@ -128,7 +125,7 @@ HTML;
 
     <section class="about-me-section">
         <div class="container">
-            <div class="row">
+            <div class="row" id="aboutMe">
                 <div class="col-12 text-center">
                     <h2 class="font-weight-bold">About Me</h2>
                 </div>
@@ -165,7 +162,7 @@ HTML;
 
     <section class="photo-gallery-section bg-light-blue p-4">
         <div class="container">
-            <div class="row">
+            <div class="row" id="photoGallery">
                 <div class="col-12 text-center">
                     <h2 class="font-weight-bold theme-heading">Photo Gallery</h2>
                 </div>
@@ -182,7 +179,7 @@ HTML;
 
     <section class="video-gallery-section p-4">
         <div class="container">
-            <div class="row">
+            <div class="row" id="videoGallery">
                 <div class="col-12 text-center">
                     <h2 class="font-weight-bold theme-heading">Video Gallery</h2>
                 </div>
@@ -196,9 +193,9 @@ HTML;
     <!-- User Bookings -->
 
     <div class="container">
-        <div class="row">
+        <div class="row" id="events">
             <div class="col-12 text-center my-5">
-                <h3>Events</h3>
+                <h2 class="theme-heading">Events</h2>
             </div>
         </div>
         <div class="row">

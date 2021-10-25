@@ -9,7 +9,6 @@ $events = new Event("eventProcessPage");
 $allEvents = $events->getEventList();
 $categoryList = $app->getAllCategories();
 
-// var_dump($categoryList);
 
 // SEARCH BY SEARCH_FIELD 
 

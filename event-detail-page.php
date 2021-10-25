@@ -31,7 +31,7 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="event-description">
                         <h1 class="event-title text-capitalize"><?php echo $event['event_title'] ?></h1>
-                        <h5 class="event-price"><?php echo $event['event_price']; echo eventFeatured($eventFeatured); ?></h5>
+                        <h5 class="event-price">Rs. <?php echo $event['event_price']; echo eventFeatured($eventFeatured); ?></h5>
                         <p class="event-description-tag"><?php echo $event['event_description'] ?></p>
                     </div>
                     <div class="book-now">
