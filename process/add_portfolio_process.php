@@ -27,11 +27,18 @@ if (isset($_POST['submit'])) {
 
         $title = $_POST["title"];  
         $userFolderName = $_SESSION['username'];
+        $portfolioType = "";
 
         $file_tmp = $_FILES['link']['tmp_name'];
         $file_name = $_FILES['link']['name'];
         $file_size = $_FILES['link']['size'];
         $file_type = $_FILES['link']['type'];
+
+        if(strstr($file_type, "video/")){
+            $portfolioType = "video";
+        }else if(strstr($file_type, "image/")){
+            $portfolioType = "photo";
+        }
 
         $h->createUserFolder($userFolderName);
 
@@ -47,10 +54,10 @@ if (isset($_POST['submit'])) {
             $_POST['consultant'], 
             $_POST['categories'], 
             $_POST['date'],  
-            $_POST['type'] );
+            $portfolioType );
 
-            $Msg =  $_POST['type']." Portfolio Succesfully Added";
+       
 
-           var_dump($_POST);   
+            $Msg =  $portfolioType." Portfolio Succesfully Added"; 
 
         }

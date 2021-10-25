@@ -33,7 +33,6 @@
                 <div class="login-form">
                     <div class="form-group text-center">
                         <h2>Add Your Portfolio</h2>
-                        <h4><?php echo $Msg?></h4>
                         <h4 class="text-success"><?php echo $Msg ?></h4>
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
@@ -59,22 +58,6 @@
                         <div class="form-group">
                             <label for="date">Date</label>
                             <input required name="date" type="date" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <select name="type" class="form-control" id="">
-                                <option value="video">Video</option>
-                                <option value="Photo">Photo</option>
-                            </select>
-                            <!-- <div class="row">
-                                <div class="col-6">
-                                    <label for="photo">Photo</label>
-                                    <input required type="radio" name="type" value="photo">
-                                </div>
-                                <div class="col-6">
-                                    <label for="video">Video</label>
-                                    <input required type="radio" name="type" value="video">
-                                </div>
-                            </div> -->
                         </div>
                         <div class="form-group">
                             <button class="btn btn-dark" value="submit" name="submit" type="submit">Submit</button>
