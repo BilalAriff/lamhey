@@ -5,9 +5,36 @@ session_start();
 
 $app = new App();
 $bookings = new Booking();
+$user = new User($_SESSION['username']);
 
 $bookingList = $bookings->getUserBookingList($_SESSION['userID']);
 $complaints = $app->getUserComplaints($_SESSION['username']);
+$customRequests = $user->getUserCustomBookingRequests($_SESSION['username']);
+
+
+function customRequestTd($c) {
+
+    $id = $c['id'];
+    $userId = $c['user_id'];
+    $userName = $c['username'];
+    $consultantId = $c['consultant_id'];
+    $consultantName = $c['consultant_name'];
+    $description = $c['event_description'];
+    $eventDate = $c['event_date'];
+    $status = $c['event_status'];
+    
+    $card = 
+        <<<HTML
+         <tr>
+            <td class="">$id</td>
+            <td class=""><a href="consultant-profile?id=$consultantId">$consultantName</a></td>
+            <td>$description</td>
+            <td>$eventDate</td>
+            <td><span class="$status font-weight-bold rounded-pill px-5 py-1"> $status</span></td>            
+         <tr>
+        HTML;
+    echo $card;
+}
 
 function complaintTd($c) {
 
@@ -66,4 +93,8 @@ function bookingListRow($data) {
 
 function complaintListRow($data) {
     array_map("complaintTd", $data);
+}
+
+function customRequestRow($data) {
+    array_map("customRequestTd", $data);
 }

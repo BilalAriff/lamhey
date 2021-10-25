@@ -38,6 +38,10 @@
                                 aria-controls="home" aria-selected="true">Bookings</a>
                         </li>
                         <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="custom-Booking-tab" data-toggle="tab" href="#customBookings" role="tab"
+                                aria-controls="customBookings" aria-selected="true">Custom Bookings</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#complaints" role="tab"
                                 aria-controls="profile" aria-selected="false">Complaints</a>
                         </li>
@@ -80,7 +84,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-center">
-                                        <button class="btn btn-dark" type="sumbit" name="generate_report" value="generate_report">Get Bookings</button>
+                                        <button class="btn btn-dark" type="sumbit" name="generate_report"
+                                            value="generate_report">Get Bookings</button>
                                         <a class="btn btn-success" href="admin-dashboard.php#bookings">All Bookings</a>
                                         <button class="btn btn-primary" onClick="window.print()">Print Report</button>
                                     </div>
@@ -99,6 +104,45 @@
                                     </thead>
                                     <tbody class="bookingTableBody">
                                         <?php echo bookingList($bookingData)?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="customBookings" role="tabpanel" aria-labelledby="home-tab">
+                            <h1 class="text-center my-5 text-uppercase theme-heading">Custom Bookings</h1>
+                            <div class="admin-booking-list-table">
+                                <form class="dont-print" action="" method="post">
+                                    <div class="form-group row">
+                                        <div class="col-6">
+                                            <label for="" class="for-col-label">Start Date</label>
+                                            <input type="date" class="form-control" name="start_date">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="" class="for-col-label">End Date</label>
+                                            <input type="date" class="form-control" name="end_date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-dark" type="sumbit" name="generate_custom_booking_report"
+                                            value="generate_custom_booking_report">Get Bookings</button>
+                                        <a class="btn btn-success" href="admin-dashboard.php#customBookings">All Bookings</a>
+                                        <button class="btn btn-primary" onClick="window.print()">Print Report</button>
+                                    </div>
+                                </form>
+                                <table class="table" id="bookingsTableTwo">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Username</th>
+                                            <th>Booking Date</th>
+                                            <th>Status</th>
+                                            <th>Request Date</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bookingTableBody">
+                                        <?php echo customBookingList($customBookingData)?>
                                     </tbody>
                                 </table>
                             </div>
@@ -374,8 +418,12 @@
     $(document).ready(function() {
         var table = $('#bookingsTableTwo').DataTable();
 
-        $('#startDate').keyup( function() { table.draw(); } );
-        $('#endDate').keyup( function() { table.draw(); } );
+        $('#startDate').keyup(function() {
+            table.draw();
+        });
+        $('#endDate').keyup(function() {
+            table.draw();
+        });
     });
 
     bookingsTableTwo

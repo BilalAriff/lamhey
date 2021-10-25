@@ -147,8 +147,22 @@ class Admin extends User {
         return $result;
     }
 
+    public function getCustomBookingList() {
+        $sql = "SELECT * FROM custom_event_request";
+        // $values = array( array(":username", $username) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL);
+        return $result;
+    }
+
     public function getBookingReport($start_date, $end_date ) {
         $sql = "SELECT * FROM bookings WHERE booking_date BETWEEN :start_date AND :end_date";
+        $values = array( array(":start_date", $start_date), array("end_date", $end_date) );
+        $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
+        return $result;
+    }
+
+    public function getCustomBookingReport($start_date, $end_date ) {
+        $sql = "SELECT * FROM custom_event_request WHERE event_date BETWEEN :start_date AND :end_date";
         $values = array( array(":start_date", $start_date), array("end_date", $end_date) );
         $result = $this->db->queryDB($sql, Database::SELECTALL, $values);
         return $result;

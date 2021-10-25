@@ -56,6 +56,29 @@
             <div class="row">
                 <div class="col-12">
                     <div class="theme-blue-border">
+                        <h3 class="text-center font-weight-bold mb-5">Your Custom Booking Request</h3>
+                        <div class="table-responsive">
+                            <table id="bookingTable" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Booking ID<br></th>
+                                        <th scope="col">Consultant Name</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Event Date</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php echo customRequestRow($customRequests) ?>          
+                                </tbody>
+                            </table>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="theme-blue-border">
                         <h3 class="text-center font-weight-bold mb-5">Your Complaints</h3>
                         <div class="table-responsive">
                             <table id="bookingTable" class="table">

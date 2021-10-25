@@ -6,12 +6,14 @@ $h = new Helper();
 $admin = new Admin("admin");
 
 $bookingData = $admin->getBookingList();
+$customBookingData = $admin->getCustomBookingList();
 $complaintData = $admin->getComplaintList();
 $blockedConsultants = $admin->getBlockedConsultantList();
 $blockedUsers = $admin->getBlockedUserList();
 $paymentMethods = $admin->getPaymentMethodsList();
 $categories = $admin->getCategoryList();
 
+var_dump($customBookingData);
 // var_dump($categories);
 
 
@@ -62,6 +64,68 @@ function blockedConsultantTd($consultant) {
             </td>
          <tr>
         HTML;
+    echo $td;
+}
+
+function custoomBookingTd($booking) {
+
+    $id = $booking['id'];
+    $userId = $booking['user_id'];
+    $bookingUsername = $booking['username'];
+    $consultant = $booking['consultant_name'];
+    $consultntId = $booking['consultant_id'];
+    $description = $booking['event_description'];
+    $date = $booking['event_date'];
+    $status = $booking['event_status'];
+    $bookingDate = $booking['created_at'];
+
+    $td = 
+
+        <<<HTML
+         <tr>
+            <td>$id</td>
+            <td class="text-primary">$bookingUsername</td>
+            <td>$date</td>
+            <td><label class="rounded-pill px-3 py-1 text-uppercase $status" for="">$status</label></td>
+            <td>$bookingDate</td>
+            <td><a href="custom-booking-detail.php?id=$id" data-toggle="modal" data-target="#customRequestInformation_$id">View</a>
+            
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" >
+                Launch demo modal
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="customRequestInformation_$id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h1 class="theme-heading">Custom Request ID: $id</h1>
+                            <h5 class="theme-heading">Consultant Name: <a href="consultant-profile?id=$consultntId" class="theme-heading" href="">$consultant</a></h5>
+                            <h5 class="theme-heading">Requested By: <strong>$bookingUsername</strong> </h5>
+                            <h5 class="theme-heading">Description</h5>
+                            <p>$description</p>
+                            <h5 class="theme-heading">Booking Date: <span class="text-success">$date</span></h5>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <label class="rounded-pill px-3 py-1 text-uppercase $status" for="">$status</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+         <tr>
+HTML;
     echo $td;
 }
 
@@ -279,6 +343,10 @@ function bookingList($data) {
     array_map("bookingTd", $data);
 }
 
+function customBookingList($data) {
+    array_map("custoomBookingTd", $data);
+}
+
 function complaintList($data) {
     array_map("complaintTd", $data);
 }
@@ -353,4 +421,8 @@ if(isset($_POST['deleteCategory'])) {
 
 if(isset($_POST['generate_report'])) {
     $bookingData = $admin->getBookingReport($_POST['start_date'], $_POST['end_date']);
+}
+
+if(isset($_POST['generate_custom_booking_report'])) {
+    $customBookingData = $admin->getCustomBookingReport($_POST['start_date'], $_POST['end_date']);
 }
